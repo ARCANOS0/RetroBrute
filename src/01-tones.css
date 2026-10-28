@@ -1,1 +1,63 @@
 /* RetroBrute - Tones */
+
+/* ── Light tones ── */
+body.theme-light.rb-tone-cream {
+  --rb-bg: #F5EBD7;
+  --rb-surface: #FFF8EE;
+  --rb-surface-2: #EDE3CF;
+  --rb-ink: #1B1B1B;
+  --rb-ink-soft: #5A5A5A;
+  --rb-shadow-color: #1B1B1B;
+  --rb-accent: var(--rb-terracotta);
+}
+
+body.theme-light.rb-tone-mint-paper {
+  --rb-bg: #EAF8F2;
+  --rb-surface: #F5FFFA;
+  --rb-surface-2: #DFEEE7;
+  --rb-ink: #1B1B1B;
+  --rb-ink-soft: #5A5A5A;
+  --rb-shadow-color: #1B1B1B;
+  --rb-accent: var(--rb-mint);
+}
+
+body.theme-light.rb-tone-lavender-fog {
+  --rb-bg: #EFEAFF;
+  --rb-surface: #F8F5FF;
+  --rb-surface-2: #E5E0F5;
+  --rb-ink: #1B1B1B;
+  --rb-ink-soft: #5A5A5A;
+  --rb-shadow-color: #1B1B1B;
+  --rb-accent: var(--rb-lavender);
+}
+
+/* ── Dark tones ── */
+body.theme-dark.rb-tone-charcoal {
+  --rb-bg: #1F1E1D;
+  --rb-surface: #2A2928;
+  --rb-surface-2: #181716;
+  --rb-ink: #F5EBD7;
+  --rb-ink-soft: #A8A29E;
+  --rb-shadow-color: #0A0A0A;
+  --rb-accent: var(--rb-terracotta);
+}
+
+body.theme-dark.rb-tone-midnight-violet {
+  --rb-bg: #17152B;
+  --rb-surface: #221F3A;
+  --rb-surface-2: #12102A;
+  --rb-ink: #E5E5E5;
+  --rb-ink-soft: #8A85A8;
+  --rb-shadow-color: #080614;
+  --rb-accent: var(--rb-violet);
+}
+
+body.theme-dark.rb-tone-cocoa {
+  --rb-bg: #241B17;
+  --rb-surface: #302520;
+  --rb-surface-2: #1C1512;
+  --rb-ink: #E5E5E5;
+  --rb-ink-soft: #988A82;
+  --rb-shadow-color: #0D0908;
+  --rb-accent: var(--rb-orange);
+}

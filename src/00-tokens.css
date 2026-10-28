@@ -1,1 +1,72 @@
 /* RetroBrute - Tokens */
+
+:root {
+  /* ── Structure ── */
+  --rb-border-width: 2px;
+  --rb-border-color: var(--rb-ink);
+  --rb-shadow-x: 3px;
+  --rb-shadow-y: 3px;
+  --rb-shadow-hard: var(--rb-shadow-x) var(--rb-shadow-y) 0 var(--rb-shadow-color);
+  --rb-shadow-hover: 1px 1px 0 var(--rb-shadow-color);
+  --rb-radius-s: 4px;
+  --rb-radius-m: 8px;
+  --rb-radius-pill: 999px;
+  --rb-grid-size: 24px;
+  --rb-grid-line: 1px;
+  --rb-anim-speed: 120ms;
+
+  /* ── Accent palette ── */
+  --rb-mint: #7FE8C8;
+  --rb-on-mint: #1B1B1B;
+  --rb-orange: #F2A07B;
+  --rb-on-orange: #1B1B1B;
+  --rb-red: #F26B7A;
+  --rb-on-red: #1B1B1B;
+  --rb-violet: #8B78E6;
+  --rb-on-violet: #1B1B1B;
+  --rb-yellow: #FFD95A;
+  --rb-on-yellow: #1B1B1B;
+  --rb-lime: #D7F25A;
+  --rb-on-lime: #1B1B1B;
+  --rb-aqua: #AEF2E8;
+  --rb-on-aqua: #1B1B1B;
+  --rb-pink: #FF85AE;
+  --rb-on-pink: #1B1B1B;
+  --rb-lavender: #CBB4F8;
+  --rb-on-lavender: #1B1B1B;
+  --rb-terracotta: #D97757;
+  --rb-on-terracotta: #1B1B1B;
+  --rb-grey: #4B5057;
+  --rb-on-grey: #FFFFFF;
+
+  /* ── Fonts ── */
+  --rb-font-heading: "Space Grotesk", "Syne", system-ui, sans-serif;
+  --rb-font-text: "Source Serif 4", Georgia, serif;
+  --rb-font-mono: "JetBrains Mono", "Courier New", monospace;
+  --rb-font-pixel: "Press Start 2P", "VT323", monospace;
+
+  /* ── Default accent ── */
+  --rb-accent: var(--rb-terracotta);
+}
+
+/* Light default: cream */
+body.theme-light {
+  --rb-bg: #F5EBD7;
+  --rb-surface: #FFF8EE;
+  --rb-surface-2: #EDE3CF;
+  --rb-ink: #1B1B1B;
+  --rb-ink-soft: #5A5A5A;
+  --rb-shadow-color: #1B1B1B;
+  --rb-accent: var(--rb-terracotta);
+}
+
+/* Dark default: charcoal */
+body.theme-dark {
+  --rb-bg: #1F1E1D;
+  --rb-surface: #2A2928;
+  --rb-surface-2: #181716;
+  --rb-ink: #F5EBD7;
+  --rb-ink-soft: #A8A29E;
+  --rb-shadow-color: #0A0A0A;
+  --rb-accent: var(--rb-terracotta);
+}
