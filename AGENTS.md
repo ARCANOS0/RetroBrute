@@ -45,3 +45,5 @@ docs/REFERENCES.md   what to take from each reference theme
 
 ## Done check (every phase)
 `node scripts/build.mjs` passes, theme loads in `test-vault` in light AND dark with no console errors, acceptance list in the phase is ticked.
+
+Derived tokens (anything that uses var(--rb-ink) or var(--rb-shadow-color)) must be declared on body, not :root

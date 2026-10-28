@@ -1,1 +1,17 @@
 /* RetroBrute - Effects */
+
+/* ── Grid background ── */
+body.theme-light {
+  --rb-grid-color: color-mix(in srgb, var(--rb-ink) 8%, transparent);
+}
+
+body.theme-dark {
+  --rb-grid-color: color-mix(in srgb, #FFFFFF 6%, transparent);
+}
+
+body.rb-grid .workspace-leaf-content {
+  background-image:
+    linear-gradient(to right, var(--rb-grid-color) var(--rb-grid-line), transparent var(--rb-grid-line)),
+    linear-gradient(to bottom, var(--rb-grid-color) var(--rb-grid-line), transparent var(--rb-grid-line));
+  background-size: var(--rb-grid-size) var(--rb-grid-size);
+}

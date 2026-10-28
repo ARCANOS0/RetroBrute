@@ -3,7 +3,7 @@
 /* ===== 00-tokens.css ===== */
 /* RetroBrute - Tokens */
 
-:root {
+body {
   /* ── Structure ── */
   --rb-border-width: 2px;
   --rb-border-color: var(--rb-ink);
@@ -48,6 +48,7 @@
   --rb-font-mono: "JetBrains Mono", "Courier New", monospace;
   --rb-font-pixel: "Press Start 2P", "VT323", monospace;
 
+     --rb-on-accent: #1B1B1B;
   /* ── Default accent ── */
   --rb-accent: var(--rb-terracotta);
 }
@@ -757,6 +758,23 @@ body:not(.rb-no-anim) .modal {
 /* RetroBrute - Components */
 /* ===== 05-effects.css ===== */
 /* RetroBrute - Effects */
+
+/* ── Grid background ── */
+body.theme-light {
+  --rb-grid-color: color-mix(in srgb, var(--rb-ink) 8%, transparent);
+}
+
+body.theme-dark {
+  --rb-grid-color: color-mix(in srgb, #FFFFFF 6%, transparent);
+}
+
+body.rb-grid .workspace-leaf-content {
+  background-image:
+    linear-gradient(to right, var(--rb-grid-color) var(--rb-grid-line), transparent var(--rb-grid-line)),
+    linear-gradient(to bottom, var(--rb-grid-color) var(--rb-grid-line), transparent var(--rb-grid-line));
+  background-size: var(--rb-grid-size) var(--rb-grid-size);
+}
+
 /* ===== 06-plugins.css ===== */
 /* RetroBrute - Plugins */
 /* ===== 99-style-settings.css ===== */
@@ -769,6 +787,11 @@ settings:
   - id: rb-no-anim
     title: Disable animations
     description: Turn off all animations and transitions
+    type: class-toggle
+    default: false
+  - id: rb-grid
+    title: Show grid background
+    description: Draw a grid pattern behind editor panes
     type: class-toggle
     default: false
 */

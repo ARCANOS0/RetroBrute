@@ -9,6 +9,11 @@ settings:
     description: Turn off all animations and transitions
     type: class-toggle
     default: false
+  - id: rb-grid
+    title: Show grid background
+    description: Draw a grid pattern behind editor panes
+    type: class-toggle
+    default: false
 */
 
 /* Animation guard - when rb-no-anim is set, disable animations */
