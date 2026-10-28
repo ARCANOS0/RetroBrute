@@ -1,1 +1,419 @@
-/* RetroBrute - UI */
+/* RetroBrute - App Chrome */
+
+/* ── Sidebars ── */
+.workspace-split {
+  background: var(--rb-surface-2);
+}
+
+.workspace-ribbon {
+  background: var(--rb-surface-2);
+  border-right: var(--rb-border-width) solid var(--rb-border-color);
+}
+
+.workspace-ribbon.mod-left,
+.workspace-ribbon.mod-right {
+  background: var(--rb-surface-2);
+}
+
+/* Sidebar collapse handles */
+.workspace-split.mod-left-split > .workspace-leaf-resize-handle,
+.workspace-split.mod-right-split > .workspace-leaf-resize-handle {
+  background: var(--rb-border-color);
+  width: 2px;
+}
+
+.workspace-split.mod-left-split > .workspace-leaf-resize-handle:hover,
+.workspace-split.mod-right-split > .workspace-leaf-resize-handle:hover {
+  background: var(--rb-accent);
+}
+
+/* ── File Explorer ── */
+.nav-header {
+  background: var(--rb-surface-2);
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  padding: 8px;
+}
+
+.nav-folder-title,
+.nav-file-title {
+  padding: 4px 8px;
+  border-radius: var(--rb-radius-s);
+  margin: 2px 0;
+}
+
+.nav-folder-title:hover,
+.nav-file-title:hover {
+  background: var(--rb-accent);
+  color: var(--rb-on-accent);
+}
+
+.nav-folder-title.is-active,
+.nav-file-title.is-active {
+  background: var(--rb-accent);
+  color: var(--rb-on-accent);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  box-shadow: var(--rb-shadow-hard);
+}
+
+/* Folder chevrons - retro style */
+.nav-folder-collapse-indicator {
+  color: var(--rb-ink);
+  margin-right: 4px;
+}
+
+.nav-folder-title:hover .nav-folder-collapse-indicator,
+.nav-folder-title.is-active .nav-folder-collapse-indicator {
+  color: var(--rb-on-accent);
+}
+
+/* ── Tabs ── */
+.workspace-tabs {
+  background: var(--rb-surface-2);
+}
+
+.workspace-tab-header-container {
+  background: var(--rb-surface-2);
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+}
+
+.workspace-tab-header {
+  background: transparent;
+  border: var(--rb-border-width) solid transparent;
+  border-radius: var(--rb-radius-s) var(--rb-radius-s) 0 0;
+  padding: 6px 12px;
+  margin: 0 2px;
+  color: var(--rb-ink-soft);
+}
+
+.workspace-tab-header:hover {
+  background: var(--rb-surface);
+  color: var(--rb-ink);
+}
+
+.workspace-tab-header.is-active {
+  background: var(--rb-yellow);
+  color: var(--rb-on-yellow);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-bottom-color: var(--rb-yellow);
+}
+
+/* Active tab indicator line (remove default) */
+.workspace-tab-header.is-active::after {
+  display: none;
+}
+
+/* Pinned tabs */
+.workspace-tab-header.is-pinned {
+  background: var(--rb-surface);
+  border-style: dashed;
+}
+
+.workspace-tab-header.is-pinned.is-active {
+  background: var(--rb-yellow);
+}
+
+/* Tab separator */
+.workspace-tab-header-inner::after {
+  display: none;
+}
+
+/* ── Status Bar ── */
+.status-bar {
+  background: var(--rb-surface-2);
+  border-top: var(--rb-border-width) solid var(--rb-border-color);
+  padding: 4px 12px;
+  font-size: 12px;
+}
+
+.status-bar-item {
+  padding: 2px 8px;
+  border-radius: var(--rb-radius-s);
+}
+
+.status-bar-item:hover {
+  background: var(--rb-accent);
+  color: var(--rb-on-accent);
+}
+
+/* ── Ribbon (left/right edges) ── */
+.side-dock-ribbon-action {
+  color: var(--rb-ink);
+  padding: 8px;
+  border-radius: var(--rb-radius-s);
+  margin: 2px 0;
+}
+
+.side-dock-ribbon-action:hover {
+  background: var(--rb-accent);
+  color: var(--rb-on-accent);
+}
+
+.side-dock-ribbon-action.is-active {
+  background: var(--rb-accent);
+  color: var(--rb-on-accent);
+  box-shadow: var(--rb-shadow-hard);
+}
+
+/* ── Title Bar ── */
+.titlebar {
+  background: var(--rb-surface-2);
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+}
+
+.titlebar-text {
+  color: var(--rb-ink);
+  font-weight: 600;
+}
+
+.titlebar-button {
+  color: var(--rb-ink);
+  opacity: 0.8;
+}
+
+.titlebar-button:hover {
+  background: var(--rb-accent);
+  color: var(--rb-on-accent);
+  opacity: 1;
+}
+
+/* ── Modals ── */
+.modal {
+  background: var(--rb-surface);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  box-shadow: var(--rb-shadow-hard);
+  border-radius: var(--rb-radius-m);
+}
+
+.modal-header {
+  background: var(--rb-surface-2);
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  padding: 12px 16px;
+}
+
+.modal-title {
+  font-family: var(--rb-font-heading);
+  font-weight: 700;
+}
+
+.modal-content {
+  padding: 16px;
+}
+
+.modal-close-button {
+  color: var(--rb-ink);
+}
+
+.modal-close-button:hover {
+  background: var(--rb-red);
+  color: var(--rb-on-red);
+}
+
+/* Modal overlay */
+.modal-container .modal-bg {
+  background: color-mix(in srgb, var(--rb-ink) 60%, transparent);
+}
+
+body:not(.rb-no-anim) .modal {
+  animation: rb-modal-in 150ms ease-out;
+}
+
+@keyframes rb-modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ── Menus ── */
+.menu {
+  background: var(--rb-surface);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  box-shadow: var(--rb-shadow-hard);
+  border-radius: var(--rb-radius-m);
+  padding: 4px;
+}
+
+.menu-item {
+  padding: 8px 12px;
+  border-radius: var(--rb-radius-s);
+  color: var(--rb-ink);
+}
+
+.menu-item:hover,
+.menu-item.selected {
+  background: var(--rb-accent);
+  color: var(--rb-on-accent);
+}
+
+.menu-item.is-disabled {
+  opacity: 0.45;
+}
+
+.menu-separator {
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  margin: 4px 0;
+}
+
+/* ── Tooltips ── */
+.tooltip {
+  background: var(--rb-ink);
+  color: var(--rb-bg);
+  border-radius: var(--rb-radius-s);
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.tooltip-arrow::before {
+  border-bottom-color: var(--rb-ink);
+}
+
+/* ── Notices ── */
+.notice {
+  background: var(--rb-surface);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  box-shadow: var(--rb-shadow-hard);
+  border-radius: var(--rb-radius-s);
+  color: var(--rb-ink);
+  padding: 12px 16px;
+}
+
+.notice.is-error {
+  background: var(--rb-red);
+  color: var(--rb-on-red);
+  border-color: var(--rb-border-color);
+}
+
+.notice.is-success {
+  background: var(--rb-mint);
+  color: var(--rb-on-mint);
+  border-color: var(--rb-border-color);
+}
+
+.notice.is-warning {
+  background: var(--rb-orange);
+  color: var(--rb-on-orange);
+  border-color: var(--rb-border-color);
+}
+
+/* ── Scrollbars ── */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--rb-surface-2);
+  border-left: var(--rb-border-width) solid var(--rb-border-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--rb-surface);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--rb-accent);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--rb-surface-2);
+}
+
+/* Horizontal scrollbar */
+::-webkit-scrollbar:horizontal {
+  height: 12px;
+}
+
+::-webkit-scrollbar-track:horizontal {
+  border-left: none;
+  border-top: var(--rb-border-width) solid var(--rb-border-color);
+}
+
+/* ── Settings Window ── */
+.modal.mod-settings {
+  width: 900px;
+  max-width: 90vw;
+}
+
+.modal.mod-settings .vertical-tab-header {
+  background: var(--rb-surface-2);
+  border-right: var(--rb-border-width) solid var(--rb-border-color);
+}
+
+.modal.mod-settings .vertical-tab-header-group-title {
+  font-family: var(--rb-font-heading);
+  font-weight: 700;
+  color: var(--rb-ink);
+  padding: 16px 16px 8px;
+}
+
+.modal.mod-settings .vertical-tab-nav-item {
+  padding: 10px 16px;
+  border-radius: 0;
+  color: var(--rb-ink);
+}
+
+.modal.mod-settings .vertical-tab-nav-item:hover {
+  background: var(--rb-accent);
+  color: var(--rb-on-accent);
+}
+
+.modal.mod-settings .vertical-tab-nav-item.is-active {
+  background: var(--rb-accent);
+  color: var(--rb-on-accent);
+  border-left: 3px solid var(--rb-border-color);
+}
+
+.modal.mod-settings .setting-item {
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  padding: 16px 0;
+}
+
+.modal.mod-settings .setting-item:last-child {
+  border-bottom: none;
+}
+
+.modal.mod-settings .setting-item-name {
+  font-weight: 600;
+  color: var(--rb-ink);
+}
+
+.modal.mod-settings .setting-item-description {
+  color: var(--rb-ink-soft);
+}
+
+/* ── Empty State ── */
+.empty-state {
+  background: var(--rb-surface);
+  color: var(--rb-ink-soft);
+}
+
+.empty-state-title {
+  font-family: var(--rb-font-heading);
+  font-weight: 700;
+  color: var(--rb-ink);
+}
+
+/* ── Graph View ── */
+.graph-view {
+  background: var(--rb-bg);
+}
+
+/* ── Canvas Cards ── */
+.canvas-card {
+  background: var(--rb-surface);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  box-shadow: var(--rb-shadow-hard);
+  border-radius: var(--rb-radius-m);
+}
+
+.canvas-card:hover {
+  box-shadow: calc(var(--rb-shadow-x) + 1px) calc(var(--rb-shadow-y) + 1px) 0 var(--rb-shadow-color);
+  transform: translate(-1px, -1px);
+}

@@ -140,9 +140,619 @@ body.theme-dark.rb-tone-cocoa {
 }
 
 /* ===== 02-base.css ===== */
-/* RetroBrute - Base */
+/* RetroBrute - Base + Typography + Markdown */
+
+/* ── Map RetroBrute tokens to Obsidian variables ── */
+body {
+  /* Surfaces */
+  --background-primary: var(--rb-surface);
+  --background-primary-alt: var(--rb-surface-2);
+  --background-secondary: var(--rb-surface-2);
+  --background-secondary-alt: var(--rb-bg);
+  --background-modifier-hover: var(--rb-accent);
+  --background-modifier-active-hover: var(--rb-accent);
+  --background-modifier-border: var(--rb-border-color);
+  --background-modifier-border-hover: var(--rb-accent);
+  --background-modifier-error: var(--rb-red);
+  --background-modifier-error-hover: var(--rb-red);
+  --background-modifier-success: var(--rb-mint);
+  --background-modifier-message: var(--rb-surface);
+  --background-modifier-form-field: var(--rb-surface-2);
+
+  /* Text */
+  --text-normal: var(--rb-ink);
+  --text-muted: var(--rb-ink-soft);
+  --text-faint: var(--rb-ink-soft);
+  --text-accent: var(--rb-accent);
+  --text-accent-hover: var(--rb-accent);
+  --text-error: var(--rb-red);
+  --text-success: var(--rb-mint);
+  --text-highlight-bg: var(--rb-yellow);
+  --text-selection: color-mix(in srgb, var(--rb-accent) 30%, transparent);
+
+  /* Interactive */
+  --interactive-accent: var(--rb-accent);
+  --interactive-accent-hover: var(--rb-accent);
+  --interactive-success: var(--rb-mint);
+  --interactive-warning: var(--rb-orange);
+  --interactive-error: var(--rb-red);
+
+  /* Colors */
+  --color-red: var(--rb-red);
+  --color-orange: var(--rb-orange);
+  --color-yellow: var(--rb-yellow);
+  --color-green: var(--rb-mint);
+  --color-cyan: var(--rb-aqua);
+  --color-blue: var(--rb-violet);
+  --color-purple: var(--rb-lavender);
+  --color-pink: var(--rb-pink);
+
+  /* Fonts */
+  --font-interface-theme: var(--rb-font-heading);
+  --font-text-theme: var(--rb-font-text);
+  --font-monospace-theme: var(--rb-font-mono);
+}
+
+/* ── Typography ── */
+body {
+  font-family: var(--rb-font-text);
+  color: var(--rb-ink);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6,
+.markdown-rendered h1,
+.markdown-rendered h2,
+.markdown-rendered h3,
+.markdown-rendered h4,
+.markdown-rendered h5,
+.markdown-rendered h6,
+.HyperMD-header-1,
+.HyperMD-header-2,
+.HyperMD-header-3,
+.HyperMD-header-4,
+.HyperMD-header-5,
+.HyperMD-header-6 {
+  font-family: var(--rb-font-heading);
+  font-weight: 700;
+  color: var(--rb-ink);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+h1, .markdown-rendered h1, .HyperMD-header-1 { font-size: 2em; }
+h2, .markdown-rendered h2, .HyperMD-header-2 { font-size: 1.75em; }
+h3, .markdown-rendered h3, .HyperMD-header-3 { font-size: 1.5em; }
+h4, .markdown-rendered h4, .HyperMD-header-4 { font-size: 1.25em; }
+h5, .markdown-rendered h5, .HyperMD-header-5 { font-size: 1.1em; }
+h6, .markdown-rendered h6, .HyperMD-header-6 { font-size: 1em; }
+
+/* Paragraphs */
+p, .markdown-rendered p {
+  line-height: 1.6;
+  margin-bottom: 0.75em;
+}
+
+/* Links */
+a, .markdown-rendered a, .cm-link {
+  color: var(--rb-accent);
+  text-decoration: underline;
+  text-decoration-thickness: var(--rb-border-width);
+  text-underline-offset: 2px;
+}
+
+a:hover, .markdown-rendered a:hover, .cm-link:hover {
+  color: var(--rb-ink);
+}
+
+/* Lists */
+ul, ol, .markdown-rendered ul, .markdown-rendered ol {
+  padding-left: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+li, .markdown-rendered li {
+  margin-bottom: 0.25em;
+}
+
+/* Blockquote */
+blockquote, .markdown-rendered blockquote {
+  border-left: var(--rb-border-width) solid var(--rb-accent);
+  padding-left: 1em;
+  margin: 1em 0;
+  color: var(--rb-ink-soft);
+}
+
+/* Horizontal rule */
+hr, .markdown-rendered hr {
+  border: none;
+  border-top: var(--rb-border-width) solid var(--rb-ink);
+  margin: 2em 0;
+  position: relative;
+}
+
+hr::after, .markdown-rendered hr::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 0;
+  right: 0;
+  border-top: var(--rb-border-width) solid var(--rb-ink);
+}
+
+/* Inline code */
+code, .markdown-rendered code, .cm-inline-code {
+  font-family: var(--rb-font-mono);
+  background: var(--rb-surface-2);
+  padding: 0.15em 0.4em;
+  border-radius: var(--rb-radius-s);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  font-size: 0.9em;
+}
+
+/* Highlight/mark */
+mark, .markdown-rendered mark, .cm-highlight {
+  background: var(--rb-yellow);
+  color: var(--rb-on-yellow);
+  padding: 0 0.2em;
+}
+
+/* ── Text formatting colors ── */
+
+/* Reading view */
+.markdown-rendered strong {
+  color: var(--rb-color-bold, var(--rb-ink));
+}
+
+.markdown-rendered em {
+  color: var(--rb-color-italic, var(--rb-ink));
+}
+
+.markdown-rendered strong em,
+.markdown-rendered em strong {
+  color: var(--rb-color-bolditalic, var(--rb-accent));
+}
+
+/* Live preview / CodeMirror */
+.cm-strong {
+  color: var(--rb-color-bold, var(--rb-ink));
+}
+
+.cm-em {
+  color: var(--rb-color-italic, var(--rb-ink));
+}
+
+.cm-strong.cm-em,
+.cm-em.cm-strong {
+  color: var(--rb-color-bolditalic, var(--rb-accent));
+}
+
+/* Normal text (when specifically styled) */
+.rb-color-normal {
+  color: var(--rb-color-normal, var(--rb-ink));
+}
+
 /* ===== 03-ui.css ===== */
-/* RetroBrute - UI */
+/* RetroBrute - App Chrome */
+
+/* ── Sidebars ── */
+.workspace-split {
+  background: var(--rb-surface-2);
+}
+
+.workspace-ribbon {
+  background: var(--rb-surface-2);
+  border-right: var(--rb-border-width) solid var(--rb-border-color);
+}
+
+.workspace-ribbon.mod-left,
+.workspace-ribbon.mod-right {
+  background: var(--rb-surface-2);
+}
+
+/* Sidebar collapse handles */
+.workspace-split.mod-left-split > .workspace-leaf-resize-handle,
+.workspace-split.mod-right-split > .workspace-leaf-resize-handle {
+  background: var(--rb-border-color);
+  width: 2px;
+}
+
+.workspace-split.mod-left-split > .workspace-leaf-resize-handle:hover,
+.workspace-split.mod-right-split > .workspace-leaf-resize-handle:hover {
+  background: var(--rb-accent);
+}
+
+/* ── File Explorer ── */
+.nav-header {
+  background: var(--rb-surface-2);
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  padding: 8px;
+}
+
+.nav-folder-title,
+.nav-file-title {
+  padding: 4px 8px;
+  border-radius: var(--rb-radius-s);
+  margin: 2px 0;
+}
+
+.nav-folder-title:hover,
+.nav-file-title:hover {
+  background: var(--rb-accent);
+  color: var(--rb-on-accent);
+}
+
+.nav-folder-title.is-active,
+.nav-file-title.is-active {
+  background: var(--rb-accent);
+  color: var(--rb-on-accent);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  box-shadow: var(--rb-shadow-hard);
+}
+
+/* Folder chevrons - retro style */
+.nav-folder-collapse-indicator {
+  color: var(--rb-ink);
+  margin-right: 4px;
+}
+
+.nav-folder-title:hover .nav-folder-collapse-indicator,
+.nav-folder-title.is-active .nav-folder-collapse-indicator {
+  color: var(--rb-on-accent);
+}
+
+/* ── Tabs ── */
+.workspace-tabs {
+  background: var(--rb-surface-2);
+}
+
+.workspace-tab-header-container {
+  background: var(--rb-surface-2);
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+}
+
+.workspace-tab-header {
+  background: transparent;
+  border: var(--rb-border-width) solid transparent;
+  border-radius: var(--rb-radius-s) var(--rb-radius-s) 0 0;
+  padding: 6px 12px;
+  margin: 0 2px;
+  color: var(--rb-ink-soft);
+}
+
+.workspace-tab-header:hover {
+  background: var(--rb-surface);
+  color: var(--rb-ink);
+}
+
+.workspace-tab-header.is-active {
+  background: var(--rb-yellow);
+  color: var(--rb-on-yellow);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-bottom-color: var(--rb-yellow);
+}
+
+/* Active tab indicator line (remove default) */
+.workspace-tab-header.is-active::after {
+  display: none;
+}
+
+/* Pinned tabs */
+.workspace-tab-header.is-pinned {
+  background: var(--rb-surface);
+  border-style: dashed;
+}
+
+.workspace-tab-header.is-pinned.is-active {
+  background: var(--rb-yellow);
+}
+
+/* Tab separator */
+.workspace-tab-header-inner::after {
+  display: none;
+}
+
+/* ── Status Bar ── */
+.status-bar {
+  background: var(--rb-surface-2);
+  border-top: var(--rb-border-width) solid var(--rb-border-color);
+  padding: 4px 12px;
+  font-size: 12px;
+}
+
+.status-bar-item {
+  padding: 2px 8px;
+  border-radius: var(--rb-radius-s);
+}
+
+.status-bar-item:hover {
+  background: var(--rb-accent);
+  color: var(--rb-on-accent);
+}
+
+/* ── Ribbon (left/right edges) ── */
+.side-dock-ribbon-action {
+  color: var(--rb-ink);
+  padding: 8px;
+  border-radius: var(--rb-radius-s);
+  margin: 2px 0;
+}
+
+.side-dock-ribbon-action:hover {
+  background: var(--rb-accent);
+  color: var(--rb-on-accent);
+}
+
+.side-dock-ribbon-action.is-active {
+  background: var(--rb-accent);
+  color: var(--rb-on-accent);
+  box-shadow: var(--rb-shadow-hard);
+}
+
+/* ── Title Bar ── */
+.titlebar {
+  background: var(--rb-surface-2);
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+}
+
+.titlebar-text {
+  color: var(--rb-ink);
+  font-weight: 600;
+}
+
+.titlebar-button {
+  color: var(--rb-ink);
+  opacity: 0.8;
+}
+
+.titlebar-button:hover {
+  background: var(--rb-accent);
+  color: var(--rb-on-accent);
+  opacity: 1;
+}
+
+/* ── Modals ── */
+.modal {
+  background: var(--rb-surface);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  box-shadow: var(--rb-shadow-hard);
+  border-radius: var(--rb-radius-m);
+}
+
+.modal-header {
+  background: var(--rb-surface-2);
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  padding: 12px 16px;
+}
+
+.modal-title {
+  font-family: var(--rb-font-heading);
+  font-weight: 700;
+}
+
+.modal-content {
+  padding: 16px;
+}
+
+.modal-close-button {
+  color: var(--rb-ink);
+}
+
+.modal-close-button:hover {
+  background: var(--rb-red);
+  color: var(--rb-on-red);
+}
+
+/* Modal overlay */
+.modal-container .modal-bg {
+  background: color-mix(in srgb, var(--rb-ink) 60%, transparent);
+}
+
+body:not(.rb-no-anim) .modal {
+  animation: rb-modal-in 150ms ease-out;
+}
+
+@keyframes rb-modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ── Menus ── */
+.menu {
+  background: var(--rb-surface);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  box-shadow: var(--rb-shadow-hard);
+  border-radius: var(--rb-radius-m);
+  padding: 4px;
+}
+
+.menu-item {
+  padding: 8px 12px;
+  border-radius: var(--rb-radius-s);
+  color: var(--rb-ink);
+}
+
+.menu-item:hover,
+.menu-item.selected {
+  background: var(--rb-accent);
+  color: var(--rb-on-accent);
+}
+
+.menu-item.is-disabled {
+  opacity: 0.45;
+}
+
+.menu-separator {
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  margin: 4px 0;
+}
+
+/* ── Tooltips ── */
+.tooltip {
+  background: var(--rb-ink);
+  color: var(--rb-bg);
+  border-radius: var(--rb-radius-s);
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.tooltip-arrow::before {
+  border-bottom-color: var(--rb-ink);
+}
+
+/* ── Notices ── */
+.notice {
+  background: var(--rb-surface);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  box-shadow: var(--rb-shadow-hard);
+  border-radius: var(--rb-radius-s);
+  color: var(--rb-ink);
+  padding: 12px 16px;
+}
+
+.notice.is-error {
+  background: var(--rb-red);
+  color: var(--rb-on-red);
+  border-color: var(--rb-border-color);
+}
+
+.notice.is-success {
+  background: var(--rb-mint);
+  color: var(--rb-on-mint);
+  border-color: var(--rb-border-color);
+}
+
+.notice.is-warning {
+  background: var(--rb-orange);
+  color: var(--rb-on-orange);
+  border-color: var(--rb-border-color);
+}
+
+/* ── Scrollbars ── */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--rb-surface-2);
+  border-left: var(--rb-border-width) solid var(--rb-border-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--rb-surface);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--rb-accent);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--rb-surface-2);
+}
+
+/* Horizontal scrollbar */
+::-webkit-scrollbar:horizontal {
+  height: 12px;
+}
+
+::-webkit-scrollbar-track:horizontal {
+  border-left: none;
+  border-top: var(--rb-border-width) solid var(--rb-border-color);
+}
+
+/* ── Settings Window ── */
+.modal.mod-settings {
+  width: 900px;
+  max-width: 90vw;
+}
+
+.modal.mod-settings .vertical-tab-header {
+  background: var(--rb-surface-2);
+  border-right: var(--rb-border-width) solid var(--rb-border-color);
+}
+
+.modal.mod-settings .vertical-tab-header-group-title {
+  font-family: var(--rb-font-heading);
+  font-weight: 700;
+  color: var(--rb-ink);
+  padding: 16px 16px 8px;
+}
+
+.modal.mod-settings .vertical-tab-nav-item {
+  padding: 10px 16px;
+  border-radius: 0;
+  color: var(--rb-ink);
+}
+
+.modal.mod-settings .vertical-tab-nav-item:hover {
+  background: var(--rb-accent);
+  color: var(--rb-on-accent);
+}
+
+.modal.mod-settings .vertical-tab-nav-item.is-active {
+  background: var(--rb-accent);
+  color: var(--rb-on-accent);
+  border-left: 3px solid var(--rb-border-color);
+}
+
+.modal.mod-settings .setting-item {
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  padding: 16px 0;
+}
+
+.modal.mod-settings .setting-item:last-child {
+  border-bottom: none;
+}
+
+.modal.mod-settings .setting-item-name {
+  font-weight: 600;
+  color: var(--rb-ink);
+}
+
+.modal.mod-settings .setting-item-description {
+  color: var(--rb-ink-soft);
+}
+
+/* ── Empty State ── */
+.empty-state {
+  background: var(--rb-surface);
+  color: var(--rb-ink-soft);
+}
+
+.empty-state-title {
+  font-family: var(--rb-font-heading);
+  font-weight: 700;
+  color: var(--rb-ink);
+}
+
+/* ── Graph View ── */
+.graph-view {
+  background: var(--rb-bg);
+}
+
+/* ── Canvas Cards ── */
+.canvas-card {
+  background: var(--rb-surface);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  box-shadow: var(--rb-shadow-hard);
+  border-radius: var(--rb-radius-m);
+}
+
+.canvas-card:hover {
+  box-shadow: calc(var(--rb-shadow-x) + 1px) calc(var(--rb-shadow-y) + 1px) 0 var(--rb-shadow-color);
+  transform: translate(-1px, -1px);
+}
+
 /* ===== 04-components.css ===== */
 /* RetroBrute - Components */
 /* ===== 05-effects.css ===== */
