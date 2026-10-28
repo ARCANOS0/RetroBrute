@@ -38,7 +38,7 @@ body.theme-dark.rb-tone-charcoal {
   --rb-surface-2: #181716;
   --rb-ink: #F5EBD7;
   --rb-ink-soft: #A8A29E;
-  --rb-shadow-color: #0A0A0A;
+  --rb-shadow-color: color-mix(in srgb, var(--rb-accent) 25%, #000000);
   --rb-accent: var(--rb-terracotta);
 }
 
@@ -48,7 +48,7 @@ body.theme-dark.rb-tone-midnight-violet {
   --rb-surface-2: #12102A;
   --rb-ink: #E5E5E5;
   --rb-ink-soft: #8A85A8;
-  --rb-shadow-color: #080614;
+  --rb-shadow-color: color-mix(in srgb, var(--rb-accent) 25%, #000000);
   --rb-accent: var(--rb-violet);
 }
 
@@ -58,6 +58,6 @@ body.theme-dark.rb-tone-cocoa {
   --rb-surface-2: #1C1512;
   --rb-ink: #E5E5E5;
   --rb-ink-soft: #988A82;
-  --rb-shadow-color: #0D0908;
+  --rb-shadow-color: color-mix(in srgb, var(--rb-accent) 25%, #000000);
   --rb-accent: var(--rb-orange);
 }

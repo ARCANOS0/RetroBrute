@@ -7,10 +7,10 @@ body {
   --background-primary-alt: var(--rb-surface-2);
   --background-secondary: var(--rb-surface-2);
   --background-secondary-alt: var(--rb-bg);
-  --background-modifier-hover: var(--rb-accent);
-  --background-modifier-active-hover: var(--rb-accent);
+  --background-modifier-hover: color-mix(in srgb, var(--rb-accent) 25%, transparent);
+  --background-modifier-active-hover: color-mix(in srgb, var(--rb-accent) 25%, transparent);
   --background-modifier-border: var(--rb-border-color);
-  --background-modifier-border-hover: var(--rb-accent);
+  --background-modifier-border-hover: color-mix(in srgb, var(--rb-accent) 25%, transparent);
   --background-modifier-error: var(--rb-red);
   --background-modifier-error-hover: var(--rb-red);
   --background-modifier-success: var(--rb-mint);
@@ -22,7 +22,7 @@ body {
   --text-muted: var(--rb-ink-soft);
   --text-faint: var(--rb-ink-soft);
   --text-accent: var(--rb-accent);
-  --text-accent-hover: var(--rb-accent);
+  --text-accent-hover: color-mix(in srgb, var(--rb-accent) 25%, transparent);
   --text-error: var(--rb-red);
   --text-success: var(--rb-mint);
   --text-highlight-bg: var(--rb-yellow);
@@ -30,7 +30,7 @@ body {
 
   /* Interactive */
   --interactive-accent: var(--rb-accent);
-  --interactive-accent-hover: var(--rb-accent);
+  --interactive-accent-hover: color-mix(in srgb, var(--rb-accent) 25%, transparent);
   --interactive-success: var(--rb-mint);
   --interactive-warning: var(--rb-orange);
   --interactive-error: var(--rb-red);
@@ -53,24 +53,23 @@ body {
 
 /* ── Typography ── */
 body {
-  font-family: var(--rb-font-text);
+  font-family: var(--rb-font-heading);
   color: var(--rb-ink);
 }
 
 /* Headings */
-h1, h2, h3, h4, h5, h6,
 .markdown-rendered h1,
 .markdown-rendered h2,
 .markdown-rendered h3,
 .markdown-rendered h4,
 .markdown-rendered h5,
 .markdown-rendered h6,
-.HyperMD-header-1,
-.HyperMD-header-2,
-.HyperMD-header-3,
-.HyperMD-header-4,
-.HyperMD-header-5,
-.HyperMD-header-6 {
+.cm-s-obsidian .HyperMD-header-1,
+.cm-s-obsidian .HyperMD-header-2,
+.cm-s-obsidian .HyperMD-header-3,
+.cm-s-obsidian .HyperMD-header-4,
+.cm-s-obsidian .HyperMD-header-5,
+.cm-s-obsidian .HyperMD-header-6 {
   font-family: var(--rb-font-heading);
   font-weight: 700;
   color: var(--rb-ink);
@@ -78,33 +77,39 @@ h1, h2, h3, h4, h5, h6,
   margin-bottom: 0.5em;
 }
 
-h1, .markdown-rendered h1, .HyperMD-header-1 { font-size: 2em; }
-h2, .markdown-rendered h2, .HyperMD-header-2 { font-size: 1.75em; }
-h3, .markdown-rendered h3, .HyperMD-header-3 { font-size: 1.5em; }
-h4, .markdown-rendered h4, .HyperMD-header-4 { font-size: 1.25em; }
-h5, .markdown-rendered h5, .HyperMD-header-5 { font-size: 1.1em; }
-h6, .markdown-rendered h6, .HyperMD-header-6 { font-size: 1em; }
+.markdown-rendered h1, .cm-s-obsidian .HyperMD-header-1 { font-size: 2em; }
+.markdown-rendered h2, .cm-s-obsidian .HyperMD-header-2 { font-size: 1.75em; }
+.markdown-rendered h3, .cm-s-obsidian .HyperMD-header-3 { font-size: 1.5em; }
+.markdown-rendered h4, .cm-s-obsidian .HyperMD-header-4 { font-size: 1.25em; }
+.markdown-rendered h5, .cm-s-obsidian .HyperMD-header-5 { font-size: 1.1em; }
+.markdown-rendered h6, .cm-s-obsidian .HyperMD-header-6 { font-size: 1em; }
 
 /* Paragraphs */
-p, .markdown-rendered p {
+.markdown-rendered p,
+.cm-s-obsidian p {
   line-height: 1.6;
   margin-bottom: 0.75em;
 }
 
 /* Links */
-a, .markdown-rendered a, .cm-link {
+.markdown-rendered a,
+.cm-s-obsidian .cm-link {
   color: var(--rb-accent);
   text-decoration: underline;
   text-decoration-thickness: var(--rb-border-width);
   text-underline-offset: 2px;
 }
 
-a:hover, .markdown-rendered a:hover, .cm-link:hover {
+.markdown-rendered a:hover,
+.cm-s-obsidian .cm-link:hover {
   color: var(--rb-ink);
 }
 
 /* Lists */
-ul, ol, .markdown-rendered ul, .markdown-rendered ol {
+.markdown-rendered ul,
+.markdown-rendered ol,
+.cm-s-obsidian ul,
+.cm-s-obsidian ol {
   padding-left: 1.5em;
   margin-bottom: 0.75em;
 }
@@ -139,7 +144,8 @@ hr::after, .markdown-rendered hr::after {
 }
 
 /* Inline code */
-code, .markdown-rendered code, .cm-inline-code {
+.markdown-rendered code,
+.cm-s-obsidian .cm-inline-code {
   font-family: var(--rb-font-mono);
   background: var(--rb-surface-2);
   padding: 0.15em 0.4em;
