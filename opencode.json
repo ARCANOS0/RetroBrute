@@ -1,0 +1,30 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "sovereigneg/kimi-k2.5",
+  "small_model": "sovereigneg/gpt-5-nano",
+  "provider": {
+    "sovereigneg": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "SovereignEG",
+      "options": { "baseURL": "https://backend.sovereigneg.com/v1" },
+      "models": {
+        "SovereignEG/Qwen3.8-27B-FP8": { "name": "Qwen3.8 27B (Egypt)" },
+        "kimi-k2.5": { "name": "Kimi K2.5", "limit": { "context": 262000, "output": 32000 } },
+        "kimi-k3.1-pro": { "name": "Kimi K3.1 Pro", "limit": { "context": 1000000, "output": 32000 } },
+        "gpt-5-mini": { "name": "GPT-5 mini", "limit": { "context": 400000, "output": 32000 } },
+        "gpt-5-nano": { "name": "GPT-5 nano", "limit": { "context": 400000, "output": 32000 } },
+        "claude-sonnet-5.5": { "name": "Claude Sonnet 5.5", "limit": { "context": 1000000, "output": 32000 } },
+        "gemini-3.1-flash-lite": { "name": "Gemini 3.1 Flash Lite", "limit": { "context": 1000000, "output": 32000 } }
+      }
+    }
+  },
+  "agent": {
+    "build": { "model": "sovereigneg/kimi-k2.5", "temperature": 0.2 },
+    "plan": { "model": "sovereigneg/claude-sonnet-5.5" },
+    "fix": { "mode": "subagent", "model": "sovereigneg/gpt-5-mini", "description": "Small precise edits, Style Settings YAML, bug fixes. Diffs only." },
+    "qa": { "mode": "subagent", "model": "sovereigneg/gemini-3.1-flash-lite", "description": "Cheap checks and defect lists. Never edits.", "permission": { "edit": "deny" } },
+    "review": { "mode": "subagent", "model": "sovereigneg/claude-sonnet-5.5", "description": "Read-only phase-gate review.", "permission": { "edit": "deny", "bash": "deny" } },
+    "hard": { "mode": "subagent", "model": "sovereigneg/kimi-k3.1-pro", "description": "Escalation for CSS bugs that failed twice." },
+    "docs": { "mode": "subagent", "model": "sovereigneg/gpt-5-nano", "description": "README, credits, changelog." }
+  }
+}

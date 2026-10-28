@@ -1,0 +1,36 @@
+/* RetroBrute - built file. Edit src/*.css, then run: node scripts/build.mjs */
+
+/* ===== 00-tokens.css ===== */
+/* RetroBrute - Tokens */
+/* ===== 01-tones.css ===== */
+/* RetroBrute - Tones */
+/* ===== 02-base.css ===== */
+/* RetroBrute - Base */
+/* ===== 03-ui.css ===== */
+/* RetroBrute - UI */
+/* ===== 04-components.css ===== */
+/* RetroBrute - Components */
+/* ===== 05-effects.css ===== */
+/* RetroBrute - Effects */
+/* ===== 06-plugins.css ===== */
+/* RetroBrute - Plugins */
+/* ===== 99-style-settings.css ===== */
+/* RetroBrute - Style Settings */
+
+/* @settings
+name: RetroBrute
+id: rb-settings
+settings:
+  - id: rb-no-anim
+    title: Disable animations
+    description: Turn off all animations and transitions
+    type: class-toggle
+    default: false
+*/
+
+/* Animation guard - when rb-no-anim is set, disable animations */
+body.rb-no-anim,
+body.rb-no-anim * {
+  animation: none !important;
+  transition: none !important;
+}
