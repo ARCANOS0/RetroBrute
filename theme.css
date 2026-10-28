@@ -677,6 +677,46 @@ body:not(.rb-no-anim) .modal {
   border-top: var(--rb-border-width) solid var(--rb-border-color);
 }
 
+/* ── View Header (nav arrows) ── */
+.view-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 8px;
+}
+
+.view-header .clickable-icon {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px;
+  line-height: 1.4;
+}
+
+.view-header .clickable-icon + .clickable-icon {
+  margin-left: 0;
+}
+
+.view-header .view-header-title-container {
+  margin-left: 8px;
+}
+
+/* Tooltip below arrows with 8px offset */
+.view-header .clickable-icon .tooltip {
+  top: calc(100% + 8px);
+  bottom: auto;
+}
+
+.view-header .clickable-icon .tooltip-arrow::before {
+  border-bottom-color: var(--rb-ink);
+  border-top-color: transparent;
+  top: -8px;
+  bottom: auto;
+}
+
 /* ── Settings Window ── */
 .modal.mod-settings {
   width: 900px;
@@ -713,7 +753,7 @@ body:not(.rb-no-anim) .modal {
 }
 
 .modal.mod-settings .setting-item {
-  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  border-bottom: 2px dashed color-mix(in srgb, var(--rb-ink) 25%, var(--rb-surface));
   padding: 16px 0;
 }
 
@@ -771,11 +811,12 @@ button,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 8px;
   font-family: var(--rb-font-heading);
   font-weight: 600;
   font-size: 14px;
-  padding: 8px 16px;
+  line-height: 1.4;
+  padding: 8px 12px;
   border: var(--rb-border-width) solid var(--rb-border-color);
   border-radius: var(--rb-radius-s);
   background: var(--rb-accent);
@@ -871,6 +912,7 @@ button.rb-btn-stroke {
 }
 
 /* ── Inputs ── */
+/* Scoped hard-bordered inputs: settings, modals, and forms outside metadata */
 input[type="text"],
 input[type="search"],
 input[type="email"],
@@ -878,7 +920,9 @@ input[type="password"],
 input[type="number"],
 input[type="url"],
 textarea,
-.metadata-input-text {
+.setting-item input,
+.modal-content input,
+.modal-content textarea {
   font-family: var(--rb-font-text);
   font-size: 14px;
   padding: 8px 12px;
@@ -896,7 +940,10 @@ textarea::placeholder {
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+.setting-item input:focus,
+.modal-content input:focus,
+.modal-content textarea:focus {
   border-color: var(--rb-accent);
   box-shadow: 0 0 0 2px var(--rb-surface), 0 0 0 4px var(--rb-accent);
 }
@@ -906,6 +953,22 @@ textarea:disabled {
   opacity: 0.45;
   background: var(--rb-surface-2);
   cursor: not-allowed;
+}
+
+/* Flat inputs for metadata/properties panel */
+.metadata-container .metadata-property input,
+.metadata-container .metadata-property textarea {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  border-bottom: 2px solid transparent;
+}
+
+.metadata-container .metadata-property input:focus,
+.metadata-container .metadata-property textarea:focus {
+  border-bottom-color: var(--rb-accent);
+  box-shadow: none;
 }
 
 /* ── Search inputs ── */
@@ -938,7 +1001,9 @@ dropdown,
 .select {
   font-family: var(--rb-font-text);
   font-size: 14px;
-  padding: 8px 32px 8px 12px;
+  min-height: 34px;
+  line-height: 1.4;
+  padding: 6px 32px 6px 12px;
   border: var(--rb-border-width) solid var(--rb-border-color);
   border-radius: var(--rb-radius-s);
   background: var(--rb-surface);
@@ -1179,11 +1244,13 @@ a.tag,
 .markdown-rendered a.tag {
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   font-family: var(--rb-font-mono);
   font-size: 11px;
   font-weight: 600;
+  line-height: 1.4;
   text-decoration: none;
-  padding: 2px 10px;
+  padding: 4px 12px;
   border: var(--rb-border-width) solid var(--rb-border-color);
   border-radius: var(--rb-radius-pill);
   background: var(--rb-surface-2);
@@ -1260,7 +1327,7 @@ label {
 
 /* ── Form groups ── */
 .setting-item + .setting-item {
-  border-top: var(--rb-border-width) solid var(--rb-border-color);
+  border-top: 2px dashed color-mix(in srgb, var(--rb-ink) 25%, var(--rb-surface));
 }
 
 /* ── Color input ── */
@@ -1302,6 +1369,23 @@ body.rb-grid .workspace-leaf-content {
     linear-gradient(to right, var(--rb-grid-color) var(--rb-grid-line), transparent var(--rb-grid-line)),
     linear-gradient(to bottom, var(--rb-grid-color) var(--rb-grid-line), transparent var(--rb-grid-line));
   background-size: var(--rb-grid-size) var(--rb-grid-size);
+}
+
+/* Grid in editor area - behind text content */
+body.rb-grid .workspace-leaf-content[data-type="markdown"] > .view-content {
+  background-image:
+    linear-gradient(to right, var(--rb-grid-color) var(--rb-grid-line), transparent var(--rb-grid-line)),
+    linear-gradient(to bottom, var(--rb-grid-color) var(--rb-grid-line), transparent var(--rb-grid-line));
+  background-size: var(--rb-grid-size) var(--rb-grid-size);
+}
+
+/* Transparent backgrounds so grid shows through */
+body.rb-grid .markdown-source-view,
+body.rb-grid .markdown-reading-view,
+body.rb-grid .markdown-preview-view,
+body.rb-grid .cm-editor,
+body.rb-grid .cm-scroller {
+  background: transparent;
 }
 
 /* ===== 06-plugins.css ===== */

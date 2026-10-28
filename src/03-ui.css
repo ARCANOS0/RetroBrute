@@ -335,6 +335,46 @@ body:not(.rb-no-anim) .modal {
   border-top: var(--rb-border-width) solid var(--rb-border-color);
 }
 
+/* ── View Header (nav arrows) ── */
+.view-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 8px;
+}
+
+.view-header .clickable-icon {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px;
+  line-height: 1.4;
+}
+
+.view-header .clickable-icon + .clickable-icon {
+  margin-left: 0;
+}
+
+.view-header .view-header-title-container {
+  margin-left: 8px;
+}
+
+/* Tooltip below arrows with 8px offset */
+.view-header .clickable-icon .tooltip {
+  top: calc(100% + 8px);
+  bottom: auto;
+}
+
+.view-header .clickable-icon .tooltip-arrow::before {
+  border-bottom-color: var(--rb-ink);
+  border-top-color: transparent;
+  top: -8px;
+  bottom: auto;
+}
+
 /* ── Settings Window ── */
 .modal.mod-settings {
   width: 900px;
@@ -371,7 +411,7 @@ body:not(.rb-no-anim) .modal {
 }
 
 .modal.mod-settings .setting-item {
-  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  border-bottom: 2px dashed color-mix(in srgb, var(--rb-ink) 25%, var(--rb-surface));
   padding: 16px 0;
 }
 

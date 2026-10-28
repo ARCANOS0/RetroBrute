@@ -15,3 +15,20 @@ body.rb-grid .workspace-leaf-content {
     linear-gradient(to bottom, var(--rb-grid-color) var(--rb-grid-line), transparent var(--rb-grid-line));
   background-size: var(--rb-grid-size) var(--rb-grid-size);
 }
+
+/* Grid in editor area - behind text content */
+body.rb-grid .workspace-leaf-content[data-type="markdown"] > .view-content {
+  background-image:
+    linear-gradient(to right, var(--rb-grid-color) var(--rb-grid-line), transparent var(--rb-grid-line)),
+    linear-gradient(to bottom, var(--rb-grid-color) var(--rb-grid-line), transparent var(--rb-grid-line));
+  background-size: var(--rb-grid-size) var(--rb-grid-size);
+}
+
+/* Transparent backgrounds so grid shows through */
+body.rb-grid .markdown-source-view,
+body.rb-grid .markdown-reading-view,
+body.rb-grid .markdown-preview-view,
+body.rb-grid .cm-editor,
+body.rb-grid .cm-scroller {
+  background: transparent;
+}
