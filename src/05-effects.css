@@ -1,34 +1,163 @@
 /* RetroBrute - Effects */
 
-/* ── Grid background ── */
-body.theme-light {
-  --rb-grid-color: color-mix(in srgb, var(--rb-ink) 8%, transparent);
-}
+/* ── Grid background ──
+   Grid is ON by default. Style Settings uses rb-grid-off to disable.
+   Drawn on markdown view-content and sidebar content.
+*/
 
-body.theme-dark {
-  --rb-grid-color: color-mix(in srgb, #FFFFFF 6%, transparent);
-}
-
-body.rb-grid .workspace-leaf-content {
-  background-image:
-    linear-gradient(to right, var(--rb-grid-color) var(--rb-grid-line), transparent var(--rb-grid-line)),
-    linear-gradient(to bottom, var(--rb-grid-color) var(--rb-grid-line), transparent var(--rb-grid-line));
-  background-size: var(--rb-grid-size) var(--rb-grid-size);
-}
-
-/* Grid in editor area - behind text content */
-body.rb-grid .workspace-leaf-content[data-type="markdown"] > .view-content {
-  background-image:
-    linear-gradient(to right, var(--rb-grid-color) var(--rb-grid-line), transparent var(--rb-grid-line)),
-    linear-gradient(to bottom, var(--rb-grid-color) var(--rb-grid-line), transparent var(--rb-grid-line));
-  background-size: var(--rb-grid-size) var(--rb-grid-size);
-}
-
-/* Transparent backgrounds so grid shows through */
-body.rb-grid .markdown-source-view,
-body.rb-grid .markdown-reading-view,
-body.rb-grid .markdown-preview-view,
-body.rb-grid .cm-editor,
-body.rb-grid .cm-scroller {
+/* Make markdown editor content transparent so grid shows through only in the editor */
+.workspace-leaf-content[data-type="markdown"] > .view-content {
   background: transparent;
+}
+
+/* Default grid: full lines applied ONLY to the editor view-content using the sanctioned variables
+   and guarded by the rb-grid-off toggle. Other container grid uses removed.
+*/
+body:not(.rb-grid-off):not(.rb-grid-h):not(.rb-grid-v):not(.rb-grid-dots) .mod-root .workspace-leaf-content[data-type="markdown"] > .view-content,
+body:not(.rb-grid-off).rb-grid-lines .mod-root .workspace-leaf-content[data-type="markdown"] > .view-content {
+  background-image:
+    repeating-linear-gradient(
+      var(--rb-grid-angle),
+      transparent,
+      transparent var(--rb-grid-line),
+      var(--rb-grid-color) var(--rb-grid-line),
+      var(--rb-grid-color) calc(var(--rb-grid-line) + 1px),
+      transparent calc(var(--rb-grid-line) + 1px),
+      transparent var(--rb-grid-size)
+    ),
+    repeating-linear-gradient(
+      calc(var(--rb-grid-angle) + 90deg),
+      transparent,
+      transparent var(--rb-grid-line),
+      var(--rb-grid-color) var(--rb-grid-line),
+      var(--rb-grid-color) calc(var(--rb-grid-line) + 1px),
+      transparent calc(var(--rb-grid-line) + 1px),
+      transparent var(--rb-grid-size)
+    );
+}
+
+/* Horizontal-only grid (editor only) */
+body:not(.rb-grid-off).rb-grid-h .mod-root .workspace-leaf-content[data-type="markdown"] > .view-content {
+  background-image:
+    repeating-linear-gradient(
+      calc(var(--rb-grid-angle) + 90deg),
+      transparent,
+      transparent var(--rb-grid-line),
+      var(--rb-grid-color) var(--rb-grid-line),
+      var(--rb-grid-color) calc(var(--rb-grid-line) + 1px),
+      transparent calc(var(--rb-grid-line) + 1px),
+      transparent var(--rb-grid-size)
+    );
+}
+
+/* Vertical-only grid (editor only) */
+body:not(.rb-grid-off).rb-grid-v .mod-root .workspace-leaf-content[data-type="markdown"] > .view-content {
+  background-image:
+    repeating-linear-gradient(
+      var(--rb-grid-angle),
+      transparent,
+      transparent var(--rb-grid-line),
+      var(--rb-grid-color) var(--rb-grid-line),
+      var(--rb-grid-color) calc(var(--rb-grid-line) + 1px),
+      transparent calc(var(--rb-grid-line) + 1px),
+      transparent var(--rb-grid-size)
+    );
+}
+
+/* Dots grid (editor only) */
+body:not(.rb-grid-off).rb-grid-dots .mod-root .workspace-leaf-content[data-type="markdown"] > .view-content {
+  background-image: radial-gradient(
+    circle,
+    var(--rb-grid-color) 1.5px,
+    transparent 1.5px
+  );
+  background-size: var(--rb-grid-size) var(--rb-grid-size);
+}
+
+/* ── Animations ── */
+/* General transition guard */
+body:not(.rb-no-anim) .clickable-icon,
+body:not(.rb-no-anim) .button,
+body:not(.rb-no-anim) input,
+body:not(.rb-no-anim) textarea,
+body:not(.rb-no-anim) .dropdown {
+  transition: transform var(--rb-anim-speed) ease,
+              box-shadow var(--rb-anim-speed) ease;
+}
+
+/* Animation guard - when rb-no-anim is set, disable animations */
+body.rb-no-anim,
+body.rb-no-anim * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Preferred reduced motion sets animation speed to zero */
+@media (prefers-reduced-motion: reduce) {
+  body {
+    --rb-anim-speed: 0ms;
+  }
+}
+
+/* Button / clickable hover / active motion (transform + shadow) */
+body:not(.rb-no-anim) button,
+body:not(.rb-no-anim) .mod-cta,
+body:not(.rb-no-anim) .mod-warning,
+body:not(.rb-no-anim) .clickable-icon {
+  transition: transform var(--rb-anim-speed) ease, box-shadow var(--rb-anim-speed) ease;
+}
+
+body:not(.rb-no-anim) button:hover,
+body:not(.rb-no-anim) .mod-cta:hover,
+body:not(.rb-no-anim) .mod-warning:hover,
+body:not(.rb-no-anim) .clickable-icon:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--rb-shadow-color);
+}
+
+body:not(.rb-no-anim) button:active,
+body:not(.rb-no-anim) .mod-cta:active,
+body:not(.rb-no-anim) .mod-warning:active,
+body:not(.rb-no-anim) .clickable-icon:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 var(--rb-shadow-color);
+}
+
+/* Modal and menu pop-in animation using rb-pop */
+@keyframes rb-pop {
+  from { transform: scale(0.96); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+body:not(.rb-no-anim) .modal,
+body:not(.rb-no-anim) .menu {
+  animation: rb-pop var(--rb-anim-speed) ease-out;
+}
+
+/* Tab switch: active tab gets a subtle translate + shadow */
+body:not(.rb-no-anim) .workspace-tab-header {
+  transition: transform var(--rb-anim-speed) ease, box-shadow var(--rb-anim-speed) ease;
+}
+
+body:not(.rb-no-anim) .workspace-tab-header.is-active {
+  transform: translateY(-2px);
+  box-shadow: calc(var(--rb-shadow-x) + 2px) calc(var(--rb-shadow-y) + 2px) 0 var(--rb-shadow-color);
+}
+
+/* Checkbox / toggle bounce (small) */
+@keyframes rb-bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+body:not(.rb-no-anim) input[type="checkbox"]:checked {
+  animation: rb-bounce 180ms ease;
+}
+
+/* Nav items background transition */
+body:not(.rb-no-anim) .nav-folder-title,
+body:not(.rb-no-anim) .nav-file-title,
+body:not(.rb-no-anim) .menu-item {
+  transition: background-color var(--rb-anim-speed) ease, color var(--rb-anim-speed) ease;
 }

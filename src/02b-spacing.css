@@ -1,0 +1,173 @@
+/* RetroBrute - Spacing tokens applied to bordered elements */
+
+/* ── Content components ── */
+
+/* Callouts */
+.callout {
+  padding: 0;
+}
+
+.callout-title {
+  padding: var(--rb-pad-compact);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+}
+
+.callout-content {
+  padding: var(--rb-pad-box);
+}
+
+/* Code blocks (fenced) */
+.markdown-rendered pre {
+  padding: var(--rb-pad-box);
+}
+
+/* HyperMD codeblock lines */
+.cm-s-obsidian .HyperMD-codeblock-line,
+.cm-s-obsidian .HyperMD-codeblock-begin,
+.cm-s-obsidian .HyperMD-codeblock-end {
+  padding-inline: var(--rb-space-4);
+}
+
+/* Inline code */
+code,
+.cm-inline-code {
+  padding: var(--rb-pad-compact);
+  line-height: 1.5;
+}
+
+/* Tags */
+.tag,
+a.tag {
+  padding: var(--rb-pad-compact);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+}
+
+/* Metadata properties */
+.metadata-property {
+  padding: var(--rb-pad-compact);
+  gap: var(--rb-space-2);
+}
+
+/* Tables */
+th,
+td {
+  padding: 10px 14px;
+  line-height: 1.5;
+}
+
+/* Blockquotes */
+blockquote,
+.markdown-rendered blockquote {
+  padding: var(--rb-pad-box);
+}
+
+/* ── UI components ── */
+
+/* File explorer */
+.nav-file-title,
+.nav-folder-title {
+  padding: 8px 12px;
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+}
+
+/* Settings items */
+.setting-item {
+  padding: var(--rb-pad-box);
+  gap: var(--rb-space-3);
+}
+
+/* Modal content */
+.modal-content {
+  padding: var(--rb-pad-box);
+}
+
+/* Status bar items */
+.status-bar-item {
+  padding: var(--rb-pad-compact);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+}
+
+/* Tab headers */
+.workspace-tab-header {
+  padding: var(--rb-pad-compact);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+}
+
+/* Menu items */
+.menu-item {
+  padding: var(--rb-pad-compact);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+}
+
+/* Suggestion items */
+.suggestion-item {
+  padding: var(--rb-pad-compact);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+}
+
+/* Notices */
+.notice {
+  padding: var(--rb-pad-box);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+}
+
+/* Tooltips */
+.tooltip {
+  padding: var(--rb-pad-compact);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+}
+
+/* Buttons */
+button,
+.mod-cta,
+.mod-warning {
+  padding: var(--rb-pad-compact);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+  min-height: calc(var(--rb-space-3) * 2);
+}
+
+/* Dropdowns/Selects */
+select,
+.dropdown,
+.dropdown-menu {
+  padding: 6px 32px 6px 12px;
+  line-height: 1.5;
+  min-height: calc(var(--rb-space-3) * 2);
+}
+
+/* Inputs */
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="url"],
+textarea {
+  padding: 8px 12px;
+  line-height: 1.5;
+  min-height: calc(var(--rb-space-3) * 2);
+}
+
+/* Clickable icons */
+.clickable-icon {
+  padding: 6px;
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+}
+
+/* Vertical tab nav items */
+.vertical-tab-nav-item {
+  padding: var(--rb-pad-compact);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+}

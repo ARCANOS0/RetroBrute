@@ -2,6 +2,14 @@
 
 body {
   /* ── Structure ── */
+  --rb-space-1: 4px;
+  --rb-space-2: 8px;
+  --rb-space-3: 12px;
+  --rb-space-4: 16px;
+  --rb-space-5: 20px;
+  --rb-space-6: 24px;
+  --rb-pad-box: 10px 16px;
+  --rb-pad-compact: 6px 12px;
   --rb-border-width: 2px;
   --rb-border-color: var(--rb-ink);
   --rb-divider: color-mix(in srgb, var(--rb-ink) 20%, transparent);
@@ -14,6 +22,8 @@ body {
   --rb-radius-pill: 999px;
   --rb-grid-size: 24px;
   --rb-grid-line: 1px;
+  --rb-grid-angle: 0deg;
+  --rb-grid-color: color-mix(in srgb, var(--rb-ink) 10%, transparent);
   --rb-anim-speed: 120ms;
 
   /* ── Accent palette ── */

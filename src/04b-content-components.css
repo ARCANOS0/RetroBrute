@@ -1,0 +1,590 @@
+/* RetroBrute - Content Components */
+
+/* ── Window Chrome (toggleable base) ── */
+
+/* 3-dot title bar pattern */
+.rb-window-titlebar,
+.rb-window .callout-title,
+.rb-window .code-block-title,
+.rb-window pre::before,
+.callout.rb-window > .callout-title {
+  display: flex;
+  align-items: center;
+  gap: var(--rb-space-2);
+  padding: var(--rb-pad-compact);
+  background: var(--rb-surface-2);
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  font-family: var(--rb-font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--rb-ink-soft);
+  line-height: 1.5;
+}
+
+/* 3 dots */
+.rb-window-titlebar::before,
+.rb-window .callout-title::before,
+.rb-window .code-block-title::before,
+.callout.rb-window > .callout-title::before {
+  content: '';
+  display: flex;
+  gap: var(--rb-space-1);
+}
+
+.rb-window-titlebar::before,
+.callout.rb-window > .callout-title::before {
+  content: '● ● ●';
+  letter-spacing: 2px;
+  color: var(--rb-border-color);
+}
+
+/* ── Callouts ── */
+.callout {
+  position: relative;
+  margin: 20px 0 24px;
+  padding: 0;
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-radius: var(--rb-radius-s);
+  background: var(--rb-surface);
+  box-shadow: var(--rb-shadow-hard);
+  overflow: visible;
+}
+
+.callout-title {
+  display: flex;
+  align-items: center;
+  gap: var(--rb-space-2);
+  padding: var(--rb-pad-compact);
+  font-family: var(--rb-font-heading);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  line-height: 1.5;
+}
+
+.callout-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.callout-content {
+  padding: var(--rb-space-3) var(--rb-space-4);
+  background: var(--rb-surface);
+}
+
+/* Collapsible callout */
+.callout.is-collapsible > .callout-title {
+  cursor: pointer;
+}
+
+.callout.is-collapsed {
+  box-shadow: var(--rb-shadow-hard);
+}
+
+.callout.is-collapsed > .callout-content {
+  display: none;
+}
+
+/* Callout fold indicator - chevron on the right, 2px border */
+.callout-fold {
+  margin-left: auto;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-radius: var(--rb-radius-s);
+  background: transparent;
+}
+
+body:not(.rb-no-anim) .callout-fold {
+  transition: transform var(--rb-anim-speed) ease;
+}
+
+.callout.is-collapsed .callout-fold {
+  transform: rotate(-90deg);
+}
+
+/* Callout types with colors - one color per type, using Ink border */
+.callout[data-callout="note"] > .callout-title {
+  background: var(--rb-violet);
+  color: var(--rb-on-violet);
+}
+.callout[data-callout="note"] .callout-icon {
+  color: var(--rb-on-violet);
+}
+
+.callout[data-callout="abstract"] > .callout-title {
+  background: var(--rb-mint);
+  color: var(--rb-on-mint);
+}
+.callout[data-callout="abstract"] .callout-icon {
+  color: var(--rb-on-mint);
+}
+
+.callout[data-callout="info"] > .callout-title {
+  background: var(--rb-aqua);
+  color: var(--rb-on-aqua);
+}
+.callout[data-callout="info"] .callout-icon {
+  color: var(--rb-on-aqua);
+}
+
+.callout[data-callout="todo"] > .callout-title {
+  background: var(--rb-lime);
+  color: var(--rb-on-lime);
+}
+.callout[data-callout="todo"] .callout-icon {
+  color: var(--rb-on-lime);
+}
+
+.callout[data-callout="tip"] > .callout-title {
+  background: var(--rb-lime);
+  color: var(--rb-on-lime);
+}
+.callout[data-callout="tip"] .callout-icon {
+  color: var(--rb-on-lime);
+}
+
+.callout[data-callout="success"] > .callout-title {
+  background: var(--rb-mint);
+  color: var(--rb-on-mint);
+}
+.callout[data-callout="success"] .callout-icon {
+  color: var(--rb-on-mint);
+}
+
+.callout[data-callout="question"] > .callout-title {
+  background: var(--rb-yellow);
+  color: var(--rb-on-yellow);
+}
+.callout[data-callout="question"] .callout-icon {
+  color: var(--rb-on-yellow);
+}
+
+.callout[data-callout="warning"] > .callout-title {
+  background: var(--rb-orange);
+  color: var(--rb-on-orange);
+}
+.callout[data-callout="warning"] .callout-icon {
+  color: var(--rb-on-orange);
+}
+
+.callout[data-callout="danger"] > .callout-title {
+  background: var(--rb-red);
+  color: var(--rb-on-red);
+}
+.callout[data-callout="danger"] .callout-icon {
+  color: var(--rb-on-red);
+}
+
+.callout[data-callout="bug"] > .callout-title {
+  background: var(--rb-pink);
+  color: var(--rb-on-pink);
+}
+.callout[data-callout="bug"] .callout-icon {
+  color: var(--rb-on-pink);
+}
+
+.callout[data-callout="example"] > .callout-title {
+  background: var(--rb-lavender);
+  color: var(--rb-on-lavender);
+}
+.callout[data-callout="example"] .callout-icon {
+  color: var(--rb-on-lavender);
+}
+
+.callout[data-callout="quote"] > .callout-title {
+  background: var(--rb-grey);
+  color: var(--rb-on-grey);
+}
+.callout[data-callout="quote"] .callout-icon {
+  color: var(--rb-on-grey);
+}
+
+/* ── Code Blocks (Fenced) ── */
+pre,
+.markdown-rendered pre {
+  position: relative;
+  margin: 16px 0;
+  padding: var(--rb-pad-box);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-radius: var(--rb-radius-m);
+  background: var(--rb-surface-2);
+  box-shadow: var(--rb-shadow-hard);
+  overflow-x: auto;
+}
+
+pre code,
+.markdown-rendered pre code {
+  display: block;
+  padding: 0;
+  background: transparent;
+  border: none;
+  font-family: var(--rb-font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--rb-ink);
+}
+
+/* Code blocks with window chrome header */
+.rb-window pre {
+  padding-top: 0;
+}
+
+.rb-window pre::before {
+  content: '● ● ●';
+  display: block;
+  letter-spacing: 2px;
+  padding: var(--rb-pad-compact);
+  margin: 0 calc(-1 * var(--rb-space-4)) var(--rb-space-4) calc(-1 * var(--rb-space-4));
+  background: var(--rb-surface);
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  color: var(--rb-ink-soft);
+}
+
+/* Inline code */
+code,
+.markdown-rendered code {
+  font-family: var(--rb-font-mono);
+  font-size: 0.9em;
+  padding: var(--rb-pad-compact);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-radius: var(--rb-radius-s);
+  background: var(--rb-surface-2);
+  color: var(--rb-ink);
+  line-height: 1.5;
+}
+
+pre code {
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+/* Syntax highlighting color mappings */
+.markdown-rendered pre .cm-keyword,
+.markdown-rendered pre .token.keyword {
+  color: var(--rb-violet);
+}
+.markdown-rendered pre .cm-string,
+.markdown-rendered pre .token.string {
+  color: var(--rb-mint);
+}
+.markdown-rendered pre .cm-number,
+.markdown-rendered pre .token.number {
+  color: var(--rb-orange);
+}
+.markdown-rendered pre .cm-comment,
+.markdown-rendered pre .token.comment {
+  color: var(--rb-ink-soft);
+  font-style: italic;
+}
+.markdown-rendered pre .cm-function,
+.markdown-rendered pre .token.function {
+  color: var(--rb-aqua);
+}
+.markdown-rendered pre .cm-variable,
+.markdown-rendered pre .token.variable {
+  color: var(--rb-ink);
+}
+.markdown-rendered pre .cm-operator,
+.markdown-rendered pre .token.operator {
+  color: var(--rb-yellow);
+}
+
+/* ── Tables ── */
+table,
+.markdown-rendered table {
+  width: 100%;
+  margin: 16px 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-radius: var(--rb-radius-m);
+  background: var(--rb-surface);
+  box-shadow: var(--rb-shadow-hard);
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 10px 14px;
+  border-right: var(--rb-border-width) solid var(--rb-border-color);
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  text-align: left;
+  vertical-align: top;
+}
+
+th:last-child,
+td:last-child {
+  border-right: none;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+th {
+  font-family: var(--rb-font-heading);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  background: var(--rb-surface-2);
+  color: var(--rb-ink);
+}
+
+/* Optional zebra striping */
+.rb-zebra tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--rb-surface-2) 30%, transparent);
+}
+
+/* ── Embeds ── */
+.markdown-embed,
+.internal-embed {
+  margin: 16px 0;
+  padding: var(--rb-pad-box);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-radius: var(--rb-radius-m);
+  background: var(--rb-surface);
+  box-shadow: var(--rb-shadow-hard);
+}
+
+.embed-title {
+  font-family: var(--rb-font-heading);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: var(--rb-space-2);
+  padding-bottom: var(--rb-space-2);
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  color: var(--rb-ink);
+}
+
+/* ── Footnotes ── */
+.footnote-link {
+  font-family: var(--rb-font-mono);
+  font-size: 10px;
+  vertical-align: super;
+  margin-left: 2px;
+  color: var(--rb-ink);
+}
+
+.footnote-link a {
+  text-decoration: none;
+  color: var(--rb-accent);
+}
+
+.footnote-link a:hover {
+  text-decoration: underline;
+}
+
+.footnotes {
+  margin-top: var(--rb-space-6);
+  padding-top: var(--rb-space-4);
+  border-top: var(--rb-border-width) solid var(--rb-divider);
+  font-size: 13px;
+}
+
+.footnotes ol {
+  padding-left: var(--rb-space-5);
+}
+
+.footnotes li {
+  margin-bottom: var(--rb-space-2);
+}
+
+.footnotes .footnote-backref {
+  margin-left: 4px;
+  color: var(--rb-accent);
+  text-decoration: none;
+}
+
+/* ── Progress Bars ── */
+progress,
+.markdown-rendered progress {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 20px;
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-radius: var(--rb-radius-s);
+  background: var(--rb-surface-2);
+  overflow: hidden;
+}
+
+progress::-webkit-progress-bar {
+  background: var(--rb-surface-2);
+}
+
+progress::-webkit-progress-value {
+  background: var(--rb-accent);
+  border-right: var(--rb-border-width) solid var(--rb-border-color);
+}
+
+progress::-moz-progress-bar {
+  background: var(--rb-accent);
+  border-right: var(--rb-border-width) solid var(--rb-border-color);
+}
+
+/* Segmented progress bar option */
+.rb-progress-segmented {
+  display: flex;
+  gap: var(--rb-space-1);
+  padding: var(--rb-space-1);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-radius: var(--rb-radius-s);
+  background: var(--rb-surface-2);
+}
+
+.rb-progress-segmented .rb-progress-fill {
+  height: 16px;
+  background: var(--rb-accent);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+}
+
+/* ── Canvas Card Styles ── */
+.canvas-node-container {
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-radius: var(--rb-radius-m);
+  background: var(--rb-surface);
+  box-shadow: var(--rb-shadow-hard);
+}
+
+.canvas-node-content {
+  padding: var(--rb-space-3);
+}
+
+.canvas-node-label {
+  font-family: var(--rb-font-heading);
+  font-weight: 600;
+  font-size: 11px;
+  padding: var(--rb-pad-compact);
+  background: var(--rb-surface-2);
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  color: var(--rb-ink-soft);
+  line-height: 1.5;
+}
+
+.canvas-node.is-selected .canvas-node-container {
+  border-color: var(--rb-accent);
+  box-shadow: calc(var(--rb-shadow-x) + 2px) calc(var(--rb-shadow-y) + 2px) 0 var(--rb-accent);
+}
+
+.canvas-edges path {
+  stroke: var(--rb-ink-soft);
+  stroke-width: 2px;
+}
+
+.canvas-edges path.is-selected {
+  stroke: var(--rb-accent);
+  stroke-width: 3px;
+}
+
+/* Canvas file node type styling */
+.canvas-node[data-type="file"] .canvas-node-container {
+  border-left: 4px solid var(--rb-accent);
+}
+
+.canvas-node[data-type="text"] .canvas-node-container {
+  border-left: 4px solid var(--rb-mint);
+}
+
+/* ── Blockquotes ── */
+blockquote,
+.markdown-rendered blockquote {
+  margin: 16px 0;
+  padding: var(--rb-pad-box);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-left: 4px solid var(--rb-accent);
+  border-radius: var(--rb-radius-m);
+  background: var(--rb-surface);
+  box-shadow: var(--rb-shadow-hard);
+  color: var(--rb-ink);
+}
+
+blockquote p:first-child {
+  margin-top: 0;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Horizontal Rule ── */
+hr,
+.markdown-rendered hr {
+  margin: 24px 0;
+  border: none;
+  border-top: var(--rb-border-width) solid var(--rb-border-color);
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  height: 4px;
+  background: transparent;
+}
+
+/* ── Highlights / Mark ── */
+mark,
+.markdown-rendered mark,
+.markdown-rendered .markdown-highlight {
+  background: var(--rb-yellow);
+  color: var(--rb-on-yellow);
+  padding: 2px 4px;
+  border-radius: var(--rb-radius-s);
+  line-height: 1.5;
+}
+
+/* ── Del/Strike ── */
+del,
+.markdown-rendered del,
+.markdown-rendered s {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--rb-red);
+}
+
+/* ── Underline ── */
+u,
+.markdown-rendered u {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--rb-accent);
+}
+
+/* ── Selection ── */
+::selection {
+  background: var(--rb-accent);
+  color: var(--rb-on-accent);
+}
+
+/* ── Graph colors ── */
+.graph-view.color-fill {
+  color: var(--rb-accent);
+}
+
+.graph-view.color-fill-unresolved {
+  color: var(--rb-ink-soft);
+}
+
+.graph-view.color-fill-tag {
+  color: var(--rb-mint);
+}
+
+.graph-view.color-fill-attachment {
+  color: var(--rb-orange);
+}
+
+.graph-view.color-line {
+  color: color-mix(in srgb, var(--rb-ink) 30%, transparent);
+}
+
+.graph-view.color-text {
+  color: var(--rb-ink);
+}

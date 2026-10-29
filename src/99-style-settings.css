@@ -4,21 +4,81 @@
 name: RetroBrute
 id: rb-settings
 settings:
+  - id: rb-grid-group
+    title: Grid
+    type: heading
+    level: 2
+    collapsed: false
+  - id: rb-grid-off
+    title: Disable grid
+    description: Turn off the grid background
+    type: class-toggle
+    default: false
+  - id: rb-grid-style
+    title: Grid style
+    description: Choose the grid pattern to display
+    type: class-select
+    default: rb-grid-lines
+    options:
+      - value: rb-grid-lines
+        label: Lines (default)
+      - value: rb-grid-h
+        label: Horizontal only
+      - value: rb-grid-v
+        label: Vertical only
+      - value: rb-grid-dots
+        label: Dots
+  - id: rb-grid-size
+    title: Grid size
+    description: Distance between grid lines
+    type: variable-number-slider
+    default: 24
+    min: 8
+    max: 80
+    step: 2
+    format: px
+  - id: rb-grid-line
+    title: Line thickness
+    description: Grid line thickness
+    type: variable-number-slider
+    default: 1
+    min: 1
+    max: 3
+    step: 1
+    format: px
+  - id: rb-grid-angle
+    title: Grid angle
+    description: Rotation angle for grid lines
+    type: variable-number-slider
+    default: 0
+    min: -45
+    max: 45
+    step: 1
+    format: deg
+  - id: rb-grid-color
+    title: Grid colour
+    description: Color of the grid lines
+    type: variable-color
+    format: hex
+    default: '#1B1B1B1A'
+  - id: rb-tabs-group
+    title: Tabs
+    type: heading
+    level: 2
+    collapsed: false
+  - id: rb-tabs-plain
+    title: Plain tabs
+    description: Use plain accent color instead of colorful tabs
+    type: class-toggle
+    default: false
+  - id: rb-anim-group
+    title: Animation
+    type: heading
+    level: 2
+    collapsed: false
   - id: rb-no-anim
     title: Disable animations
     description: Turn off all animations and transitions
     type: class-toggle
     default: false
-  - id: rb-grid
-    title: Show grid background
-    description: Draw a grid pattern behind editor panes
-    type: class-toggle
-    default: false
 */
-
-/* Animation guard - when rb-no-anim is set, disable animations */
-body.rb-no-anim,
-body.rb-no-anim * {
-  animation: none !important;
-  transition: none !important;
-}

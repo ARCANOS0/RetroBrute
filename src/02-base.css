@@ -49,6 +49,11 @@ body {
   --font-interface-theme: var(--rb-font-ui);
   --font-text-theme: var(--rb-font-text);
   --font-monospace-theme: var(--rb-font-mono);
+
+  /* Obsidian spacing overrides */
+  --callout-padding: 0;
+  --callout-title-padding: 12px 16px;
+  --callout-content-padding: 16px 20px;
 }
 
 /* ── Typography ── */
@@ -128,9 +133,17 @@ li, .markdown-rendered li {
 /* Blockquote */
 blockquote, .markdown-rendered blockquote {
   border-left: var(--rb-border-width) solid var(--rb-accent);
-  padding-left: 1em;
+  padding: var(--rb-pad-box);
   margin: 1em 0;
   color: var(--rb-ink-soft);
+}
+
+blockquote p:first-child {
+  margin-top: 0;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
 }
 
 /* Horizontal rule */
@@ -155,17 +168,19 @@ hr::after, .markdown-rendered hr::after {
 .cm-s-obsidian .cm-inline-code {
   font-family: var(--rb-font-mono);
   background: var(--rb-surface-2);
-  padding: 0.15em 0.4em;
+  padding: var(--rb-pad-compact);
   border-radius: var(--rb-radius-s);
   border: var(--rb-border-width) solid var(--rb-border-color);
   font-size: 0.9em;
+  line-height: 1.5;
 }
 
 /* Highlight/mark */
 mark, .markdown-rendered mark, .cm-highlight {
   background: var(--rb-yellow);
   color: var(--rb-on-yellow);
-  padding: 0 0.2em;
+  padding: 2px 4px;
+  border-radius: var(--rb-radius-s);
 }
 
 /* ── Text formatting colors ── */

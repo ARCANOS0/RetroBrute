@@ -31,14 +31,16 @@
 .nav-header {
   background: var(--rb-surface-2);
   border-bottom: var(--rb-border-width) solid var(--rb-border-color);
-  padding: 8px;
+  padding: var(--rb-pad-compact);
 }
 
 .nav-folder-title,
 .nav-file-title {
-  padding: 4px 8px;
+  padding: 8px 12px;
   border-radius: var(--rb-radius-s);
   margin: 2px 0;
+  gap: var(--rb-space-2);
+  line-height: 1.5;
 }
 
 .nav-folder-title:hover,
@@ -58,7 +60,7 @@
 /* Folder chevrons - retro style */
 .nav-folder-collapse-indicator {
   color: var(--rb-ink);
-  margin-right: 4px;
+  margin-right: var(--rb-space-2);
 }
 
 .nav-folder-title:hover .nav-folder-collapse-indicator {
@@ -69,68 +71,36 @@
   color: var(--rb-on-accent);
 }
 
-/* ── Tabs ── */
-.workspace-tabs {
-  background: var(--rb-surface-2);
-}
-
-.workspace-tab-header-container {
-  background: var(--rb-surface-2);
-  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
-}
-
-.workspace-tab-header {
-  background: transparent;
-  border: var(--rb-border-width) solid transparent;
-  border-radius: var(--rb-radius-s) var(--rb-radius-s) 0 0;
-  padding: 6px 12px;
-  margin: 0 2px;
-  color: var(--rb-ink-soft);
-}
-
-.workspace-tab-header:hover {
-  background: var(--rb-surface);
-  color: var(--rb-ink);
-}
-
-.workspace-tab-header.is-active {
-  background: var(--rb-yellow);
-  color: var(--rb-on-yellow);
-  border: var(--rb-border-width) solid var(--rb-border-color);
-  border-bottom-color: var(--rb-yellow);
-}
-
-/* Active tab indicator line (remove default) */
-.workspace-tab-header.is-active::after {
-  display: none;
-}
-
-/* Pinned tabs */
-.workspace-tab-header.is-pinned {
-  background: var(--rb-surface);
-  border-style: dashed;
-}
-
-.workspace-tab-header.is-pinned.is-active {
-  background: var(--rb-yellow);
-}
-
-/* Tab separator */
-.workspace-tab-header-inner::after {
-  display: none;
-}
+/* 
+ * NOTE: Tabs styling has been moved to src/03b-tabs.css
+ * to maintain file size under 250 lines.
+ */
 
 /* ── Status Bar ── */
 .status-bar {
   background: var(--rb-surface-2);
-  border-top: var(--rb-border-width) solid var(--rb-border-color);
-  padding: 4px 12px;
+  border-top: 2px solid var(--rb-border-color);
+  height: 26px;
+  min-height: 26px;
+  padding: 0;
   font-size: 12px;
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+  flex-direction: row;
 }
 
 .status-bar-item {
-  padding: 2px 8px;
-  border-radius: var(--rb-radius-s);
+  padding: 4px 12px;
+  border-radius: 0;
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+  border-left: 2px solid var(--rb-divider);
+  background: transparent;
+}
+
+.status-bar-item:first-child {
+  border-left: none;
 }
 
 .status-bar-item:hover {
@@ -237,13 +207,15 @@ body:not(.rb-no-anim) .modal {
   border: var(--rb-border-width) solid var(--rb-border-color);
   box-shadow: var(--rb-shadow-hard);
   border-radius: var(--rb-radius-m);
-  padding: 4px;
+  padding: var(--rb-space-1);
 }
 
 .menu-item {
-  padding: 8px 12px;
+  padding: var(--rb-pad-compact);
   border-radius: var(--rb-radius-s);
   color: var(--rb-ink);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
 }
 
 .menu-item:hover {
@@ -262,13 +234,15 @@ body:not(.rb-no-anim) .modal {
 
 .menu-separator {
   border-bottom: var(--rb-border-width) solid var(--rb-border-color);
-  margin: 4px 0;
+  margin: var(--rb-space-1) 0;
 }
 
 .suggestion-item {
-  padding: 8px 12px;
+  padding: var(--rb-pad-compact);
   border-top: none;
   border-bottom: 2px dashed var(--rb-divider);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
 }
 
 /* ── Tooltips ── */
@@ -276,9 +250,11 @@ body:not(.rb-no-anim) .modal {
   background: var(--rb-ink);
   color: var(--rb-bg);
   border-radius: var(--rb-radius-s);
-  padding: 6px 10px;
+  padding: var(--rb-pad-compact);
   font-size: 12px;
   font-weight: 500;
+  gap: var(--rb-space-2);
+  line-height: 1.5;
 }
 
 .tooltip-arrow::before {
@@ -292,7 +268,9 @@ body:not(.rb-no-anim) .modal {
   box-shadow: var(--rb-shadow-hard);
   border-radius: var(--rb-radius-s);
   color: var(--rb-ink);
-  padding: 12px 16px;
+  padding: var(--rb-pad-box);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
 }
 
 .notice.is-error {
@@ -352,8 +330,8 @@ body:not(.rb-no-anim) .modal {
 .view-header {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 0 8px;
+  gap: var(--rb-space-2);
+  padding: 0 var(--rb-space-2);
 }
 
 .view-header .clickable-icon {
@@ -362,9 +340,9 @@ body:not(.rb-no-anim) .modal {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 6px;
-  line-height: 1.4;
+  gap: var(--rb-space-2);
+  padding: var(--rb-space-2);
+  line-height: 1.5;
 }
 
 .view-header .clickable-icon + .clickable-icon {
@@ -408,10 +386,12 @@ body:not(.rb-no-anim) .modal {
 
 .modal.mod-settings .vertical-tab-nav-item {
   margin: 4px 12px;
-  padding: 8px 12px;
+  padding: var(--rb-pad-compact);
   border-radius: var(--rb-radius-s);
   border: 2px solid transparent;
   color: var(--rb-ink);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
 }
 
 .modal.mod-settings .vertical-tab-nav-item:hover {
@@ -429,7 +409,8 @@ body:not(.rb-no-anim) .modal {
 .modal.mod-settings .setting-item {
   border-top: none;
   border-bottom: 2px dashed var(--rb-divider);
-  padding: 16px 0;
+  padding: var(--rb-pad-box);
+  gap: var(--rb-space-3);
 }
 
 .modal.mod-settings .setting-item:last-child {
@@ -443,6 +424,20 @@ body:not(.rb-no-anim) .modal {
 
 .modal.mod-settings .setting-item-description {
   color: var(--rb-ink-soft);
+}
+
+/* Ensure style-settings heading collapse chevron is visible and styled */
+.modal.mod-settings .setting-item .collapse,
+.modal.mod-settings .setting-item .collapse-icon,
+.modal.mod-settings .setting-item .setting-item-toggle {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: var(--rb-ink) !important;
+  margin-right: 8px;
+  opacity: 1 !important;
 }
 
 /* ── Empty State ── */

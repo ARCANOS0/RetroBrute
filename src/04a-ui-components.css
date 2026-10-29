@@ -8,12 +8,12 @@ button,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: var(--rb-space-2);
   font-family: var(--rb-font-heading);
   font-weight: 600;
   font-size: 14px;
-  line-height: 1.4;
-  padding: 8px 12px;
+  line-height: 1.5;
+  padding: var(--rb-pad-compact);
   border: var(--rb-border-width) solid var(--rb-border-color);
   border-radius: var(--rb-radius-s);
   background: var(--rb-accent);
@@ -21,6 +21,7 @@ button,
   box-shadow: var(--rb-shadow-hard);
   cursor: pointer;
   transition: none;
+  min-height: calc(var(--rb-space-3) * 2);
 }
 
 body:not(.rb-no-anim) button,
@@ -129,6 +130,8 @@ textarea,
   color: var(--rb-ink);
   box-shadow: inset 1px 1px 0 var(--rb-shadow-color);
   outline: none;
+  line-height: 1.5;
+  min-height: calc(var(--rb-space-3) * 2);
 }
 
 input::placeholder,
@@ -198,8 +201,8 @@ dropdown,
 .select {
   font-family: var(--rb-font-text);
   font-size: 14px;
-  min-height: 34px;
-  line-height: 1.4;
+  min-height: calc(var(--rb-space-3) * 2);
+  line-height: 1.5;
   padding: 6px 32px 6px 12px;
   border: var(--rb-border-width) solid var(--rb-border-color);
   border-radius: var(--rb-radius-s);
@@ -226,52 +229,75 @@ select:disabled {
 
 /* ── Sliders ── */
 input[type="range"] {
-  -webkit-appearance: none;
   appearance: none;
+  -webkit-appearance: none;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
   width: 100%;
-  height: 8px;
-  background: var(--rb-surface-2);
-  border: var(--rb-border-width) solid var(--rb-border-color);
-  border-radius: 0;
   outline: none;
 }
 
+/* Track */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 12px;
+  border: 2px solid var(--rb-border-color);
+  border-radius: 0;
+  box-sizing: border-box;
+  background: linear-gradient(
+    to right,
+    var(--rb-accent) 0 calc(var(--slider-progress, 0%) * (100% - 20px) / 100% + 10px),
+    var(--rb-surface) 0
+  );
+}
+
+input[type="range"]::-moz-range-track {
+  height: 12px;
+  border: 2px solid var(--rb-border-color);
+  border-radius: 0;
+  box-sizing: border-box;
+  background: var(--rb-surface);
+}
+
+/* Thumb */
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  appearance: none;
   width: 20px;
   height: 20px;
+  box-sizing: border-box;
+  border: 2px solid var(--rb-border-color);
   background: var(--rb-accent);
-  border: var(--rb-border-width) solid var(--rb-border-color);
-  border-radius: 0;
+  box-shadow: 2px 2px 0 var(--rb-shadow-color);
+  margin-top: calc((12px - 20px) / 2);
   cursor: pointer;
-  box-shadow: var(--rb-shadow-hard);
 }
 
 input[type="range"]::-moz-range-thumb {
   width: 20px;
   height: 20px;
+  box-sizing: border-box;
+  border: 2px solid var(--rb-border-color);
   background: var(--rb-accent);
-  border: var(--rb-border-width) solid var(--rb-border-color);
-  border-radius: 0;
+  box-shadow: 2px 2px 0 var(--rb-shadow-color);
   cursor: pointer;
-  box-shadow: var(--rb-shadow-hard);
 }
 
 input[type="range"]:focus::-webkit-slider-thumb {
-  box-shadow: var(--rb-shadow-hard), 0 0 0 3px color-mix(in srgb, var(--rb-accent) 40%, transparent);
+  box-shadow: 2px 2px 0 var(--rb-shadow-color), 0 0 0 3px color-mix(in srgb, var(--rb-accent) 40%, transparent);
 }
 
 input[type="range"]:focus::-moz-range-thumb {
-  box-shadow: var(--rb-shadow-hard), 0 0 0 3px color-mix(in srgb, var(--rb-accent) 40%, transparent);
+  box-shadow: 2px 2px 0 var(--rb-shadow-color), 0 0 0 3px color-mix(in srgb, var(--rb-accent) 40%, transparent);
 }
 
 /* ── Toggles / Switches ── */
 .checkbox-container {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--rb-space-2);
   cursor: pointer;
+  line-height: 1.5;
 }
 
 .checkbox-container input[type="checkbox"] {
@@ -441,13 +467,13 @@ a.tag,
 .markdown-rendered a.tag {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--rb-space-2);
   font-family: var(--rb-font-mono);
   font-size: 11px;
   font-weight: 600;
-  line-height: 1.4;
+  line-height: 1.5;
   text-decoration: none;
-  padding: 4px 12px;
+  padding: var(--rb-pad-compact);
   border: var(--rb-border-width) solid var(--rb-border-color);
   border-radius: var(--rb-radius-pill);
   background: var(--rb-surface-2);
@@ -508,10 +534,11 @@ a.tag:nth-of-type(6n+6) {
 .metadata-tag {
   font-family: var(--rb-font-mono);
   font-size: 11px;
-  padding: 2px 8px;
+  padding: var(--rb-pad-compact);
   border: var(--rb-border-width) solid var(--rb-border-color);
   border-radius: var(--rb-radius-pill);
   background: var(--rb-surface);
+  line-height: 1.5;
 }
 
 /* ── Labels ── */
@@ -530,7 +557,7 @@ input[type="color"] {
   appearance: none;
   width: 48px;
   height: 28px;
-  padding: 2px;
+  padding: var(--rb-space-1);
   border: var(--rb-border-width) solid var(--rb-border-color);
   border-radius: var(--rb-radius-s);
   background: var(--rb-surface);

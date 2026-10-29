@@ -5,6 +5,14 @@
 
 body {
   /* ── Structure ── */
+  --rb-space-1: 4px;
+  --rb-space-2: 8px;
+  --rb-space-3: 12px;
+  --rb-space-4: 16px;
+  --rb-space-5: 20px;
+  --rb-space-6: 24px;
+  --rb-pad-box: 10px 16px;
+  --rb-pad-compact: 6px 12px;
   --rb-border-width: 2px;
   --rb-border-color: var(--rb-ink);
   --rb-divider: color-mix(in srgb, var(--rb-ink) 20%, transparent);
@@ -17,6 +25,8 @@ body {
   --rb-radius-pill: 999px;
   --rb-grid-size: 24px;
   --rb-grid-line: 1px;
+  --rb-grid-angle: 0deg;
+  --rb-grid-color: color-mix(in srgb, var(--rb-ink) 10%, transparent);
   --rb-anim-speed: 120ms;
 
   /* ── Accent palette ── */
@@ -194,6 +204,11 @@ body {
   --font-interface-theme: var(--rb-font-ui);
   --font-text-theme: var(--rb-font-text);
   --font-monospace-theme: var(--rb-font-mono);
+
+  /* Obsidian spacing overrides */
+  --callout-padding: 0;
+  --callout-title-padding: 12px 16px;
+  --callout-content-padding: 16px 20px;
 }
 
 /* ── Typography ── */
@@ -273,9 +288,17 @@ li, .markdown-rendered li {
 /* Blockquote */
 blockquote, .markdown-rendered blockquote {
   border-left: var(--rb-border-width) solid var(--rb-accent);
-  padding-left: 1em;
+  padding: var(--rb-pad-box);
   margin: 1em 0;
   color: var(--rb-ink-soft);
+}
+
+blockquote p:first-child {
+  margin-top: 0;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
 }
 
 /* Horizontal rule */
@@ -300,17 +323,19 @@ hr::after, .markdown-rendered hr::after {
 .cm-s-obsidian .cm-inline-code {
   font-family: var(--rb-font-mono);
   background: var(--rb-surface-2);
-  padding: 0.15em 0.4em;
+  padding: var(--rb-pad-compact);
   border-radius: var(--rb-radius-s);
   border: var(--rb-border-width) solid var(--rb-border-color);
   font-size: 0.9em;
+  line-height: 1.5;
 }
 
 /* Highlight/mark */
 mark, .markdown-rendered mark, .cm-highlight {
   background: var(--rb-yellow);
   color: var(--rb-on-yellow);
-  padding: 0 0.2em;
+  padding: 2px 4px;
+  border-radius: var(--rb-radius-s);
 }
 
 /* ── Text formatting colors ── */
@@ -348,6 +373,181 @@ mark, .markdown-rendered mark, .cm-highlight {
   color: var(--rb-color-normal, var(--rb-ink));
 }
 
+/* ===== 02b-spacing.css ===== */
+/* RetroBrute - Spacing tokens applied to bordered elements */
+
+/* ── Content components ── */
+
+/* Callouts */
+.callout {
+  padding: 0;
+}
+
+.callout-title {
+  padding: var(--rb-pad-compact);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+}
+
+.callout-content {
+  padding: var(--rb-pad-box);
+}
+
+/* Code blocks (fenced) */
+.markdown-rendered pre {
+  padding: var(--rb-pad-box);
+}
+
+/* HyperMD codeblock lines */
+.cm-s-obsidian .HyperMD-codeblock-line,
+.cm-s-obsidian .HyperMD-codeblock-begin,
+.cm-s-obsidian .HyperMD-codeblock-end {
+  padding-inline: var(--rb-space-4);
+}
+
+/* Inline code */
+code,
+.cm-inline-code {
+  padding: var(--rb-pad-compact);
+  line-height: 1.5;
+}
+
+/* Tags */
+.tag,
+a.tag {
+  padding: var(--rb-pad-compact);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+}
+
+/* Metadata properties */
+.metadata-property {
+  padding: var(--rb-pad-compact);
+  gap: var(--rb-space-2);
+}
+
+/* Tables */
+th,
+td {
+  padding: 10px 14px;
+  line-height: 1.5;
+}
+
+/* Blockquotes */
+blockquote,
+.markdown-rendered blockquote {
+  padding: var(--rb-pad-box);
+}
+
+/* ── UI components ── */
+
+/* File explorer */
+.nav-file-title,
+.nav-folder-title {
+  padding: 8px 12px;
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+}
+
+/* Settings items */
+.setting-item {
+  padding: var(--rb-pad-box);
+  gap: var(--rb-space-3);
+}
+
+/* Modal content */
+.modal-content {
+  padding: var(--rb-pad-box);
+}
+
+/* Status bar items */
+.status-bar-item {
+  padding: var(--rb-pad-compact);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+}
+
+/* Tab headers */
+.workspace-tab-header {
+  padding: var(--rb-pad-compact);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+}
+
+/* Menu items */
+.menu-item {
+  padding: var(--rb-pad-compact);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+}
+
+/* Suggestion items */
+.suggestion-item {
+  padding: var(--rb-pad-compact);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+}
+
+/* Notices */
+.notice {
+  padding: var(--rb-pad-box);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+}
+
+/* Tooltips */
+.tooltip {
+  padding: var(--rb-pad-compact);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+}
+
+/* Buttons */
+button,
+.mod-cta,
+.mod-warning {
+  padding: var(--rb-pad-compact);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+  min-height: calc(var(--rb-space-3) * 2);
+}
+
+/* Dropdowns/Selects */
+select,
+.dropdown,
+.dropdown-menu {
+  padding: 6px 32px 6px 12px;
+  line-height: 1.5;
+  min-height: calc(var(--rb-space-3) * 2);
+}
+
+/* Inputs */
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="url"],
+textarea {
+  padding: 8px 12px;
+  line-height: 1.5;
+  min-height: calc(var(--rb-space-3) * 2);
+}
+
+/* Clickable icons */
+.clickable-icon {
+  padding: 6px;
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+}
+
+/* Vertical tab nav items */
+.vertical-tab-nav-item {
+  padding: var(--rb-pad-compact);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+}
+
 /* ===== 03-ui.css ===== */
 /* RetroBrute - App Chrome */
 
@@ -382,14 +582,16 @@ mark, .markdown-rendered mark, .cm-highlight {
 .nav-header {
   background: var(--rb-surface-2);
   border-bottom: var(--rb-border-width) solid var(--rb-border-color);
-  padding: 8px;
+  padding: var(--rb-pad-compact);
 }
 
 .nav-folder-title,
 .nav-file-title {
-  padding: 4px 8px;
+  padding: 8px 12px;
   border-radius: var(--rb-radius-s);
   margin: 2px 0;
+  gap: var(--rb-space-2);
+  line-height: 1.5;
 }
 
 .nav-folder-title:hover,
@@ -409,7 +611,7 @@ mark, .markdown-rendered mark, .cm-highlight {
 /* Folder chevrons - retro style */
 .nav-folder-collapse-indicator {
   color: var(--rb-ink);
-  margin-right: 4px;
+  margin-right: var(--rb-space-2);
 }
 
 .nav-folder-title:hover .nav-folder-collapse-indicator {
@@ -420,68 +622,36 @@ mark, .markdown-rendered mark, .cm-highlight {
   color: var(--rb-on-accent);
 }
 
-/* ── Tabs ── */
-.workspace-tabs {
-  background: var(--rb-surface-2);
-}
-
-.workspace-tab-header-container {
-  background: var(--rb-surface-2);
-  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
-}
-
-.workspace-tab-header {
-  background: transparent;
-  border: var(--rb-border-width) solid transparent;
-  border-radius: var(--rb-radius-s) var(--rb-radius-s) 0 0;
-  padding: 6px 12px;
-  margin: 0 2px;
-  color: var(--rb-ink-soft);
-}
-
-.workspace-tab-header:hover {
-  background: var(--rb-surface);
-  color: var(--rb-ink);
-}
-
-.workspace-tab-header.is-active {
-  background: var(--rb-yellow);
-  color: var(--rb-on-yellow);
-  border: var(--rb-border-width) solid var(--rb-border-color);
-  border-bottom-color: var(--rb-yellow);
-}
-
-/* Active tab indicator line (remove default) */
-.workspace-tab-header.is-active::after {
-  display: none;
-}
-
-/* Pinned tabs */
-.workspace-tab-header.is-pinned {
-  background: var(--rb-surface);
-  border-style: dashed;
-}
-
-.workspace-tab-header.is-pinned.is-active {
-  background: var(--rb-yellow);
-}
-
-/* Tab separator */
-.workspace-tab-header-inner::after {
-  display: none;
-}
+/* 
+ * NOTE: Tabs styling has been moved to src/03b-tabs.css
+ * to maintain file size under 250 lines.
+ */
 
 /* ── Status Bar ── */
 .status-bar {
   background: var(--rb-surface-2);
-  border-top: var(--rb-border-width) solid var(--rb-border-color);
-  padding: 4px 12px;
+  border-top: 2px solid var(--rb-border-color);
+  height: 26px;
+  min-height: 26px;
+  padding: 0;
   font-size: 12px;
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+  flex-direction: row;
 }
 
 .status-bar-item {
-  padding: 2px 8px;
-  border-radius: var(--rb-radius-s);
+  padding: 4px 12px;
+  border-radius: 0;
+  gap: var(--rb-space-2);
+  line-height: 1.5;
+  border-left: 2px solid var(--rb-divider);
+  background: transparent;
+}
+
+.status-bar-item:first-child {
+  border-left: none;
 }
 
 .status-bar-item:hover {
@@ -588,13 +758,15 @@ body:not(.rb-no-anim) .modal {
   border: var(--rb-border-width) solid var(--rb-border-color);
   box-shadow: var(--rb-shadow-hard);
   border-radius: var(--rb-radius-m);
-  padding: 4px;
+  padding: var(--rb-space-1);
 }
 
 .menu-item {
-  padding: 8px 12px;
+  padding: var(--rb-pad-compact);
   border-radius: var(--rb-radius-s);
   color: var(--rb-ink);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
 }
 
 .menu-item:hover {
@@ -613,13 +785,15 @@ body:not(.rb-no-anim) .modal {
 
 .menu-separator {
   border-bottom: var(--rb-border-width) solid var(--rb-border-color);
-  margin: 4px 0;
+  margin: var(--rb-space-1) 0;
 }
 
 .suggestion-item {
-  padding: 8px 12px;
+  padding: var(--rb-pad-compact);
   border-top: none;
   border-bottom: 2px dashed var(--rb-divider);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
 }
 
 /* ── Tooltips ── */
@@ -627,9 +801,11 @@ body:not(.rb-no-anim) .modal {
   background: var(--rb-ink);
   color: var(--rb-bg);
   border-radius: var(--rb-radius-s);
-  padding: 6px 10px;
+  padding: var(--rb-pad-compact);
   font-size: 12px;
   font-weight: 500;
+  gap: var(--rb-space-2);
+  line-height: 1.5;
 }
 
 .tooltip-arrow::before {
@@ -643,7 +819,9 @@ body:not(.rb-no-anim) .modal {
   box-shadow: var(--rb-shadow-hard);
   border-radius: var(--rb-radius-s);
   color: var(--rb-ink);
-  padding: 12px 16px;
+  padding: var(--rb-pad-box);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
 }
 
 .notice.is-error {
@@ -703,8 +881,8 @@ body:not(.rb-no-anim) .modal {
 .view-header {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 0 8px;
+  gap: var(--rb-space-2);
+  padding: 0 var(--rb-space-2);
 }
 
 .view-header .clickable-icon {
@@ -713,9 +891,9 @@ body:not(.rb-no-anim) .modal {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 6px;
-  line-height: 1.4;
+  gap: var(--rb-space-2);
+  padding: var(--rb-space-2);
+  line-height: 1.5;
 }
 
 .view-header .clickable-icon + .clickable-icon {
@@ -759,10 +937,12 @@ body:not(.rb-no-anim) .modal {
 
 .modal.mod-settings .vertical-tab-nav-item {
   margin: 4px 12px;
-  padding: 8px 12px;
+  padding: var(--rb-pad-compact);
   border-radius: var(--rb-radius-s);
   border: 2px solid transparent;
   color: var(--rb-ink);
+  gap: var(--rb-space-2);
+  line-height: 1.5;
 }
 
 .modal.mod-settings .vertical-tab-nav-item:hover {
@@ -780,7 +960,8 @@ body:not(.rb-no-anim) .modal {
 .modal.mod-settings .setting-item {
   border-top: none;
   border-bottom: 2px dashed var(--rb-divider);
-  padding: 16px 0;
+  padding: var(--rb-pad-box);
+  gap: var(--rb-space-3);
 }
 
 .modal.mod-settings .setting-item:last-child {
@@ -794,6 +975,20 @@ body:not(.rb-no-anim) .modal {
 
 .modal.mod-settings .setting-item-description {
   color: var(--rb-ink-soft);
+}
+
+/* Ensure style-settings heading collapse chevron is visible and styled */
+.modal.mod-settings .setting-item .collapse,
+.modal.mod-settings .setting-item .collapse-icon,
+.modal.mod-settings .setting-item .setting-item-toggle {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: var(--rb-ink) !important;
+  margin-right: 8px;
+  opacity: 1 !important;
 }
 
 /* ── Empty State ── */
@@ -826,7 +1021,238 @@ body:not(.rb-no-anim) .modal {
   transform: translate(-1px, -1px);
 }
 
-/* ===== 04-components.css ===== */
+/* ===== 03b-tabs.css ===== */
+/* RetroBrute - Tabs
+   Colorful tabs are ON by default (standard theme behavior).
+   Style Settings uses rb-tabs-plain to disable (plain accent only).
+*/
+
+.workspace-tabs {
+  background: var(--rb-surface-2);
+}
+
+/* Tab container with bottom border line */
+.workspace-tab-header-container {
+  background: var(--rb-surface-2);
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  padding: 4px 4px 0;
+  height: auto;
+}
+
+.workspace-tab-header-container-inner {
+  display: flex;
+  gap: 4px;
+}
+
+/* Base tab styles */
+.workspace-tab-header {
+  background: transparent;
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-radius: 10px 10px 0 0;
+  padding: 8px 14px;
+  margin: 0;
+  color: var(--rb-ink-soft);
+  gap: 8px;
+  line-height: 1.5;
+  position: relative;
+  bottom: 0;
+  transition: none;
+}
+
+/* Plain accent style (when colorful tabs OFF - rb-tabs-plain) */
+body.rb-tabs-plain .workspace-tab-header {
+  background: transparent;
+}
+
+body.rb-tabs-plain .workspace-tab-header:hover {
+  background: var(--rb-surface);
+  color: var(--rb-ink);
+}
+
+/* Strong override to enforce plain tabs when rb-tabs-plain is active */
+body.rb-tabs-plain .workspace-tab-header-container-inner > .workspace-tab-header:not(.is-active):not(.new-tab) {
+  background: var(--rb-surface-2) !important;
+  color: var(--rb-ink) !important;
+  border: var(--rb-border-width) solid var(--rb-border-color) !important;
+  box-shadow: var(--rb-shadow-hard) !important;
+}
+
+body.rb-tabs-plain .workspace-tab-header.is-active {
+  background: var(--rb-accent) !important;
+  color: var(--rb-on-accent) !important;
+  border: var(--rb-border-width) solid var(--rb-border-color) !important;
+  box-shadow: var(--rb-shadow-hard) !important;
+}
+
+/* Right sidebar / ribbon icon tabs (plain mode) */
+body.rb-tabs-plain .workspace-ribbon .side-dock-ribbon-action {
+  background: var(--rb-surface-2) !important;
+  color: var(--rb-ink) !important;
+  border: var(--rb-border-width) solid var(--rb-border-color) !important;
+  box-shadow: var(--rb-shadow-hard) !important;
+}
+
+body.rb-tabs-plain .workspace-ribbon .side-dock-ribbon-action.is-active {
+  background: var(--rb-accent) !important;
+  color: var(--rb-on-accent) !important;
+  box-shadow: var(--rb-shadow-hard) !important;
+}
+
+/* Colorful tabs ON by default - every nth tab gets a color */
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+1):not(.is-active):not(.new-tab) {
+  background: color-mix(in srgb, var(--rb-yellow) 75%, var(--rb-surface));
+  color: var(--rb-on-yellow);
+}
+
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+2):not(.is-active):not(.new-tab) {
+  background: color-mix(in srgb, var(--rb-mint) 75%, var(--rb-surface));
+  color: var(--rb-on-mint);
+}
+
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+3):not(.is-active):not(.new-tab) {
+  background: color-mix(in srgb, var(--rb-pink) 75%, var(--rb-surface));
+  color: var(--rb-on-pink);
+}
+
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+4):not(.is-active):not(.new-tab) {
+  background: color-mix(in srgb, var(--rb-lavender) 75%, var(--rb-surface));
+  color: var(--rb-on-lavender);
+}
+
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+5):not(.is-active):not(.new-tab) {
+  background: color-mix(in srgb, var(--rb-orange) 75%, var(--rb-surface));
+  color: var(--rb-on-orange);
+}
+
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+6):not(.is-active):not(.new-tab) {
+  background: color-mix(in srgb, var(--rb-aqua) 75%, var(--rb-surface));
+  color: var(--rb-on-aqua);
+}
+
+/* Active colorful tabs - full fill */
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+1).is-active {
+  background: var(--rb-yellow);
+  color: var(--rb-on-yellow);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-bottom-color: var(--rb-yellow);
+  box-shadow: var(--rb-shadow-hard);
+  bottom: -2px;
+  font-weight: 700;
+}
+
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+2).is-active {
+  background: var(--rb-mint);
+  color: var(--rb-on-mint);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-bottom-color: var(--rb-mint);
+  box-shadow: var(--rb-shadow-hard);
+  bottom: -2px;
+  font-weight: 700;
+}
+
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+3).is-active {
+  background: var(--rb-pink);
+  color: var(--rb-on-pink);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-bottom-color: var(--rb-pink);
+  box-shadow: var(--rb-shadow-hard);
+  bottom: -2px;
+  font-weight: 700;
+}
+
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+4).is-active {
+  background: var(--rb-lavender);
+  color: var(--rb-on-lavender);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-bottom-color: var(--rb-lavender);
+  box-shadow: var(--rb-shadow-hard);
+  bottom: -2px;
+  font-weight: 700;
+}
+
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+5).is-active {
+  background: var(--rb-orange);
+  color: var(--rb-on-orange);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-bottom-color: var(--rb-orange);
+  box-shadow: var(--rb-shadow-hard);
+  bottom: -2px;
+  font-weight: 700;
+}
+
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+6).is-active {
+  background: var(--rb-aqua);
+  color: var(--rb-on-aqua);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-bottom-color: var(--rb-aqua);
+  box-shadow: var(--rb-shadow-hard);
+  bottom: -2px;
+  font-weight: 700;
+}
+
+/* Hover lift animation (default ON) */
+.workspace-tab-header:hover {
+  transform: translateY(-1px);
+}
+
+body.rb-no-anim .workspace-tab-header:hover {
+  transform: none;
+}
+
+/* Active tab indicator line (remove default) */
+.workspace-tab-header.is-active::after {
+  display: none;
+}
+
+/* Pinned tabs */
+.workspace-tab-header.is-pinned {
+  background: var(--rb-surface);
+  border-style: dashed;
+}
+
+/* Default active tab style (fallback when no colorful tabs class) */
+.workspace-tab-header.is-active {
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-bottom-color: var(--rb-accent);
+  bottom: -2px;
+  box-shadow: var(--rb-shadow-hard);
+  font-weight: 700;
+}
+
+/* Plain active tab styling */
+body.rb-tabs-plain .workspace-tab-header.is-active {
+  background: var(--rb-accent);
+  color: var(--rb-on-accent);
+  border-bottom-color: var(--rb-accent);
+}
+
+/* Tab separator - remove default */
+.workspace-tab-header-inner::after {
+  display: none;
+}
+
+/* New tab button - not colored */
+.workspace-tab-header.new-tab {
+  background: var(--rb-surface);
+  color: var(--rb-ink);
+}
+
+.workspace-tab-header.new-tab:hover {
+  background: var(--rb-surface);
+  color: var(--rb-ink);
+}
+
+/* Hover animation behind animation guard */
+body:not(.rb-no-anim) .workspace-tab-header:hover {
+  transition: transform var(--rb-anim-speed) ease;
+}
+
+/* Close button positioning */
+.workspace-tab-header-inner-close-button {
+  margin-left: 8px;
+}
+
+/* ===== 04a-ui-components.css ===== */
 /* RetroBrute - Components */
 
 /* ── Buttons ── */
@@ -837,12 +1263,12 @@ button,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: var(--rb-space-2);
   font-family: var(--rb-font-heading);
   font-weight: 600;
   font-size: 14px;
-  line-height: 1.4;
-  padding: 8px 12px;
+  line-height: 1.5;
+  padding: var(--rb-pad-compact);
   border: var(--rb-border-width) solid var(--rb-border-color);
   border-radius: var(--rb-radius-s);
   background: var(--rb-accent);
@@ -850,6 +1276,7 @@ button,
   box-shadow: var(--rb-shadow-hard);
   cursor: pointer;
   transition: none;
+  min-height: calc(var(--rb-space-3) * 2);
 }
 
 body:not(.rb-no-anim) button,
@@ -958,6 +1385,8 @@ textarea,
   color: var(--rb-ink);
   box-shadow: inset 1px 1px 0 var(--rb-shadow-color);
   outline: none;
+  line-height: 1.5;
+  min-height: calc(var(--rb-space-3) * 2);
 }
 
 input::placeholder,
@@ -1027,8 +1456,8 @@ dropdown,
 .select {
   font-family: var(--rb-font-text);
   font-size: 14px;
-  min-height: 34px;
-  line-height: 1.4;
+  min-height: calc(var(--rb-space-3) * 2);
+  line-height: 1.5;
   padding: 6px 32px 6px 12px;
   border: var(--rb-border-width) solid var(--rb-border-color);
   border-radius: var(--rb-radius-s);
@@ -1055,52 +1484,75 @@ select:disabled {
 
 /* ── Sliders ── */
 input[type="range"] {
-  -webkit-appearance: none;
   appearance: none;
+  -webkit-appearance: none;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
   width: 100%;
-  height: 8px;
-  background: var(--rb-surface-2);
-  border: var(--rb-border-width) solid var(--rb-border-color);
-  border-radius: 0;
   outline: none;
 }
 
+/* Track */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 12px;
+  border: 2px solid var(--rb-border-color);
+  border-radius: 0;
+  box-sizing: border-box;
+  background: linear-gradient(
+    to right,
+    var(--rb-accent) 0 calc(var(--slider-progress, 0%) * (100% - 20px) / 100% + 10px),
+    var(--rb-surface) 0
+  );
+}
+
+input[type="range"]::-moz-range-track {
+  height: 12px;
+  border: 2px solid var(--rb-border-color);
+  border-radius: 0;
+  box-sizing: border-box;
+  background: var(--rb-surface);
+}
+
+/* Thumb */
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  appearance: none;
   width: 20px;
   height: 20px;
+  box-sizing: border-box;
+  border: 2px solid var(--rb-border-color);
   background: var(--rb-accent);
-  border: var(--rb-border-width) solid var(--rb-border-color);
-  border-radius: 0;
+  box-shadow: 2px 2px 0 var(--rb-shadow-color);
+  margin-top: calc((12px - 20px) / 2);
   cursor: pointer;
-  box-shadow: var(--rb-shadow-hard);
 }
 
 input[type="range"]::-moz-range-thumb {
   width: 20px;
   height: 20px;
+  box-sizing: border-box;
+  border: 2px solid var(--rb-border-color);
   background: var(--rb-accent);
-  border: var(--rb-border-width) solid var(--rb-border-color);
-  border-radius: 0;
+  box-shadow: 2px 2px 0 var(--rb-shadow-color);
   cursor: pointer;
-  box-shadow: var(--rb-shadow-hard);
 }
 
 input[type="range"]:focus::-webkit-slider-thumb {
-  box-shadow: var(--rb-shadow-hard), 0 0 0 3px color-mix(in srgb, var(--rb-accent) 40%, transparent);
+  box-shadow: 2px 2px 0 var(--rb-shadow-color), 0 0 0 3px color-mix(in srgb, var(--rb-accent) 40%, transparent);
 }
 
 input[type="range"]:focus::-moz-range-thumb {
-  box-shadow: var(--rb-shadow-hard), 0 0 0 3px color-mix(in srgb, var(--rb-accent) 40%, transparent);
+  box-shadow: 2px 2px 0 var(--rb-shadow-color), 0 0 0 3px color-mix(in srgb, var(--rb-accent) 40%, transparent);
 }
 
 /* ── Toggles / Switches ── */
 .checkbox-container {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--rb-space-2);
   cursor: pointer;
+  line-height: 1.5;
 }
 
 .checkbox-container input[type="checkbox"] {
@@ -1270,13 +1722,13 @@ a.tag,
 .markdown-rendered a.tag {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--rb-space-2);
   font-family: var(--rb-font-mono);
   font-size: 11px;
   font-weight: 600;
-  line-height: 1.4;
+  line-height: 1.5;
   text-decoration: none;
-  padding: 4px 12px;
+  padding: var(--rb-pad-compact);
   border: var(--rb-border-width) solid var(--rb-border-color);
   border-radius: var(--rb-radius-pill);
   background: var(--rb-surface-2);
@@ -1337,10 +1789,11 @@ a.tag:nth-of-type(6n+6) {
 .metadata-tag {
   font-family: var(--rb-font-mono);
   font-size: 11px;
-  padding: 2px 8px;
+  padding: var(--rb-pad-compact);
   border: var(--rb-border-width) solid var(--rb-border-color);
   border-radius: var(--rb-radius-pill);
   background: var(--rb-surface);
+  line-height: 1.5;
 }
 
 /* ── Labels ── */
@@ -1359,7 +1812,7 @@ input[type="color"] {
   appearance: none;
   width: 48px;
   height: 28px;
-  padding: 2px;
+  padding: var(--rb-space-1);
   border: var(--rb-border-width) solid var(--rb-border-color);
   border-radius: var(--rb-radius-s);
   background: var(--rb-surface);
@@ -1375,40 +1828,761 @@ input[type="color"]::-webkit-color-swatch {
   border-radius: calc(var(--rb-radius-s) - 2px);
 }
 
+/* ===== 04b-content-components.css ===== */
+/* RetroBrute - Content Components */
+
+/* ── Window Chrome (toggleable base) ── */
+
+/* 3-dot title bar pattern */
+.rb-window-titlebar,
+.rb-window .callout-title,
+.rb-window .code-block-title,
+.rb-window pre::before,
+.callout.rb-window > .callout-title {
+  display: flex;
+  align-items: center;
+  gap: var(--rb-space-2);
+  padding: var(--rb-pad-compact);
+  background: var(--rb-surface-2);
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  font-family: var(--rb-font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--rb-ink-soft);
+  line-height: 1.5;
+}
+
+/* 3 dots */
+.rb-window-titlebar::before,
+.rb-window .callout-title::before,
+.rb-window .code-block-title::before,
+.callout.rb-window > .callout-title::before {
+  content: '';
+  display: flex;
+  gap: var(--rb-space-1);
+}
+
+.rb-window-titlebar::before,
+.callout.rb-window > .callout-title::before {
+  content: '● ● ●';
+  letter-spacing: 2px;
+  color: var(--rb-border-color);
+}
+
+/* ── Callouts ── */
+.callout {
+  position: relative;
+  margin: 20px 0 24px;
+  padding: 0;
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-radius: var(--rb-radius-s);
+  background: var(--rb-surface);
+  box-shadow: var(--rb-shadow-hard);
+  overflow: visible;
+}
+
+.callout-title {
+  display: flex;
+  align-items: center;
+  gap: var(--rb-space-2);
+  padding: var(--rb-pad-compact);
+  font-family: var(--rb-font-heading);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  line-height: 1.5;
+}
+
+.callout-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.callout-content {
+  padding: var(--rb-space-3) var(--rb-space-4);
+  background: var(--rb-surface);
+}
+
+/* Collapsible callout */
+.callout.is-collapsible > .callout-title {
+  cursor: pointer;
+}
+
+.callout.is-collapsed {
+  box-shadow: var(--rb-shadow-hard);
+}
+
+.callout.is-collapsed > .callout-content {
+  display: none;
+}
+
+/* Callout fold indicator - chevron on the right, 2px border */
+.callout-fold {
+  margin-left: auto;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-radius: var(--rb-radius-s);
+  background: transparent;
+}
+
+body:not(.rb-no-anim) .callout-fold {
+  transition: transform var(--rb-anim-speed) ease;
+}
+
+.callout.is-collapsed .callout-fold {
+  transform: rotate(-90deg);
+}
+
+/* Callout types with colors - one color per type, using Ink border */
+.callout[data-callout="note"] > .callout-title {
+  background: var(--rb-violet);
+  color: var(--rb-on-violet);
+}
+.callout[data-callout="note"] .callout-icon {
+  color: var(--rb-on-violet);
+}
+
+.callout[data-callout="abstract"] > .callout-title {
+  background: var(--rb-mint);
+  color: var(--rb-on-mint);
+}
+.callout[data-callout="abstract"] .callout-icon {
+  color: var(--rb-on-mint);
+}
+
+.callout[data-callout="info"] > .callout-title {
+  background: var(--rb-aqua);
+  color: var(--rb-on-aqua);
+}
+.callout[data-callout="info"] .callout-icon {
+  color: var(--rb-on-aqua);
+}
+
+.callout[data-callout="todo"] > .callout-title {
+  background: var(--rb-lime);
+  color: var(--rb-on-lime);
+}
+.callout[data-callout="todo"] .callout-icon {
+  color: var(--rb-on-lime);
+}
+
+.callout[data-callout="tip"] > .callout-title {
+  background: var(--rb-lime);
+  color: var(--rb-on-lime);
+}
+.callout[data-callout="tip"] .callout-icon {
+  color: var(--rb-on-lime);
+}
+
+.callout[data-callout="success"] > .callout-title {
+  background: var(--rb-mint);
+  color: var(--rb-on-mint);
+}
+.callout[data-callout="success"] .callout-icon {
+  color: var(--rb-on-mint);
+}
+
+.callout[data-callout="question"] > .callout-title {
+  background: var(--rb-yellow);
+  color: var(--rb-on-yellow);
+}
+.callout[data-callout="question"] .callout-icon {
+  color: var(--rb-on-yellow);
+}
+
+.callout[data-callout="warning"] > .callout-title {
+  background: var(--rb-orange);
+  color: var(--rb-on-orange);
+}
+.callout[data-callout="warning"] .callout-icon {
+  color: var(--rb-on-orange);
+}
+
+.callout[data-callout="danger"] > .callout-title {
+  background: var(--rb-red);
+  color: var(--rb-on-red);
+}
+.callout[data-callout="danger"] .callout-icon {
+  color: var(--rb-on-red);
+}
+
+.callout[data-callout="bug"] > .callout-title {
+  background: var(--rb-pink);
+  color: var(--rb-on-pink);
+}
+.callout[data-callout="bug"] .callout-icon {
+  color: var(--rb-on-pink);
+}
+
+.callout[data-callout="example"] > .callout-title {
+  background: var(--rb-lavender);
+  color: var(--rb-on-lavender);
+}
+.callout[data-callout="example"] .callout-icon {
+  color: var(--rb-on-lavender);
+}
+
+.callout[data-callout="quote"] > .callout-title {
+  background: var(--rb-grey);
+  color: var(--rb-on-grey);
+}
+.callout[data-callout="quote"] .callout-icon {
+  color: var(--rb-on-grey);
+}
+
+/* ── Code Blocks (Fenced) ── */
+pre,
+.markdown-rendered pre {
+  position: relative;
+  margin: 16px 0;
+  padding: var(--rb-pad-box);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-radius: var(--rb-radius-m);
+  background: var(--rb-surface-2);
+  box-shadow: var(--rb-shadow-hard);
+  overflow-x: auto;
+}
+
+pre code,
+.markdown-rendered pre code {
+  display: block;
+  padding: 0;
+  background: transparent;
+  border: none;
+  font-family: var(--rb-font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--rb-ink);
+}
+
+/* Code blocks with window chrome header */
+.rb-window pre {
+  padding-top: 0;
+}
+
+.rb-window pre::before {
+  content: '● ● ●';
+  display: block;
+  letter-spacing: 2px;
+  padding: var(--rb-pad-compact);
+  margin: 0 calc(-1 * var(--rb-space-4)) var(--rb-space-4) calc(-1 * var(--rb-space-4));
+  background: var(--rb-surface);
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  color: var(--rb-ink-soft);
+}
+
+/* Inline code */
+code,
+.markdown-rendered code {
+  font-family: var(--rb-font-mono);
+  font-size: 0.9em;
+  padding: var(--rb-pad-compact);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-radius: var(--rb-radius-s);
+  background: var(--rb-surface-2);
+  color: var(--rb-ink);
+  line-height: 1.5;
+}
+
+pre code {
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+/* Syntax highlighting color mappings */
+.markdown-rendered pre .cm-keyword,
+.markdown-rendered pre .token.keyword {
+  color: var(--rb-violet);
+}
+.markdown-rendered pre .cm-string,
+.markdown-rendered pre .token.string {
+  color: var(--rb-mint);
+}
+.markdown-rendered pre .cm-number,
+.markdown-rendered pre .token.number {
+  color: var(--rb-orange);
+}
+.markdown-rendered pre .cm-comment,
+.markdown-rendered pre .token.comment {
+  color: var(--rb-ink-soft);
+  font-style: italic;
+}
+.markdown-rendered pre .cm-function,
+.markdown-rendered pre .token.function {
+  color: var(--rb-aqua);
+}
+.markdown-rendered pre .cm-variable,
+.markdown-rendered pre .token.variable {
+  color: var(--rb-ink);
+}
+.markdown-rendered pre .cm-operator,
+.markdown-rendered pre .token.operator {
+  color: var(--rb-yellow);
+}
+
+/* ── Tables ── */
+table,
+.markdown-rendered table {
+  width: 100%;
+  margin: 16px 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-radius: var(--rb-radius-m);
+  background: var(--rb-surface);
+  box-shadow: var(--rb-shadow-hard);
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 10px 14px;
+  border-right: var(--rb-border-width) solid var(--rb-border-color);
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  text-align: left;
+  vertical-align: top;
+}
+
+th:last-child,
+td:last-child {
+  border-right: none;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+th {
+  font-family: var(--rb-font-heading);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  background: var(--rb-surface-2);
+  color: var(--rb-ink);
+}
+
+/* Optional zebra striping */
+.rb-zebra tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--rb-surface-2) 30%, transparent);
+}
+
+/* ── Embeds ── */
+.markdown-embed,
+.internal-embed {
+  margin: 16px 0;
+  padding: var(--rb-pad-box);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-radius: var(--rb-radius-m);
+  background: var(--rb-surface);
+  box-shadow: var(--rb-shadow-hard);
+}
+
+.embed-title {
+  font-family: var(--rb-font-heading);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: var(--rb-space-2);
+  padding-bottom: var(--rb-space-2);
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  color: var(--rb-ink);
+}
+
+/* ── Footnotes ── */
+.footnote-link {
+  font-family: var(--rb-font-mono);
+  font-size: 10px;
+  vertical-align: super;
+  margin-left: 2px;
+  color: var(--rb-ink);
+}
+
+.footnote-link a {
+  text-decoration: none;
+  color: var(--rb-accent);
+}
+
+.footnote-link a:hover {
+  text-decoration: underline;
+}
+
+.footnotes {
+  margin-top: var(--rb-space-6);
+  padding-top: var(--rb-space-4);
+  border-top: var(--rb-border-width) solid var(--rb-divider);
+  font-size: 13px;
+}
+
+.footnotes ol {
+  padding-left: var(--rb-space-5);
+}
+
+.footnotes li {
+  margin-bottom: var(--rb-space-2);
+}
+
+.footnotes .footnote-backref {
+  margin-left: 4px;
+  color: var(--rb-accent);
+  text-decoration: none;
+}
+
+/* ── Progress Bars ── */
+progress,
+.markdown-rendered progress {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 20px;
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-radius: var(--rb-radius-s);
+  background: var(--rb-surface-2);
+  overflow: hidden;
+}
+
+progress::-webkit-progress-bar {
+  background: var(--rb-surface-2);
+}
+
+progress::-webkit-progress-value {
+  background: var(--rb-accent);
+  border-right: var(--rb-border-width) solid var(--rb-border-color);
+}
+
+progress::-moz-progress-bar {
+  background: var(--rb-accent);
+  border-right: var(--rb-border-width) solid var(--rb-border-color);
+}
+
+/* Segmented progress bar option */
+.rb-progress-segmented {
+  display: flex;
+  gap: var(--rb-space-1);
+  padding: var(--rb-space-1);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-radius: var(--rb-radius-s);
+  background: var(--rb-surface-2);
+}
+
+.rb-progress-segmented .rb-progress-fill {
+  height: 16px;
+  background: var(--rb-accent);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+}
+
+/* ── Canvas Card Styles ── */
+.canvas-node-container {
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-radius: var(--rb-radius-m);
+  background: var(--rb-surface);
+  box-shadow: var(--rb-shadow-hard);
+}
+
+.canvas-node-content {
+  padding: var(--rb-space-3);
+}
+
+.canvas-node-label {
+  font-family: var(--rb-font-heading);
+  font-weight: 600;
+  font-size: 11px;
+  padding: var(--rb-pad-compact);
+  background: var(--rb-surface-2);
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  color: var(--rb-ink-soft);
+  line-height: 1.5;
+}
+
+.canvas-node.is-selected .canvas-node-container {
+  border-color: var(--rb-accent);
+  box-shadow: calc(var(--rb-shadow-x) + 2px) calc(var(--rb-shadow-y) + 2px) 0 var(--rb-accent);
+}
+
+.canvas-edges path {
+  stroke: var(--rb-ink-soft);
+  stroke-width: 2px;
+}
+
+.canvas-edges path.is-selected {
+  stroke: var(--rb-accent);
+  stroke-width: 3px;
+}
+
+/* Canvas file node type styling */
+.canvas-node[data-type="file"] .canvas-node-container {
+  border-left: 4px solid var(--rb-accent);
+}
+
+.canvas-node[data-type="text"] .canvas-node-container {
+  border-left: 4px solid var(--rb-mint);
+}
+
+/* ── Blockquotes ── */
+blockquote,
+.markdown-rendered blockquote {
+  margin: 16px 0;
+  padding: var(--rb-pad-box);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-left: 4px solid var(--rb-accent);
+  border-radius: var(--rb-radius-m);
+  background: var(--rb-surface);
+  box-shadow: var(--rb-shadow-hard);
+  color: var(--rb-ink);
+}
+
+blockquote p:first-child {
+  margin-top: 0;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Horizontal Rule ── */
+hr,
+.markdown-rendered hr {
+  margin: 24px 0;
+  border: none;
+  border-top: var(--rb-border-width) solid var(--rb-border-color);
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  height: 4px;
+  background: transparent;
+}
+
+/* ── Highlights / Mark ── */
+mark,
+.markdown-rendered mark,
+.markdown-rendered .markdown-highlight {
+  background: var(--rb-yellow);
+  color: var(--rb-on-yellow);
+  padding: 2px 4px;
+  border-radius: var(--rb-radius-s);
+  line-height: 1.5;
+}
+
+/* ── Del/Strike ── */
+del,
+.markdown-rendered del,
+.markdown-rendered s {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--rb-red);
+}
+
+/* ── Underline ── */
+u,
+.markdown-rendered u {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--rb-accent);
+}
+
+/* ── Selection ── */
+::selection {
+  background: var(--rb-accent);
+  color: var(--rb-on-accent);
+}
+
+/* ── Graph colors ── */
+.graph-view.color-fill {
+  color: var(--rb-accent);
+}
+
+.graph-view.color-fill-unresolved {
+  color: var(--rb-ink-soft);
+}
+
+.graph-view.color-fill-tag {
+  color: var(--rb-mint);
+}
+
+.graph-view.color-fill-attachment {
+  color: var(--rb-orange);
+}
+
+.graph-view.color-line {
+  color: color-mix(in srgb, var(--rb-ink) 30%, transparent);
+}
+
+.graph-view.color-text {
+  color: var(--rb-ink);
+}
+
 /* ===== 05-effects.css ===== */
 /* RetroBrute - Effects */
 
-/* ── Grid background ── */
-body.theme-light {
-  --rb-grid-color: color-mix(in srgb, var(--rb-ink) 8%, transparent);
-}
+/* ── Grid background ──
+   Grid is ON by default. Style Settings uses rb-grid-off to disable.
+   Drawn on markdown view-content and sidebar content.
+*/
 
-body.theme-dark {
-  --rb-grid-color: color-mix(in srgb, #FFFFFF 6%, transparent);
-}
-
-body.rb-grid .workspace-leaf-content {
-  background-image:
-    linear-gradient(to right, var(--rb-grid-color) var(--rb-grid-line), transparent var(--rb-grid-line)),
-    linear-gradient(to bottom, var(--rb-grid-color) var(--rb-grid-line), transparent var(--rb-grid-line));
-  background-size: var(--rb-grid-size) var(--rb-grid-size);
-}
-
-/* Grid in editor area - behind text content */
-body.rb-grid .workspace-leaf-content[data-type="markdown"] > .view-content {
-  background-image:
-    linear-gradient(to right, var(--rb-grid-color) var(--rb-grid-line), transparent var(--rb-grid-line)),
-    linear-gradient(to bottom, var(--rb-grid-color) var(--rb-grid-line), transparent var(--rb-grid-line));
-  background-size: var(--rb-grid-size) var(--rb-grid-size);
-}
-
-/* Transparent backgrounds so grid shows through */
-body.rb-grid .markdown-source-view,
-body.rb-grid .markdown-reading-view,
-body.rb-grid .markdown-preview-view,
-body.rb-grid .cm-editor,
-body.rb-grid .cm-scroller {
+/* Make markdown editor content transparent so grid shows through only in the editor */
+.workspace-leaf-content[data-type="markdown"] > .view-content {
   background: transparent;
+}
+
+/* Default grid: full lines applied ONLY to the editor view-content using the sanctioned variables
+   and guarded by the rb-grid-off toggle. Other container grid uses removed.
+*/
+body:not(.rb-grid-off):not(.rb-grid-h):not(.rb-grid-v):not(.rb-grid-dots) .mod-root .workspace-leaf-content[data-type="markdown"] > .view-content,
+body:not(.rb-grid-off).rb-grid-lines .mod-root .workspace-leaf-content[data-type="markdown"] > .view-content {
+  background-image:
+    repeating-linear-gradient(
+      var(--rb-grid-angle),
+      transparent,
+      transparent var(--rb-grid-line),
+      var(--rb-grid-color) var(--rb-grid-line),
+      var(--rb-grid-color) calc(var(--rb-grid-line) + 1px),
+      transparent calc(var(--rb-grid-line) + 1px),
+      transparent var(--rb-grid-size)
+    ),
+    repeating-linear-gradient(
+      calc(var(--rb-grid-angle) + 90deg),
+      transparent,
+      transparent var(--rb-grid-line),
+      var(--rb-grid-color) var(--rb-grid-line),
+      var(--rb-grid-color) calc(var(--rb-grid-line) + 1px),
+      transparent calc(var(--rb-grid-line) + 1px),
+      transparent var(--rb-grid-size)
+    );
+}
+
+/* Horizontal-only grid (editor only) */
+body:not(.rb-grid-off).rb-grid-h .mod-root .workspace-leaf-content[data-type="markdown"] > .view-content {
+  background-image:
+    repeating-linear-gradient(
+      calc(var(--rb-grid-angle) + 90deg),
+      transparent,
+      transparent var(--rb-grid-line),
+      var(--rb-grid-color) var(--rb-grid-line),
+      var(--rb-grid-color) calc(var(--rb-grid-line) + 1px),
+      transparent calc(var(--rb-grid-line) + 1px),
+      transparent var(--rb-grid-size)
+    );
+}
+
+/* Vertical-only grid (editor only) */
+body:not(.rb-grid-off).rb-grid-v .mod-root .workspace-leaf-content[data-type="markdown"] > .view-content {
+  background-image:
+    repeating-linear-gradient(
+      var(--rb-grid-angle),
+      transparent,
+      transparent var(--rb-grid-line),
+      var(--rb-grid-color) var(--rb-grid-line),
+      var(--rb-grid-color) calc(var(--rb-grid-line) + 1px),
+      transparent calc(var(--rb-grid-line) + 1px),
+      transparent var(--rb-grid-size)
+    );
+}
+
+/* Dots grid (editor only) */
+body:not(.rb-grid-off).rb-grid-dots .mod-root .workspace-leaf-content[data-type="markdown"] > .view-content {
+  background-image: radial-gradient(
+    circle,
+    var(--rb-grid-color) 1.5px,
+    transparent 1.5px
+  );
+  background-size: var(--rb-grid-size) var(--rb-grid-size);
+}
+
+/* ── Animations ── */
+/* General transition guard */
+body:not(.rb-no-anim) .clickable-icon,
+body:not(.rb-no-anim) .button,
+body:not(.rb-no-anim) input,
+body:not(.rb-no-anim) textarea,
+body:not(.rb-no-anim) .dropdown {
+  transition: transform var(--rb-anim-speed) ease,
+              box-shadow var(--rb-anim-speed) ease;
+}
+
+/* Animation guard - when rb-no-anim is set, disable animations */
+body.rb-no-anim,
+body.rb-no-anim * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Preferred reduced motion sets animation speed to zero */
+@media (prefers-reduced-motion: reduce) {
+  body {
+    --rb-anim-speed: 0ms;
+  }
+}
+
+/* Button / clickable hover / active motion (transform + shadow) */
+body:not(.rb-no-anim) button,
+body:not(.rb-no-anim) .mod-cta,
+body:not(.rb-no-anim) .mod-warning,
+body:not(.rb-no-anim) .clickable-icon {
+  transition: transform var(--rb-anim-speed) ease, box-shadow var(--rb-anim-speed) ease;
+}
+
+body:not(.rb-no-anim) button:hover,
+body:not(.rb-no-anim) .mod-cta:hover,
+body:not(.rb-no-anim) .mod-warning:hover,
+body:not(.rb-no-anim) .clickable-icon:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--rb-shadow-color);
+}
+
+body:not(.rb-no-anim) button:active,
+body:not(.rb-no-anim) .mod-cta:active,
+body:not(.rb-no-anim) .mod-warning:active,
+body:not(.rb-no-anim) .clickable-icon:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 var(--rb-shadow-color);
+}
+
+/* Modal and menu pop-in animation using rb-pop */
+@keyframes rb-pop {
+  from { transform: scale(0.96); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+body:not(.rb-no-anim) .modal,
+body:not(.rb-no-anim) .menu {
+  animation: rb-pop var(--rb-anim-speed) ease-out;
+}
+
+/* Tab switch: active tab gets a subtle translate + shadow */
+body:not(.rb-no-anim) .workspace-tab-header {
+  transition: transform var(--rb-anim-speed) ease, box-shadow var(--rb-anim-speed) ease;
+}
+
+body:not(.rb-no-anim) .workspace-tab-header.is-active {
+  transform: translateY(-2px);
+  box-shadow: calc(var(--rb-shadow-x) + 2px) calc(var(--rb-shadow-y) + 2px) 0 var(--rb-shadow-color);
+}
+
+/* Checkbox / toggle bounce (small) */
+@keyframes rb-bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+body:not(.rb-no-anim) input[type="checkbox"]:checked {
+  animation: rb-bounce 180ms ease;
+}
+
+/* Nav items background transition */
+body:not(.rb-no-anim) .nav-folder-title,
+body:not(.rb-no-anim) .nav-file-title,
+body:not(.rb-no-anim) .menu-item {
+  transition: background-color var(--rb-anim-speed) ease, color var(--rb-anim-speed) ease;
 }
 
 /* ===== 06-plugins.css ===== */
@@ -1420,21 +2594,81 @@ body.rb-grid .cm-scroller {
 name: RetroBrute
 id: rb-settings
 settings:
+  - id: rb-grid-group
+    title: Grid
+    type: heading
+    level: 2
+    collapsed: false
+  - id: rb-grid-off
+    title: Disable grid
+    description: Turn off the grid background
+    type: class-toggle
+    default: false
+  - id: rb-grid-style
+    title: Grid style
+    description: Choose the grid pattern to display
+    type: class-select
+    default: rb-grid-lines
+    options:
+      - value: rb-grid-lines
+        label: Lines (default)
+      - value: rb-grid-h
+        label: Horizontal only
+      - value: rb-grid-v
+        label: Vertical only
+      - value: rb-grid-dots
+        label: Dots
+  - id: rb-grid-size
+    title: Grid size
+    description: Distance between grid lines
+    type: variable-number-slider
+    default: 24
+    min: 8
+    max: 80
+    step: 2
+    format: px
+  - id: rb-grid-line
+    title: Line thickness
+    description: Grid line thickness
+    type: variable-number-slider
+    default: 1
+    min: 1
+    max: 3
+    step: 1
+    format: px
+  - id: rb-grid-angle
+    title: Grid angle
+    description: Rotation angle for grid lines
+    type: variable-number-slider
+    default: 0
+    min: -45
+    max: 45
+    step: 1
+    format: deg
+  - id: rb-grid-color
+    title: Grid colour
+    description: Color of the grid lines
+    type: variable-color
+    format: hex
+    default: '#1B1B1B1A'
+  - id: rb-tabs-group
+    title: Tabs
+    type: heading
+    level: 2
+    collapsed: false
+  - id: rb-tabs-plain
+    title: Plain tabs
+    description: Use plain accent color instead of colorful tabs
+    type: class-toggle
+    default: false
+  - id: rb-anim-group
+    title: Animation
+    type: heading
+    level: 2
+    collapsed: false
   - id: rb-no-anim
     title: Disable animations
     description: Turn off all animations and transitions
     type: class-toggle
     default: false
-  - id: rb-grid
-    title: Show grid background
-    description: Draw a grid pattern behind editor panes
-    type: class-toggle
-    default: false
 */
-
-/* Animation guard - when rb-no-anim is set, disable animations */
-body.rb-no-anim,
-body.rb-no-anim * {
-  animation: none !important;
-  transition: none !important;
-}

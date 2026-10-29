@@ -1,0 +1,229 @@
+/* RetroBrute - Tabs
+   Colorful tabs are ON by default (standard theme behavior).
+   Style Settings uses rb-tabs-plain to disable (plain accent only).
+*/
+
+.workspace-tabs {
+  background: var(--rb-surface-2);
+}
+
+/* Tab container with bottom border line */
+.workspace-tab-header-container {
+  background: var(--rb-surface-2);
+  border-bottom: var(--rb-border-width) solid var(--rb-border-color);
+  padding: 4px 4px 0;
+  height: auto;
+}
+
+.workspace-tab-header-container-inner {
+  display: flex;
+  gap: 4px;
+}
+
+/* Base tab styles */
+.workspace-tab-header {
+  background: transparent;
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-radius: 10px 10px 0 0;
+  padding: 8px 14px;
+  margin: 0;
+  color: var(--rb-ink-soft);
+  gap: 8px;
+  line-height: 1.5;
+  position: relative;
+  bottom: 0;
+  transition: none;
+}
+
+/* Plain accent style (when colorful tabs OFF - rb-tabs-plain) */
+body.rb-tabs-plain .workspace-tab-header {
+  background: transparent;
+}
+
+body.rb-tabs-plain .workspace-tab-header:hover {
+  background: var(--rb-surface);
+  color: var(--rb-ink);
+}
+
+/* Strong override to enforce plain tabs when rb-tabs-plain is active */
+body.rb-tabs-plain .workspace-tab-header-container-inner > .workspace-tab-header:not(.is-active):not(.new-tab) {
+  background: var(--rb-surface-2) !important;
+  color: var(--rb-ink) !important;
+  border: var(--rb-border-width) solid var(--rb-border-color) !important;
+  box-shadow: var(--rb-shadow-hard) !important;
+}
+
+body.rb-tabs-plain .workspace-tab-header.is-active {
+  background: var(--rb-accent) !important;
+  color: var(--rb-on-accent) !important;
+  border: var(--rb-border-width) solid var(--rb-border-color) !important;
+  box-shadow: var(--rb-shadow-hard) !important;
+}
+
+/* Right sidebar / ribbon icon tabs (plain mode) */
+body.rb-tabs-plain .workspace-ribbon .side-dock-ribbon-action {
+  background: var(--rb-surface-2) !important;
+  color: var(--rb-ink) !important;
+  border: var(--rb-border-width) solid var(--rb-border-color) !important;
+  box-shadow: var(--rb-shadow-hard) !important;
+}
+
+body.rb-tabs-plain .workspace-ribbon .side-dock-ribbon-action.is-active {
+  background: var(--rb-accent) !important;
+  color: var(--rb-on-accent) !important;
+  box-shadow: var(--rb-shadow-hard) !important;
+}
+
+/* Colorful tabs ON by default - every nth tab gets a color */
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+1):not(.is-active):not(.new-tab) {
+  background: color-mix(in srgb, var(--rb-yellow) 75%, var(--rb-surface));
+  color: var(--rb-on-yellow);
+}
+
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+2):not(.is-active):not(.new-tab) {
+  background: color-mix(in srgb, var(--rb-mint) 75%, var(--rb-surface));
+  color: var(--rb-on-mint);
+}
+
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+3):not(.is-active):not(.new-tab) {
+  background: color-mix(in srgb, var(--rb-pink) 75%, var(--rb-surface));
+  color: var(--rb-on-pink);
+}
+
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+4):not(.is-active):not(.new-tab) {
+  background: color-mix(in srgb, var(--rb-lavender) 75%, var(--rb-surface));
+  color: var(--rb-on-lavender);
+}
+
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+5):not(.is-active):not(.new-tab) {
+  background: color-mix(in srgb, var(--rb-orange) 75%, var(--rb-surface));
+  color: var(--rb-on-orange);
+}
+
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+6):not(.is-active):not(.new-tab) {
+  background: color-mix(in srgb, var(--rb-aqua) 75%, var(--rb-surface));
+  color: var(--rb-on-aqua);
+}
+
+/* Active colorful tabs - full fill */
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+1).is-active {
+  background: var(--rb-yellow);
+  color: var(--rb-on-yellow);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-bottom-color: var(--rb-yellow);
+  box-shadow: var(--rb-shadow-hard);
+  bottom: -2px;
+  font-weight: 700;
+}
+
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+2).is-active {
+  background: var(--rb-mint);
+  color: var(--rb-on-mint);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-bottom-color: var(--rb-mint);
+  box-shadow: var(--rb-shadow-hard);
+  bottom: -2px;
+  font-weight: 700;
+}
+
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+3).is-active {
+  background: var(--rb-pink);
+  color: var(--rb-on-pink);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-bottom-color: var(--rb-pink);
+  box-shadow: var(--rb-shadow-hard);
+  bottom: -2px;
+  font-weight: 700;
+}
+
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+4).is-active {
+  background: var(--rb-lavender);
+  color: var(--rb-on-lavender);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-bottom-color: var(--rb-lavender);
+  box-shadow: var(--rb-shadow-hard);
+  bottom: -2px;
+  font-weight: 700;
+}
+
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+5).is-active {
+  background: var(--rb-orange);
+  color: var(--rb-on-orange);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-bottom-color: var(--rb-orange);
+  box-shadow: var(--rb-shadow-hard);
+  bottom: -2px;
+  font-weight: 700;
+}
+
+.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+6).is-active {
+  background: var(--rb-aqua);
+  color: var(--rb-on-aqua);
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-bottom-color: var(--rb-aqua);
+  box-shadow: var(--rb-shadow-hard);
+  bottom: -2px;
+  font-weight: 700;
+}
+
+/* Hover lift animation (default ON) */
+.workspace-tab-header:hover {
+  transform: translateY(-1px);
+}
+
+body.rb-no-anim .workspace-tab-header:hover {
+  transform: none;
+}
+
+/* Active tab indicator line (remove default) */
+.workspace-tab-header.is-active::after {
+  display: none;
+}
+
+/* Pinned tabs */
+.workspace-tab-header.is-pinned {
+  background: var(--rb-surface);
+  border-style: dashed;
+}
+
+/* Default active tab style (fallback when no colorful tabs class) */
+.workspace-tab-header.is-active {
+  border: var(--rb-border-width) solid var(--rb-border-color);
+  border-bottom-color: var(--rb-accent);
+  bottom: -2px;
+  box-shadow: var(--rb-shadow-hard);
+  font-weight: 700;
+}
+
+/* Plain active tab styling */
+body.rb-tabs-plain .workspace-tab-header.is-active {
+  background: var(--rb-accent);
+  color: var(--rb-on-accent);
+  border-bottom-color: var(--rb-accent);
+}
+
+/* Tab separator - remove default */
+.workspace-tab-header-inner::after {
+  display: none;
+}
+
+/* New tab button - not colored */
+.workspace-tab-header.new-tab {
+  background: var(--rb-surface);
+  color: var(--rb-ink);
+}
+
+.workspace-tab-header.new-tab:hover {
+  background: var(--rb-surface);
+  color: var(--rb-ink);
+}
+
+/* Hover animation behind animation guard */
+body:not(.rb-no-anim) .workspace-tab-header:hover {
+  transition: transform var(--rb-anim-speed) ease;
+}
+
+/* Close button positioning */
+.workspace-tab-header-inner-close-button {
+  margin-left: 8px;
+}
