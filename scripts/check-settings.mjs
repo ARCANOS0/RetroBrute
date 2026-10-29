@@ -23,7 +23,7 @@ const requiredKeys = {
   "variable-number": ["title", "default"],
   "variable-number-slider": ["title", "default", "min", "max", "step"],
   "variable-select": ["title", "default", "options"],
-  "variable-color": ["title", "default", "format"],
+   "variable-themed-color": ["title", "default-light", "default-dark", "format"]
 };
 
 const problems = [];

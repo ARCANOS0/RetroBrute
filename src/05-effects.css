@@ -20,8 +20,8 @@ body:not(.rb-grid-off).rb-grid-lines .mod-root .workspace-leaf-content[data-type
       var(--rb-grid-angle),
       transparent,
       transparent var(--rb-grid-line),
-      var(--rb-grid-color) var(--rb-grid-line),
-      var(--rb-grid-color) calc(var(--rb-grid-line) + 1px),
+      var(--rb-grid-line-color) var(--rb-grid-line),
+      var(--rb-grid-line-color) calc(var(--rb-grid-line) + 1px),
       transparent calc(var(--rb-grid-line) + 1px),
       transparent var(--rb-grid-size)
     ),
@@ -29,8 +29,8 @@ body:not(.rb-grid-off).rb-grid-lines .mod-root .workspace-leaf-content[data-type
       calc(var(--rb-grid-angle) + 90deg),
       transparent,
       transparent var(--rb-grid-line),
-      var(--rb-grid-color) var(--rb-grid-line),
-      var(--rb-grid-color) calc(var(--rb-grid-line) + 1px),
+      var(--rb-grid-line-color) var(--rb-grid-line),
+      var(--rb-grid-line-color) calc(var(--rb-grid-line) + 1px),
       transparent calc(var(--rb-grid-line) + 1px),
       transparent var(--rb-grid-size)
     );
@@ -43,8 +43,8 @@ body:not(.rb-grid-off).rb-grid-h .mod-root .workspace-leaf-content[data-type="ma
       calc(var(--rb-grid-angle) + 90deg),
       transparent,
       transparent var(--rb-grid-line),
-      var(--rb-grid-color) var(--rb-grid-line),
-      var(--rb-grid-color) calc(var(--rb-grid-line) + 1px),
+      var(--rb-grid-line-color) var(--rb-grid-line),
+      var(--rb-grid-line-color) calc(var(--rb-grid-line) + 1px),
       transparent calc(var(--rb-grid-line) + 1px),
       transparent var(--rb-grid-size)
     );
@@ -57,8 +57,8 @@ body:not(.rb-grid-off).rb-grid-v .mod-root .workspace-leaf-content[data-type="ma
       var(--rb-grid-angle),
       transparent,
       transparent var(--rb-grid-line),
-      var(--rb-grid-color) var(--rb-grid-line),
-      var(--rb-grid-color) calc(var(--rb-grid-line) + 1px),
+      var(--rb-grid-line-color) var(--rb-grid-line),
+      var(--rb-grid-line-color) calc(var(--rb-grid-line) + 1px),
       transparent calc(var(--rb-grid-line) + 1px),
       transparent var(--rb-grid-size)
     );
@@ -68,7 +68,7 @@ body:not(.rb-grid-off).rb-grid-v .mod-root .workspace-leaf-content[data-type="ma
 body:not(.rb-grid-off).rb-grid-dots .mod-root .workspace-leaf-content[data-type="markdown"] > .view-content {
   background-image: radial-gradient(
     circle,
-    var(--rb-grid-color) 1.5px,
+    var(--rb-grid-line-color) 1.5px,
     transparent 1.5px
   );
   background-size: var(--rb-grid-size) var(--rb-grid-size);

@@ -23,7 +23,9 @@ body {
   --rb-grid-size: 24px;
   --rb-grid-line: 1px;
   --rb-grid-angle: 0deg;
-  --rb-grid-color: color-mix(in srgb, var(--rb-ink) 10%, transparent);
+  --rb-grid-color: var(--rb-ink);
+  --rb-grid-opacity: 0.1;
+  --rb-grid-line-color: color-mix(in srgb, var(--rb-grid-color) calc(var(--rb-grid-opacity) * 100%), transparent);
   --rb-anim-speed: 120ms;
 
   /* ── Accent palette ── */

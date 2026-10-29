@@ -58,9 +58,18 @@ settings:
   - id: rb-grid-color
     title: Grid colour
     description: Color of the grid lines
-    type: variable-color
+    type: variable-themed-color
     format: hex
-    default: '#1B1B1B1A'
+    default-light: '#1B1B1B'
+    default-dark: '#F5EBD7'
+  - id: rb-grid-opacity
+    title: Grid opacity
+    description: How visible the grid lines are
+    type: variable-number-slider
+    default: 0.1
+    min: 0.02
+    max: 0.5
+    step: 0.02
   - id: rb-tabs-group
     title: Tabs
     type: heading

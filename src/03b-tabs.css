@@ -227,3 +227,9 @@ body:not(.rb-no-anim) .workspace-tab-header:hover {
 .workspace-tab-header-inner-close-button {
   margin-left: 8px;
 }
+
+/* Obsidian's inverted-corner curve is a 40px box-shadow in --background-primary. */
+.workspace-tab-header.is-active::before,
+.workspace-tab-header.is-active::after {
+  box-shadow: none !important;
+}

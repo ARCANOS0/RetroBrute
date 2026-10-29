@@ -26,7 +26,9 @@ body {
   --rb-grid-size: 24px;
   --rb-grid-line: 1px;
   --rb-grid-angle: 0deg;
-  --rb-grid-color: color-mix(in srgb, var(--rb-ink) 10%, transparent);
+  --rb-grid-color: var(--rb-ink);
+  --rb-grid-opacity: 0.1;
+  --rb-grid-line-color: color-mix(in srgb, var(--rb-grid-color) calc(var(--rb-grid-opacity) * 100%), transparent);
   --rb-anim-speed: 120ms;
 
   /* ── Accent palette ── */
@@ -1252,6 +1254,12 @@ body:not(.rb-no-anim) .workspace-tab-header:hover {
   margin-left: 8px;
 }
 
+/* Obsidian's inverted-corner curve is a 40px box-shadow in --background-primary. */
+.workspace-tab-header.is-active::before,
+.workspace-tab-header.is-active::after {
+  box-shadow: none !important;
+}
+
 /* ===== 04a-ui-components.css ===== */
 /* RetroBrute - Components */
 
@@ -2443,8 +2451,8 @@ body:not(.rb-grid-off).rb-grid-lines .mod-root .workspace-leaf-content[data-type
       var(--rb-grid-angle),
       transparent,
       transparent var(--rb-grid-line),
-      var(--rb-grid-color) var(--rb-grid-line),
-      var(--rb-grid-color) calc(var(--rb-grid-line) + 1px),
+      var(--rb-grid-line-color) var(--rb-grid-line),
+      var(--rb-grid-line-color) calc(var(--rb-grid-line) + 1px),
       transparent calc(var(--rb-grid-line) + 1px),
       transparent var(--rb-grid-size)
     ),
@@ -2452,8 +2460,8 @@ body:not(.rb-grid-off).rb-grid-lines .mod-root .workspace-leaf-content[data-type
       calc(var(--rb-grid-angle) + 90deg),
       transparent,
       transparent var(--rb-grid-line),
-      var(--rb-grid-color) var(--rb-grid-line),
-      var(--rb-grid-color) calc(var(--rb-grid-line) + 1px),
+      var(--rb-grid-line-color) var(--rb-grid-line),
+      var(--rb-grid-line-color) calc(var(--rb-grid-line) + 1px),
       transparent calc(var(--rb-grid-line) + 1px),
       transparent var(--rb-grid-size)
     );
@@ -2466,8 +2474,8 @@ body:not(.rb-grid-off).rb-grid-h .mod-root .workspace-leaf-content[data-type="ma
       calc(var(--rb-grid-angle) + 90deg),
       transparent,
       transparent var(--rb-grid-line),
-      var(--rb-grid-color) var(--rb-grid-line),
-      var(--rb-grid-color) calc(var(--rb-grid-line) + 1px),
+      var(--rb-grid-line-color) var(--rb-grid-line),
+      var(--rb-grid-line-color) calc(var(--rb-grid-line) + 1px),
       transparent calc(var(--rb-grid-line) + 1px),
       transparent var(--rb-grid-size)
     );
@@ -2480,8 +2488,8 @@ body:not(.rb-grid-off).rb-grid-v .mod-root .workspace-leaf-content[data-type="ma
       var(--rb-grid-angle),
       transparent,
       transparent var(--rb-grid-line),
-      var(--rb-grid-color) var(--rb-grid-line),
-      var(--rb-grid-color) calc(var(--rb-grid-line) + 1px),
+      var(--rb-grid-line-color) var(--rb-grid-line),
+      var(--rb-grid-line-color) calc(var(--rb-grid-line) + 1px),
       transparent calc(var(--rb-grid-line) + 1px),
       transparent var(--rb-grid-size)
     );
@@ -2491,7 +2499,7 @@ body:not(.rb-grid-off).rb-grid-v .mod-root .workspace-leaf-content[data-type="ma
 body:not(.rb-grid-off).rb-grid-dots .mod-root .workspace-leaf-content[data-type="markdown"] > .view-content {
   background-image: radial-gradient(
     circle,
-    var(--rb-grid-color) 1.5px,
+    var(--rb-grid-line-color) 1.5px,
     transparent 1.5px
   );
   background-size: var(--rb-grid-size) var(--rb-grid-size);
@@ -2648,9 +2656,18 @@ settings:
   - id: rb-grid-color
     title: Grid colour
     description: Color of the grid lines
-    type: variable-color
+    type: variable-themed-color
     format: hex
-    default: '#1B1B1B1A'
+    default-light: '#1B1B1B'
+    default-dark: '#F5EBD7'
+  - id: rb-grid-opacity
+    title: Grid opacity
+    description: How visible the grid lines are
+    type: variable-number-slider
+    default: 0.1
+    min: 0.02
+    max: 0.5
+    step: 0.02
   - id: rb-tabs-group
     title: Tabs
     type: heading

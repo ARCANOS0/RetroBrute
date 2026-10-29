@@ -1,0 +1,97 @@
+[1mdiff --git a/src/00-tokens.css b/src/00-tokens.css[m
+[1mindex e950831..bbaf9fc 100644[m
+[1m--- a/src/00-tokens.css[m
+[1m+++ b/src/00-tokens.css[m
+[36m@@ -23,7 +23,9 @@[m [mbody {[m
+   --rb-grid-size: 24px;[m
+   --rb-grid-line: 1px;[m
+   --rb-grid-angle: 0deg;[m
+[31m-  --rb-grid-color: color-mix(in srgb, var(--rb-ink) 10%, transparent);[m
+[32m+[m[32m  --rb-grid-color: var(--rb-ink);[m
+[32m+[m[32m  --rb-grid-opacity: 0.1;[m
+[32m+[m[32m  --rb-grid-line-color: color-mix(in srgb, var(--rb-grid-color) calc(var(--rb-grid-opacity) * 100%), transparent);[m
+   --rb-anim-speed: 120ms;[m
+ [m
+   /* ── Accent palette ── */[m
+[1mdiff --git a/src/05-effects.css b/src/05-effects.css[m
+[1mindex efa0138..7cd81a1 100644[m
+[1m--- a/src/05-effects.css[m
+[1m+++ b/src/05-effects.css[m
+[36m@@ -20,8 +20,8 @@[m [mbody:not(.rb-grid-off).rb-grid-lines .mod-root .workspace-leaf-content[data-type[m
+       var(--rb-grid-angle),[m
+       transparent,[m
+       transparent var(--rb-grid-line),[m
+[31m-      var(--rb-grid-color) var(--rb-grid-line),[m
+[31m-      var(--rb-grid-color) calc(var(--rb-grid-line) + 1px),[m
+[32m+[m[32m      var(--rb-grid-line-color) var(--rb-grid-line),[m
+[32m+[m[32m      var(--rb-grid-line-color) calc(var(--rb-grid-line) + 1px),[m
+       transparent calc(var(--rb-grid-line) + 1px),[m
+       transparent var(--rb-grid-size)[m
+     ),[m
+[36m@@ -29,8 +29,8 @@[m [mbody:not(.rb-grid-off).rb-grid-lines .mod-root .workspace-leaf-content[data-type[m
+       calc(var(--rb-grid-angle) + 90deg),[m
+       transparent,[m
+       transparent var(--rb-grid-line),[m
+[31m-      var(--rb-grid-color) var(--rb-grid-line),[m
+[31m-      var(--rb-grid-color) calc(var(--rb-grid-line) + 1px),[m
+[32m+[m[32m      var(--rb-grid-line-color) var(--rb-grid-line),[m
+[32m+[m[32m      var(--rb-grid-line-color) calc(var(--rb-grid-line) + 1px),[m
+       transparent calc(var(--rb-grid-line) + 1px),[m
+       transparent var(--rb-grid-size)[m
+     );[m
+[36m@@ -43,8 +43,8 @@[m [mbody:not(.rb-grid-off).rb-grid-h .mod-root .workspace-leaf-content[data-type="ma[m
+       calc(var(--rb-grid-angle) + 90deg),[m
+       transparent,[m
+       transparent var(--rb-grid-line),[m
+[31m-      var(--rb-grid-color) var(--rb-grid-line),[m
+[31m-      var(--rb-grid-color) calc(var(--rb-grid-line) + 1px),[m
+[32m+[m[32m      var(--rb-grid-line-color) var(--rb-grid-line),[m
+[32m+[m[32m      var(--rb-grid-line-color) calc(var(--rb-grid-line) + 1px),[m
+       transparent calc(var(--rb-grid-line) + 1px),[m
+       transparent var(--rb-grid-size)[m
+     );[m
+[36m@@ -57,8 +57,8 @@[m [mbody:not(.rb-grid-off).rb-grid-v .mod-root .workspace-leaf-content[data-type="ma[m
+       var(--rb-grid-angle),[m
+       transparent,[m
+       transparent var(--rb-grid-line),[m
+[31m-      var(--rb-grid-color) var(--rb-grid-line),[m
+[31m-      var(--rb-grid-color) calc(var(--rb-grid-line) + 1px),[m
+[32m+[m[32m      var(--rb-grid-line-color) var(--rb-grid-line),[m
+[32m+[m[32m      var(--rb-grid-line-color) calc(var(--rb-grid-line) + 1px),[m
+       transparent calc(var(--rb-grid-line) + 1px),[m
+       transparent var(--rb-grid-size)[m
+     );[m
+[36m@@ -68,7 +68,7 @@[m [mbody:not(.rb-grid-off).rb-grid-v .mod-root .workspace-leaf-content[data-type="ma[m
+ body:not(.rb-grid-off).rb-grid-dots .mod-root .workspace-leaf-content[data-type="markdown"] > .view-content {[m
+   background-image: radial-gradient([m
+     circle,[m
+[31m-    var(--rb-grid-color) 1.5px,[m
+[32m+[m[32m    var(--rb-grid-line-color) 1.5px,[m
+     transparent 1.5px[m
+   );[m
+   background-size: var(--rb-grid-size) var(--rb-grid-size);[m
+[1mdiff --git a/src/99-style-settings.css b/src/99-style-settings.css[m
+[1mindex b22a6ea..da88a9f 100644[m
+[1m--- a/src/99-style-settings.css[m
+[1m+++ b/src/99-style-settings.css[m
+[36m@@ -58,9 +58,18 @@[m [msettings:[m
+   - id: rb-grid-color[m
+     title: Grid colour[m
+     description: Color of the grid lines[m
+[31m-    type: variable-color[m
+[32m+[m[32m    type: variable-themed-color[m
+     format: hex[m
+[31m-    default: '#1B1B1B1A'[m
+[32m+[m[32m    default-light: '#1B1B1B'[m
+[32m+[m[32m    default-dark: '#F5EBD7'[m
+[32m+[m[32m  - id: rb-grid-opacity[m
+[32m+[m[32m    title: Grid opacity[m
+[32m+[m[32m    description: How visible the grid lines are[m
+[32m+[m[32m    type: variable-number-slider[m
+[32m+[m[32m    default: 0.1[m
+[32m+[m[32m    min: 0.02[m
+[32m+[m[32m    max: 0.5[m
+[32m+[m[32m    step: 0.02[m
+   - id: rb-tabs-group[m
+     title: Tabs[m
+     type: heading[m
