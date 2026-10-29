@@ -7,6 +7,7 @@ body {
   /* ── Structure ── */
   --rb-border-width: 2px;
   --rb-border-color: var(--rb-ink);
+  --rb-divider: color-mix(in srgb, var(--rb-ink) 20%, transparent);
   --rb-shadow-x: 3px;
   --rb-shadow-y: 3px;
   --rb-shadow-hard: var(--rb-shadow-x) var(--rb-shadow-y) 0 var(--rb-shadow-color);
@@ -43,9 +44,10 @@ body {
   --rb-on-grey: #FFFFFF;
 
   /* ── Fonts ── */
-  --rb-font-heading: "Space Grotesk", "Syne", system-ui, sans-serif;
-  --rb-font-text: "Source Serif 4", Georgia, serif;
-  --rb-font-mono: "JetBrains Mono", "Courier New", monospace;
+  --rb-font-heading: "JetBrains Mono", "JetBrainsMono Nerd Font", monospace;
+  --rb-font-text: "JetBrains Mono", "JetBrainsMono Nerd Font", monospace;
+  --rb-font-mono: "JetBrains Mono", "JetBrainsMono Nerd Font", monospace;
+  --rb-font-ui: "JetBrains Mono", "JetBrainsMono Nerd Font", monospace;
   --rb-font-pixel: "Press Start 2P", "VT323", monospace;
 
      --rb-on-accent: #1B1B1B;
@@ -152,7 +154,7 @@ body {
   --background-secondary-alt: var(--rb-bg);
   --background-modifier-hover: color-mix(in srgb, var(--rb-accent) 25%, transparent);
   --background-modifier-active-hover: color-mix(in srgb, var(--rb-accent) 25%, transparent);
-  --background-modifier-border: var(--rb-border-color);
+  --background-modifier-border: var(--rb-divider);
   --background-modifier-border-hover: color-mix(in srgb, var(--rb-accent) 25%, transparent);
   --background-modifier-error: var(--rb-red);
   --background-modifier-error-hover: var(--rb-red);
@@ -189,15 +191,22 @@ body {
   --color-pink: var(--rb-pink);
 
   /* Fonts */
-  --font-interface-theme: var(--rb-font-heading);
+  --font-interface-theme: var(--rb-font-ui);
   --font-text-theme: var(--rb-font-text);
   --font-monospace-theme: var(--rb-font-mono);
 }
 
 /* ── Typography ── */
 body {
-  font-family: var(--rb-font-heading);
   color: var(--rb-ink);
+}
+
+button,
+input,
+select,
+textarea,
+.dropdown {
+  font-family: inherit;
 }
 
 /* Headings */
@@ -385,8 +394,8 @@ mark, .markdown-rendered mark, .cm-highlight {
 
 .nav-folder-title:hover,
 .nav-file-title:hover {
-  background: var(--rb-accent);
-  color: var(--rb-on-accent);
+  background: color-mix(in srgb, var(--rb-accent) 25%, transparent);
+  color: var(--rb-ink);
 }
 
 .nav-folder-title.is-active,
@@ -403,7 +412,10 @@ mark, .markdown-rendered mark, .cm-highlight {
   margin-right: 4px;
 }
 
-.nav-folder-title:hover .nav-folder-collapse-indicator,
+.nav-folder-title:hover .nav-folder-collapse-indicator {
+  color: var(--rb-ink);
+}
+
 .nav-folder-title.is-active .nav-folder-collapse-indicator {
   color: var(--rb-on-accent);
 }
@@ -473,8 +485,8 @@ mark, .markdown-rendered mark, .cm-highlight {
 }
 
 .status-bar-item:hover {
-  background: var(--rb-accent);
-  color: var(--rb-on-accent);
+  background: color-mix(in srgb, var(--rb-accent) 25%, transparent);
+  color: var(--rb-ink);
 }
 
 /* ── Ribbon (left/right edges) ── */
@@ -486,8 +498,8 @@ mark, .markdown-rendered mark, .cm-highlight {
 }
 
 .side-dock-ribbon-action:hover {
-  background: var(--rb-accent);
-  color: var(--rb-on-accent);
+  background: color-mix(in srgb, var(--rb-accent) 25%, transparent);
+  color: var(--rb-ink);
 }
 
 .side-dock-ribbon-action.is-active {
@@ -513,8 +525,8 @@ mark, .markdown-rendered mark, .cm-highlight {
 }
 
 .titlebar-button:hover {
-  background: var(--rb-accent);
-  color: var(--rb-on-accent);
+  background: color-mix(in srgb, var(--rb-accent) 25%, transparent);
+  color: var(--rb-ink);
   opacity: 1;
 }
 
@@ -585,7 +597,11 @@ body:not(.rb-no-anim) .modal {
   color: var(--rb-ink);
 }
 
-.menu-item:hover,
+.menu-item:hover {
+  background: color-mix(in srgb, var(--rb-accent) 25%, transparent);
+  color: var(--rb-ink);
+}
+
 .menu-item.selected {
   background: var(--rb-accent);
   color: var(--rb-on-accent);
@@ -598,6 +614,12 @@ body:not(.rb-no-anim) .modal {
 .menu-separator {
   border-bottom: var(--rb-border-width) solid var(--rb-border-color);
   margin: 4px 0;
+}
+
+.suggestion-item {
+  padding: 8px 12px;
+  border-top: none;
+  border-bottom: 2px dashed var(--rb-divider);
 }
 
 /* ── Tooltips ── */
@@ -736,24 +758,28 @@ body:not(.rb-no-anim) .modal {
 }
 
 .modal.mod-settings .vertical-tab-nav-item {
-  padding: 10px 16px;
-  border-radius: 0;
+  margin: 4px 12px;
+  padding: 8px 12px;
+  border-radius: var(--rb-radius-s);
+  border: 2px solid transparent;
   color: var(--rb-ink);
 }
 
 .modal.mod-settings .vertical-tab-nav-item:hover {
-  background: var(--rb-accent);
-  color: var(--rb-on-accent);
+  background: color-mix(in srgb, var(--rb-accent) 25%, transparent);
+  color: var(--rb-ink);
 }
 
 .modal.mod-settings .vertical-tab-nav-item.is-active {
   background: var(--rb-accent);
   color: var(--rb-on-accent);
-  border-left: 3px solid var(--rb-border-color);
+  border: 2px solid var(--rb-border-color);
+  box-shadow: var(--rb-shadow-hard);
 }
 
 .modal.mod-settings .setting-item {
-  border-bottom: 2px dashed color-mix(in srgb, var(--rb-ink) 25%, var(--rb-surface));
+  border-top: none;
+  border-bottom: 2px dashed var(--rb-divider);
   padding: 16px 0;
 }
 
@@ -1326,9 +1352,6 @@ label {
 }
 
 /* ── Form groups ── */
-.setting-item + .setting-item {
-  border-top: 2px dashed color-mix(in srgb, var(--rb-ink) 25%, var(--rb-surface));
-}
 
 /* ── Color input ── */
 input[type="color"] {

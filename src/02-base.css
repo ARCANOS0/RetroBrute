@@ -9,7 +9,7 @@ body {
   --background-secondary-alt: var(--rb-bg);
   --background-modifier-hover: color-mix(in srgb, var(--rb-accent) 25%, transparent);
   --background-modifier-active-hover: color-mix(in srgb, var(--rb-accent) 25%, transparent);
-  --background-modifier-border: var(--rb-border-color);
+  --background-modifier-border: var(--rb-divider);
   --background-modifier-border-hover: color-mix(in srgb, var(--rb-accent) 25%, transparent);
   --background-modifier-error: var(--rb-red);
   --background-modifier-error-hover: var(--rb-red);
@@ -46,15 +46,22 @@ body {
   --color-pink: var(--rb-pink);
 
   /* Fonts */
-  --font-interface-theme: var(--rb-font-heading);
+  --font-interface-theme: var(--rb-font-ui);
   --font-text-theme: var(--rb-font-text);
   --font-monospace-theme: var(--rb-font-mono);
 }
 
 /* ── Typography ── */
 body {
-  font-family: var(--rb-font-heading);
   color: var(--rb-ink);
+}
+
+button,
+input,
+select,
+textarea,
+.dropdown {
+  font-family: inherit;
 }
 
 /* Headings */

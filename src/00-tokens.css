@@ -4,6 +4,7 @@ body {
   /* ── Structure ── */
   --rb-border-width: 2px;
   --rb-border-color: var(--rb-ink);
+  --rb-divider: color-mix(in srgb, var(--rb-ink) 20%, transparent);
   --rb-shadow-x: 3px;
   --rb-shadow-y: 3px;
   --rb-shadow-hard: var(--rb-shadow-x) var(--rb-shadow-y) 0 var(--rb-shadow-color);
@@ -40,9 +41,10 @@ body {
   --rb-on-grey: #FFFFFF;
 
   /* ── Fonts ── */
-  --rb-font-heading: "Space Grotesk", "Syne", system-ui, sans-serif;
-  --rb-font-text: "Source Serif 4", Georgia, serif;
-  --rb-font-mono: "JetBrains Mono", "Courier New", monospace;
+  --rb-font-heading: "JetBrains Mono", "JetBrainsMono Nerd Font", monospace;
+  --rb-font-text: "JetBrains Mono", "JetBrainsMono Nerd Font", monospace;
+  --rb-font-mono: "JetBrains Mono", "JetBrainsMono Nerd Font", monospace;
+  --rb-font-ui: "JetBrains Mono", "JetBrainsMono Nerd Font", monospace;
   --rb-font-pixel: "Press Start 2P", "VT323", monospace;
 
      --rb-on-accent: #1B1B1B;

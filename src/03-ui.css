@@ -43,8 +43,8 @@
 
 .nav-folder-title:hover,
 .nav-file-title:hover {
-  background: var(--rb-accent);
-  color: var(--rb-on-accent);
+  background: color-mix(in srgb, var(--rb-accent) 25%, transparent);
+  color: var(--rb-ink);
 }
 
 .nav-folder-title.is-active,
@@ -61,7 +61,10 @@
   margin-right: 4px;
 }
 
-.nav-folder-title:hover .nav-folder-collapse-indicator,
+.nav-folder-title:hover .nav-folder-collapse-indicator {
+  color: var(--rb-ink);
+}
+
 .nav-folder-title.is-active .nav-folder-collapse-indicator {
   color: var(--rb-on-accent);
 }
@@ -131,8 +134,8 @@
 }
 
 .status-bar-item:hover {
-  background: var(--rb-accent);
-  color: var(--rb-on-accent);
+  background: color-mix(in srgb, var(--rb-accent) 25%, transparent);
+  color: var(--rb-ink);
 }
 
 /* ── Ribbon (left/right edges) ── */
@@ -144,8 +147,8 @@
 }
 
 .side-dock-ribbon-action:hover {
-  background: var(--rb-accent);
-  color: var(--rb-on-accent);
+  background: color-mix(in srgb, var(--rb-accent) 25%, transparent);
+  color: var(--rb-ink);
 }
 
 .side-dock-ribbon-action.is-active {
@@ -171,8 +174,8 @@
 }
 
 .titlebar-button:hover {
-  background: var(--rb-accent);
-  color: var(--rb-on-accent);
+  background: color-mix(in srgb, var(--rb-accent) 25%, transparent);
+  color: var(--rb-ink);
   opacity: 1;
 }
 
@@ -243,7 +246,11 @@ body:not(.rb-no-anim) .modal {
   color: var(--rb-ink);
 }
 
-.menu-item:hover,
+.menu-item:hover {
+  background: color-mix(in srgb, var(--rb-accent) 25%, transparent);
+  color: var(--rb-ink);
+}
+
 .menu-item.selected {
   background: var(--rb-accent);
   color: var(--rb-on-accent);
@@ -256,6 +263,12 @@ body:not(.rb-no-anim) .modal {
 .menu-separator {
   border-bottom: var(--rb-border-width) solid var(--rb-border-color);
   margin: 4px 0;
+}
+
+.suggestion-item {
+  padding: 8px 12px;
+  border-top: none;
+  border-bottom: 2px dashed var(--rb-divider);
 }
 
 /* ── Tooltips ── */
@@ -394,24 +407,28 @@ body:not(.rb-no-anim) .modal {
 }
 
 .modal.mod-settings .vertical-tab-nav-item {
-  padding: 10px 16px;
-  border-radius: 0;
+  margin: 4px 12px;
+  padding: 8px 12px;
+  border-radius: var(--rb-radius-s);
+  border: 2px solid transparent;
   color: var(--rb-ink);
 }
 
 .modal.mod-settings .vertical-tab-nav-item:hover {
-  background: var(--rb-accent);
-  color: var(--rb-on-accent);
+  background: color-mix(in srgb, var(--rb-accent) 25%, transparent);
+  color: var(--rb-ink);
 }
 
 .modal.mod-settings .vertical-tab-nav-item.is-active {
   background: var(--rb-accent);
   color: var(--rb-on-accent);
-  border-left: 3px solid var(--rb-border-color);
+  border: 2px solid var(--rb-border-color);
+  box-shadow: var(--rb-shadow-hard);
 }
 
 .modal.mod-settings .setting-item {
-  border-bottom: 2px dashed color-mix(in srgb, var(--rb-ink) 25%, var(--rb-surface));
+  border-top: none;
+  border-bottom: 2px dashed var(--rb-divider);
   padding: 16px 0;
 }
 

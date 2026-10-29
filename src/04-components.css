@@ -523,9 +523,6 @@ label {
 }
 
 /* ── Form groups ── */
-.setting-item + .setting-item {
-  border-top: 2px dashed color-mix(in srgb, var(--rb-ink) 25%, var(--rb-surface));
-}
 
 /* ── Color input ── */
 input[type="color"] {
