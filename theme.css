@@ -1836,6 +1836,14 @@ input[type="color"]::-webkit-color-swatch {
   border-radius: calc(var(--rb-radius-s) - 2px);
 }
 
+/* Dropdown: fixed height with no vertical padding, so text centres and never clips. */
+select.dropdown {
+  height: 36px;
+  padding-block: 0;
+  padding-inline: 12px 32px;
+  line-height: normal;
+}
+
 /* ===== 04b-content-components.css ===== */
 /* RetroBrute - Content Components */
 
