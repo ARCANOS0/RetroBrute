@@ -81,7 +81,7 @@ body.theme-dark {
   --rb-surface: #2A2928;
   --rb-surface-2: #181716;
   --rb-ink: #F5EBD7;
-  --rb-ink-soft: #A8A29E;
+  --rb-ink-soft: #bcb4af;
   --rb-shadow-color: #0A0A0A;
-  --rb-accent: var(--rb-terracotta);
 }
+

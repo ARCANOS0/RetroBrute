@@ -54,6 +54,7 @@ body {
   --rb-on-terracotta: #1B1B1B;
   --rb-grey: #4B5057;
   --rb-on-grey: #FFFFFF;
+  --icon-color:#fff
 
   /* ── Fonts ── */
   --rb-font-heading: "JetBrains Mono", "JetBrainsMono Nerd Font", monospace;
@@ -84,8 +85,54 @@ body.theme-dark {
   --rb-surface: #2A2928;
   --rb-surface-2: #181716;
   --rb-ink: #F5EBD7;
-  --rb-ink-soft: #A8A29E;
+  --rb-ink-soft: #bcb4af;
   --rb-shadow-color: #0A0A0A;
+  --rb-accent: var(--rb-terracotta);
+
+
+  /* ── Structure Adjustments ── */
+  --rb-border-color: var(--rb-ink);
+  --rb-divider: color-mix(in srgb, var(--rb-ink) 18%, transparent);
+  --rb-grid-color: var(--rb-ink);
+  --rb-grid-opacity: 0.08;
+  
+  /* ── Adjusted Accent Palette (Desaturated ~15-20% for readability) ── */
+  --rb-mint: #68D4B5;
+  --rb-on-mint: #0E1A17;
+  
+  --rb-orange: #E08C69;
+  --rb-on-orange: #1E120D;
+  
+  --rb-red: #E05868;
+  --rb-on-red: #1F0D10;
+  
+  --rb-violet: #9785EC;
+  --rb-on-violet: #120F24;
+  
+  --rb-yellow: #E6C24A;
+  --rb-on-yellow: #1F1908;
+  
+  --rb-lime: #C4E045;
+  --rb-on-lime: #161C05;
+  
+  --rb-aqua: #9ADED5;
+  --rb-on-aqua: #0E1C1A;
+  
+  --rb-pink: #EC719C;
+  --rb-on-pink: #200D15;
+  
+  --rb-lavender: #BAA2E8;
+  --rb-on-lavender: #171123;
+  
+  --rb-terracotta: #E27B5B;
+  --rb-on-terracotta: #1C0F0B;
+  
+  --rb-grey: #2F333B;
+  --rb-on-grey: #F0F2F5;
+  
+  /* ── Default Accent ── */
+  --rb-accent: var(--rb-terracotta);
+  --rb-on-accent: var(--rb-on-terracotta);
   --rb-accent: var(--rb-terracotta);
 }
 
@@ -216,6 +263,30 @@ body {
 /* ── Typography ── */
 body {
   color: var(--rb-ink);
+}
+
+/* ── Global Scrollbar Styles for Obsidian ── */
+
+/* Width and height of the scrollbar track */
+body ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* The background track area */
+body ::-webkit-scrollbar-track {
+  /* background: var(--rb-bg); */
+}
+
+/* The draggable scroll handle */
+body ::-webkit-scrollbar-thumb {
+  scrollbar-width: thin;
+  background: var(--rb-accent);
+}
+
+/* Scroll handle hover state */
+body ::-webkit-scrollbar-thumb:hover {
+  background: var(--rb-mint);
 }
 
 button,
@@ -722,7 +793,7 @@ textarea {
 }
 
 .modal-content {
-  /* padding: 16px; */
+  /* padding: 16px; Removed padding from modal */ 
   border: var(--rb-border-width) solid var(--rb-border-color);
 }
 
@@ -895,7 +966,7 @@ body:not(.rb-no-anim) .modal {
   align-items: center;
   justify-content: center;
   gap: var(--rb-space-2);
-  padding: var(--rb-space-2);
+  padding: calc(var(--rb-space-2)/1.5);
   line-height: 1.5;
 }
 
@@ -2600,6 +2671,18 @@ body:not(.rb-no-anim) .nav-folder-title,
 body:not(.rb-no-anim) .nav-file-title,
 body:not(.rb-no-anim) .menu-item {
   transition: background-color var(--rb-anim-speed) ease, color var(--rb-anim-speed) ease;
+}
+
+.nav-buttons-container{
+  justify-content: start;
+}
+
+.view-header-nav-buttons{
+  gap: 4px;
+}
+
+.view-header-left{
+  margin: 4px 0;
 }
 
 /* ===== 06-plugins.css ===== */
