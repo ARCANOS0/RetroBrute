@@ -459,7 +459,7 @@ blockquote,
 
 /* Modal content */
 .modal-content {
-  padding: var(--rb-pad-box);
+   padding: 0; /* Removed padding from modal */ 
 }
 
 /* Status bar items */
@@ -722,7 +722,8 @@ textarea {
 }
 
 .modal-content {
-  padding: 16px;
+  /* padding: 16px; */
+  border: var(--rb-border-width) solid var(--rb-border-color);
 }
 
 .modal-close-button {
