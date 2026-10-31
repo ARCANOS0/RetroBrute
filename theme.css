@@ -91,9 +91,9 @@ body.theme-dark {
 
 
   /* ── Structure Adjustments ── */
-  --rb-border-color: var(--rb-ink);
-  --rb-divider: color-mix(in srgb, var(--rb-ink) 18%, transparent);
-  --rb-grid-color: var(--rb-ink);
+  --rb-border-color: var(--rb-ink-soft);
+  --rb-divider: color-mix(in srgb, var(--rb-ink-soft) 18%, transparent);
+  --rb-grid-color: var(--rb-ink-soft);
   --rb-grid-opacity: 0.08;
   
   /* ── Adjusted Accent Palette (Desaturated ~15-20% for readability) ── */
@@ -266,29 +266,34 @@ body {
 }
 
 /* ── Global Scrollbar Styles for Obsidian ── */
-
-/* Width and height of the scrollbar track */
-body ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-/* The background track area */
-body ::-webkit-scrollbar-track {
-  /* background: var(--rb-bg); */
-}
-
-/* The draggable scroll handle */
-body ::-webkit-scrollbar-thumb {
+/* Target the main workspace and editor scrollbars */
+body, 
+body .workspace-leaf-content,
+body .cm-scroller,
+body .nav-files-container,
+body .vertical-tab-content {
   scrollbar-width: thin;
-  background: var(--rb-accent);
+  scrollbar-color: var(--rb-accent) transparent;
 }
 
-/* Scroll handle hover state */
+/* WebKit fallback for Obsidian desktop */
+body ::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+}
+
+body ::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+body ::-webkit-scrollbar-thumb {
+  background: var(--rb-accent) !important;
+  border-radius: 999px !important;
+}
+
 body ::-webkit-scrollbar-thumb:hover {
-  background: var(--rb-mint);
+  background: var(--rb-ink) !important;
 }
-
 button,
 input,
 select,
@@ -1207,7 +1212,7 @@ body.rb-tabs-plain .workspace-ribbon .side-dock-ribbon-action.is-active {
 .workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+1).is-active {
   background: var(--rb-yellow);
   color: var(--rb-on-yellow);
-  border: var(--rb-border-width) solid var(--rb-border-color);
+  border: var(--rb-border-width) solid var(--rb-ink-soft);
   border-bottom-color: var(--rb-yellow);
   box-shadow: var(--rb-shadow-hard);
   bottom: -2px;

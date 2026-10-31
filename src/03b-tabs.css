@@ -233,3 +233,5 @@ body:not(.rb-no-anim) .workspace-tab-header:hover {
 .workspace-tab-header.is-active::after {
   box-shadow: none !important;
 }
+
+
