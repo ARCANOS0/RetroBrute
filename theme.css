@@ -236,6 +236,15 @@ body {
   --interactive-warning: var(--rb-orange);
   --interactive-error: var(--rb-red);
 
+  /* Base accent: plugins (Style Settings, etc.) read --color-accent, which is
+     Obsidian's purple default unless the theme maps it. */
+  --color-accent: var(--rb-accent);
+  --color-accent-1: var(--rb-accent);
+  --color-accent-2: var(--rb-accent);
+  --accent-h: 15;
+  --accent-s: 63%;
+  --accent-l: 60%;
+
   /* Colors */
   --color-red: var(--rb-red);
   --color-orange: var(--rb-orange);
@@ -1588,6 +1597,15 @@ input[type="range"] {
   outline: none;
 }
 
+/* Style Settings paints a plugin-side fill behind the input; it overflows our
+   track, so keep the input itself transparent and let the track/thumb show. */
+body .modal-content input[type="range"],
+body .setting-item input[type="range"],
+body .style-settings-container input[type="range"] {
+  background: transparent;
+  box-shadow: none;
+}
+
 /* Track */
 input[type="range"]::-webkit-slider-runnable-track {
   height: 12px;
@@ -1617,7 +1635,7 @@ input[type="range"]::-webkit-slider-thumb {
   box-shadow: 2px 2px 0 var(--rb-shadow-color);
   margin-top: calc((12px - 20px) / 2);
   position: relative;
-  top: 0;
+  top: -2px;
   cursor: pointer;
 }
 
@@ -1629,6 +1647,7 @@ input[type="range"]::-moz-range-thumb {
   border-radius: 50%;
   background: var(--rb-accent);
   box-shadow: 2px 2px 0 var(--rb-shadow-color);
+  transform: translateY(-2px);
   cursor: pointer;
 }
 
