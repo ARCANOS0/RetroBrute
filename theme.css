@@ -2697,100 +2697,37 @@ body:not(.rb-no-anim) .menu-item {
 .modal .checkbox-container:after{
   margin:0
 }
+/* The track/container of the switch */
+.switch-container input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 40px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 0; /* Makes the track square/rectangular */
+  position: relative;
+  cursor: pointer;
+  transition: background-color var(--rb-anim-speed) ease;
+}
 
-/* ===== 06-plugins.css ===== */
-/* RetroBrute - Plugins */
-/* ===== 99-style-settings.css ===== */
-/* RetroBrute - Style Settings */
+/* The moving thumb/handle */
+.checkbox-container input[type="checkbox"]::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 0; /* Makes the thumb a square */
+  transition: transform var(--rb-anim-speed) ease;
+}
 
-/* @settings
-name: RetroBrute
-id: rb-settings
-settings:
-  - id: rb-grid-group
-    title: Grid
-    type: heading
-    level: 2
-    collapsed: false
-  - id: rb-grid-off
-    title: Disable grid
-    description: Turn off the grid background
-    type: class-toggle
-    default: false
-  - id: rb-grid-style
-    title: Grid style
-    description: Choose the grid pattern to display
-    type: class-select
-    default: rb-grid-lines
-    options:
-      - value: rb-grid-lines
-        label: Lines (default)
-      - value: rb-grid-h
-        label: Horizontal only
-      - value: rb-grid-v
-        label: Vertical only
-      - value: rb-grid-dots
-        label: Dots
-  - id: rb-grid-size
-    title: Grid size
-    description: Distance between grid lines
-    type: variable-number-slider
-    default: 24
-    min: 8
-    max: 80
-    step: 2
-    format: px
-  - id: rb-grid-line
-    title: Line thickness
-    description: Grid line thickness
-    type: variable-number-slider
-    default: 1
-    min: 1
-    max: 3
-    step: 1
-    format: px
-  - id: rb-grid-angle
-    title: Grid angle
-    description: Rotation angle for grid lines
-    type: variable-number-slider
-    default: 0
-    min: -45
-    max: 45
-    step: 1
-    format: deg
-  - id: rb-grid-color
-    title: Grid colour
-    description: Color of the grid lines
-    type: variable-themed-color
-    format: hex
-    default-light: '#1B1B1B'
-    default-dark: '#F5EBD7'
-  - id: rb-grid-opacity
-    title: Grid opacity
-    description: How visible the grid lines are
-    type: variable-number-slider
-    default: 0.1
-    min: 0.02
-    max: 0.5
-    step: 0.02
-  - id: rb-tabs-group
-    title: Tabs
-    type: heading
-    level: 2
-    collapsed: false
-  - id: rb-tabs-plain
-    title: Plain tabs
-    description: Use plain accent color instead of colorful tabs
-    type: class-toggle
-    default: false
-  - id: rb-anim-group
-    title: Animation
-    type: heading
-    level: 2
-    collapsed: false
-  - id: rb-no-anim
-    title: Disable animations
-    description: Turn off all animations and transitions
-    type: class-toggle
-    default: false
-*/
+input[type="text"], input[type="search"], input[type="email"], input[type="password"], input[type="number"], input[type="url"], textarea, .setting-item input, .modal-content input, .modal-content textarea{
+  box-shadow: none;
+}
+
+input[type='range'].slider {
+     --slider-fill-position: 0;
+}
+
