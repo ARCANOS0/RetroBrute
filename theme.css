@@ -2690,6 +2690,14 @@ body:not(.rb-no-anim) .menu-item {
   margin: 4px 0;
 }
 
+.markdown-embed, .internal-embed {
+  box-shadow: none;
+}
+
+.modal .checkbox-container:after{
+  margin:0
+}
+
 /* ===== 06-plugins.css ===== */
 /* RetroBrute - Plugins */
 /* ===== 99-style-settings.css ===== */
