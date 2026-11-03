@@ -62,9 +62,9 @@ body {
   --rb-font-ui: "JetBrains Mono", "JetBrainsMono Nerd Font", monospace;
   --rb-font-pixel: "Press Start 2P", "VT323", monospace;
 
-     --rb-on-accent: #1B1B1B;
   /* ── Default accent ── */
   --rb-accent: var(--rb-terracotta);
+  --rb-on-accent: var(--rb-on-terracotta);
 }
 
 /* Light default: cream */
@@ -84,10 +84,43 @@ body.theme-dark {
   --rb-surface: #2A2928;
   --rb-surface-2: #181716;
   --rb-ink: #F5EBD7;
-  --rb-ink-soft: #A8A29E;
+  --rb-ink-soft: #bcb4af;
   --rb-shadow-color: #0A0A0A;
+
+  /* Structure */
+  --rb-border-color: var(--rb-ink-soft);
+  --rb-divider: color-mix(in srgb, var(--rb-ink-soft) 18%, transparent);
+  --rb-grid-color: var(--rb-ink-soft);
+  --rb-grid-opacity: 0.08;
+
+  /* Desaturated accents (~15-20%) for dark readability */
+  --rb-mint: #68D4B5;
+  --rb-on-mint: #0E1A17;
+  --rb-orange: #E08C69;
+  --rb-on-orange: #1E120D;
+  --rb-red: #E05868;
+  --rb-on-red: #1F0D10;
+  --rb-violet: #9785EC;
+  --rb-on-violet: #120F24;
+  --rb-yellow: #E6C24A;
+  --rb-on-yellow: #1F1908;
+  --rb-lime: #C4E045;
+  --rb-on-lime: #161C05;
+  --rb-aqua: #9ADED5;
+  --rb-on-aqua: #0E1C1A;
+  --rb-pink: #EC719C;
+  --rb-on-pink: #200D15;
+  --rb-lavender: #BAA2E8;
+  --rb-on-lavender: #171123;
+  --rb-terracotta: #E27B5B;
+  --rb-on-terracotta: #1C0F0B;
+  --rb-grey: #2F333B;
+  --rb-on-grey: #F0F2F5;
+
   --rb-accent: var(--rb-terracotta);
+  --rb-on-accent: var(--rb-on-terracotta);
 }
+
 
 /* ===== 01-tones.css ===== */
 /* RetroBrute - Tones */
@@ -101,6 +134,7 @@ body.theme-light.rb-tone-cream {
   --rb-ink-soft: #5A5A5A;
   --rb-shadow-color: #1B1B1B;
   --rb-accent: var(--rb-terracotta);
+  --rb-on-accent: var(--rb-on-terracotta);
 }
 
 body.theme-light.rb-tone-mint-paper {
@@ -111,6 +145,7 @@ body.theme-light.rb-tone-mint-paper {
   --rb-ink-soft: #5A5A5A;
   --rb-shadow-color: #1B1B1B;
   --rb-accent: var(--rb-mint);
+  --rb-on-accent: var(--rb-on-mint);
 }
 
 body.theme-light.rb-tone-lavender-fog {
@@ -121,6 +156,7 @@ body.theme-light.rb-tone-lavender-fog {
   --rb-ink-soft: #5A5A5A;
   --rb-shadow-color: #1B1B1B;
   --rb-accent: var(--rb-lavender);
+  --rb-on-accent: var(--rb-on-lavender);
 }
 
 /* ── Dark tones ── */
@@ -132,6 +168,7 @@ body.theme-dark.rb-tone-charcoal {
   --rb-ink-soft: #A8A29E;
   --rb-shadow-color: color-mix(in srgb, var(--rb-accent) 25%, #000000);
   --rb-accent: var(--rb-terracotta);
+  --rb-on-accent: var(--rb-on-terracotta);
 }
 
 body.theme-dark.rb-tone-midnight-violet {
@@ -142,6 +179,7 @@ body.theme-dark.rb-tone-midnight-violet {
   --rb-ink-soft: #8A85A8;
   --rb-shadow-color: color-mix(in srgb, var(--rb-accent) 25%, #000000);
   --rb-accent: var(--rb-violet);
+  --rb-on-accent: var(--rb-on-violet);
 }
 
 body.theme-dark.rb-tone-cocoa {
@@ -152,6 +190,7 @@ body.theme-dark.rb-tone-cocoa {
   --rb-ink-soft: #988A82;
   --rb-shadow-color: color-mix(in srgb, var(--rb-accent) 25%, #000000);
   --rb-accent: var(--rb-orange);
+  --rb-on-accent: var(--rb-on-orange);
 }
 
 /* ===== 02-base.css ===== */
@@ -173,24 +212,38 @@ body {
   --background-modifier-success: var(--rb-mint);
   --background-modifier-message: var(--rb-surface);
   --background-modifier-form-field: var(--rb-surface-2);
+  --background-modifier-cover: color-mix(in srgb, var(--rb-shadow-color) 70%, transparent);
+  --divider-color: var(--rb-divider);
+  --divider-color-hover: var(--rb-ink);
 
   /* Text */
   --text-normal: var(--rb-ink);
   --text-muted: var(--rb-ink-soft);
   --text-faint: var(--rb-ink-soft);
   --text-accent: var(--rb-accent);
-  --text-accent-hover: color-mix(in srgb, var(--rb-accent) 25%, transparent);
+  --text-accent-hover: color-mix(in srgb, var(--rb-accent) 80%, var(--rb-ink));
   --text-error: var(--rb-red);
   --text-success: var(--rb-mint);
   --text-highlight-bg: var(--rb-yellow);
   --text-selection: color-mix(in srgb, var(--rb-accent) 30%, transparent);
+  --text-on-accent: var(--rb-on-accent);
+  --text-on-accent-inverted: var(--rb-ink);
 
   /* Interactive */
   --interactive-accent: var(--rb-accent);
-  --interactive-accent-hover: color-mix(in srgb, var(--rb-accent) 25%, transparent);
+  --interactive-accent-hover: color-mix(in srgb, var(--rb-accent) 80%, var(--rb-ink));
   --interactive-success: var(--rb-mint);
   --interactive-warning: var(--rb-orange);
   --interactive-error: var(--rb-red);
+
+  /* Base accent: plugins (Style Settings, etc.) read --color-accent, which is
+     Obsidian's purple default unless the theme maps it. */
+  --color-accent: var(--rb-accent);
+  --color-accent-1: var(--rb-accent);
+  --color-accent-2: var(--rb-accent);
+  --accent-h: 15;
+  --accent-s: 63%;
+  --accent-l: 60%;
 
   /* Colors */
   --color-red: var(--rb-red);
@@ -201,6 +254,27 @@ body {
   --color-blue: var(--rb-violet);
   --color-purple: var(--rb-lavender);
   --color-pink: var(--rb-pink);
+
+  /* Icons */
+  --icon-color: var(--rb-ink-soft);
+  --icon-color-hover: var(--rb-ink);
+  --icon-color-active: var(--rb-accent);
+
+  /* Tabs (Obsidian's tab chrome draws with these) */
+  --tab-background-active: var(--rb-surface);
+  --tab-outline-color: var(--rb-border-color);
+  --tab-outline-width: var(--rb-border-width);
+  --tab-text-color: var(--rb-ink-soft);
+  --tab-text-color-active: var(--rb-ink);
+  --tab-text-color-focused: var(--rb-ink-soft);
+  --tab-text-color-focused-active: var(--rb-ink);
+  --tab-text-color-focused-active-current: var(--rb-ink);
+
+  /* Checkboxes + tags */
+  --checkbox-color: var(--rb-accent);
+  --checkbox-border-color: var(--rb-border-color);
+  --tag-background: color-mix(in srgb, var(--rb-accent) 18%, transparent);
+  --tag-color: var(--rb-ink);
 
   /* Fonts */
   --font-interface-theme: var(--rb-font-ui);
@@ -459,7 +533,7 @@ blockquote,
 
 /* Modal content */
 .modal-content {
-  padding: var(--rb-pad-box);
+  padding: 0;
 }
 
 /* Status bar items */
@@ -722,7 +796,8 @@ textarea {
 }
 
 .modal-content {
-  padding: 16px;
+  padding: 0;
+  border: var(--rb-border-width) solid var(--rb-border-color);
 }
 
 .modal-close-button {
@@ -845,38 +920,35 @@ body:not(.rb-no-anim) .modal {
 }
 
 /* ── Scrollbars ── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--rb-accent) transparent;
+}
+
 ::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--rb-surface-2);
-  border-left: var(--rb-border-width) solid var(--rb-border-color);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--rb-surface);
-  border: var(--rb-border-width) solid var(--rb-border-color);
-  border-radius: 0;
+  background: var(--rb-accent);
+  border-radius: var(--rb-radius-pill);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--rb-accent);
+  background: var(--rb-ink);
 }
 
 ::-webkit-scrollbar-corner {
-  background: var(--rb-surface-2);
+  background: transparent;
 }
 
-/* Horizontal scrollbar */
 ::-webkit-scrollbar:horizontal {
-  height: 12px;
-}
-
-::-webkit-scrollbar-track:horizontal {
-  border-left: none;
-  border-top: var(--rb-border-width) solid var(--rb-border-color);
+  height: 6px;
 }
 
 /* ── View Header (nav arrows) ── */
@@ -887,6 +959,18 @@ body:not(.rb-no-anim) .modal {
   padding: 0 var(--rb-space-2);
 }
 
+.view-header-left {
+  margin: 4px 0;
+}
+
+.view-header-nav-buttons {
+  gap: 4px;
+}
+
+.nav-buttons-container {
+  justify-content: flex-start;
+}
+
 .view-header .clickable-icon {
   position: relative;
   z-index: 1;
@@ -894,7 +978,7 @@ body:not(.rb-no-anim) .modal {
   align-items: center;
   justify-content: center;
   gap: var(--rb-space-2);
-  padding: var(--rb-space-2);
+  padding: calc(var(--rb-space-2) / 1.5);
   line-height: 1.5;
 }
 
@@ -1101,38 +1185,38 @@ body.rb-tabs-plain .workspace-ribbon .side-dock-ribbon-action.is-active {
 }
 
 /* Colorful tabs ON by default - every nth tab gets a color */
-.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+1):not(.is-active):not(.new-tab) {
+.mod-root .workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+1):not(.is-active):not(.new-tab) {
   background: color-mix(in srgb, var(--rb-yellow) 75%, var(--rb-surface));
   color: var(--rb-on-yellow);
 }
 
-.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+2):not(.is-active):not(.new-tab) {
+.mod-root .workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+2):not(.is-active):not(.new-tab) {
   background: color-mix(in srgb, var(--rb-mint) 75%, var(--rb-surface));
   color: var(--rb-on-mint);
 }
 
-.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+3):not(.is-active):not(.new-tab) {
+.mod-root .workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+3):not(.is-active):not(.new-tab) {
   background: color-mix(in srgb, var(--rb-pink) 75%, var(--rb-surface));
   color: var(--rb-on-pink);
 }
 
-.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+4):not(.is-active):not(.new-tab) {
+.mod-root .workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+4):not(.is-active):not(.new-tab) {
   background: color-mix(in srgb, var(--rb-lavender) 75%, var(--rb-surface));
   color: var(--rb-on-lavender);
 }
 
-.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+5):not(.is-active):not(.new-tab) {
+.mod-root .workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+5):not(.is-active):not(.new-tab) {
   background: color-mix(in srgb, var(--rb-orange) 75%, var(--rb-surface));
   color: var(--rb-on-orange);
 }
 
-.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+6):not(.is-active):not(.new-tab) {
+.mod-root .workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+6):not(.is-active):not(.new-tab) {
   background: color-mix(in srgb, var(--rb-aqua) 75%, var(--rb-surface));
   color: var(--rb-on-aqua);
 }
 
 /* Active colorful tabs - full fill */
-.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+1).is-active {
+.mod-root .workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+1).is-active {
   background: var(--rb-yellow);
   color: var(--rb-on-yellow);
   border: var(--rb-border-width) solid var(--rb-border-color);
@@ -1142,7 +1226,7 @@ body.rb-tabs-plain .workspace-ribbon .side-dock-ribbon-action.is-active {
   font-weight: 700;
 }
 
-.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+2).is-active {
+.mod-root .workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+2).is-active {
   background: var(--rb-mint);
   color: var(--rb-on-mint);
   border: var(--rb-border-width) solid var(--rb-border-color);
@@ -1152,7 +1236,7 @@ body.rb-tabs-plain .workspace-ribbon .side-dock-ribbon-action.is-active {
   font-weight: 700;
 }
 
-.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+3).is-active {
+.mod-root .workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+3).is-active {
   background: var(--rb-pink);
   color: var(--rb-on-pink);
   border: var(--rb-border-width) solid var(--rb-border-color);
@@ -1162,7 +1246,7 @@ body.rb-tabs-plain .workspace-ribbon .side-dock-ribbon-action.is-active {
   font-weight: 700;
 }
 
-.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+4).is-active {
+.mod-root .workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+4).is-active {
   background: var(--rb-lavender);
   color: var(--rb-on-lavender);
   border: var(--rb-border-width) solid var(--rb-border-color);
@@ -1172,7 +1256,7 @@ body.rb-tabs-plain .workspace-ribbon .side-dock-ribbon-action.is-active {
   font-weight: 700;
 }
 
-.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+5).is-active {
+.mod-root .workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+5).is-active {
   background: var(--rb-orange);
   color: var(--rb-on-orange);
   border: var(--rb-border-width) solid var(--rb-border-color);
@@ -1182,7 +1266,7 @@ body.rb-tabs-plain .workspace-ribbon .side-dock-ribbon-action.is-active {
   font-weight: 700;
 }
 
-.workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+6).is-active {
+.mod-root .workspace-tab-header-container-inner > .workspace-tab-header:nth-child(6n+6).is-active {
   background: var(--rb-aqua);
   color: var(--rb-on-aqua);
   border: var(--rb-border-width) solid var(--rb-border-color);
@@ -1193,12 +1277,14 @@ body.rb-tabs-plain .workspace-ribbon .side-dock-ribbon-action.is-active {
 }
 
 /* Hover lift animation (default ON) */
-.workspace-tab-header:hover {
+/* Hover lift (stable stacking so the raised tab is not covered by its neighbour) */
+body:not(.rb-no-anim) .workspace-tab-header:hover {
   transform: translateY(-1px);
 }
 
-body.rb-no-anim .workspace-tab-header:hover {
-  transform: none;
+.workspace-tab-header:hover,
+.workspace-tab-header.is-active {
+  z-index: 2;
 }
 
 /* Active tab indicator line (remove default) */
@@ -1254,11 +1340,20 @@ body:not(.rb-no-anim) .workspace-tab-header:hover {
   margin-left: 8px;
 }
 
-/* Obsidian's inverted-corner curve is a 40px box-shadow in --background-primary. */
-.workspace-tab-header.is-active::before,
-.workspace-tab-header.is-active::after {
-  box-shadow: none !important;
+/* Obsidian's decorative tab curves are 24px box-shadows that bleed onto the
+   neighbouring tab. We draw the tab shape ourselves, so drop them entirely. */
+.workspace-tab-header::before,
+.workspace-tab-header::after {
+  display: none;
 }
+
+/* Obsidian paints an inset hover patch on the tab's inner box; on a coloured
+   tab it reads as a broken shadow. The lift is the hover feedback instead. */
+.workspace-tab-header-container .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
+  background: transparent;
+}
+
+
 
 /* ===== 04a-ui-components.css ===== */
 /* RetroBrute - Components */
@@ -1391,7 +1486,7 @@ textarea,
   border-radius: var(--rb-radius-s);
   background: var(--rb-surface);
   color: var(--rb-ink);
-  box-shadow: inset 1px 1px 0 var(--rb-shadow-color);
+  box-shadow: none;
   outline: none;
   line-height: 1.5;
   min-height: calc(var(--rb-space-3) * 2);
@@ -1502,17 +1597,22 @@ input[type="range"] {
   outline: none;
 }
 
+/* Style Settings paints a plugin-side fill behind the input; it overflows our
+   track, so keep the input itself transparent and let the track/thumb show. */
+body .modal-content input[type="range"],
+body .setting-item input[type="range"],
+body .style-settings-container input[type="range"] {
+  background: transparent;
+  box-shadow: none;
+}
+
 /* Track */
 input[type="range"]::-webkit-slider-runnable-track {
   height: 12px;
   border: 2px solid var(--rb-border-color);
   border-radius: 0;
   box-sizing: border-box;
-  background: linear-gradient(
-    to right,
-    var(--rb-accent) 0 calc(var(--slider-progress, 0%) * (100% - 20px) / 100% + 10px),
-    var(--rb-surface) 0
-  );
+  background: var(--rb-surface);
 }
 
 input[type="range"]::-moz-range-track {
@@ -1530,9 +1630,12 @@ input[type="range"]::-webkit-slider-thumb {
   height: 20px;
   box-sizing: border-box;
   border: 2px solid var(--rb-border-color);
+  border-radius: 50%;
   background: var(--rb-accent);
   box-shadow: 2px 2px 0 var(--rb-shadow-color);
   margin-top: calc((12px - 20px) / 2);
+  position: relative;
+  top: -2px;
   cursor: pointer;
 }
 
@@ -1541,8 +1644,10 @@ input[type="range"]::-moz-range-thumb {
   height: 20px;
   box-sizing: border-box;
   border: 2px solid var(--rb-border-color);
+  border-radius: 50%;
   background: var(--rb-accent);
   box-shadow: 2px 2px 0 var(--rb-shadow-color);
+  transform: translateY(-2px);
   cursor: pointer;
 }
 
@@ -1570,7 +1675,7 @@ input[type="range"]:focus::-moz-range-thumb {
   height: 20px;
   background: var(--rb-surface-2);
   border: var(--rb-border-width) solid var(--rb-border-color);
-  border-radius: var(--rb-radius-pill);
+  border-radius: 0;
   position: relative;
   cursor: pointer;
   outline: none;
@@ -1584,7 +1689,7 @@ input[type="range"]:focus::-moz-range-thumb {
   width: 14px;
   height: 14px;
   background: var(--rb-ink);
-  border-radius: 50%;
+  border-radius: 0;
   transition: transform var(--rb-anim-speed) ease;
 }
 
@@ -1605,23 +1710,18 @@ body:not(.rb-no-anim) .checkbox-container input[type="checkbox"]::after {
   box-shadow: 0 0 0 2px var(--rb-surface), 0 0 0 4px var(--rb-accent);
 }
 
-/* Square toggle variant */
-.rb-toggle-square input[type="checkbox"] {
-  border-radius: var(--rb-radius-s);
-  width: 36px;
-  height: 20px;
+/* Keep the knob centred inside settings modals */
+.modal .checkbox-container input[type="checkbox"]::after {
+  margin: 0;
 }
 
-.rb-toggle-square input[type="checkbox"]::after {
-  border-radius: 0;
-  width: 12px;
-  height: 12px;
-  top: 2px;
-  left: 2px;
+/* Pill toggle variant */
+.rb-toggle-pill input[type="checkbox"] {
+  border-radius: var(--rb-radius-pill);
 }
 
-.rb-toggle-square input[type="checkbox"]:checked::after {
-  transform: translateX(14px);
+.rb-toggle-pill input[type="checkbox"]::after {
+  border-radius: 50%;
 }
 
 /* ── Checkboxes ── */
@@ -2201,7 +2301,7 @@ th {
   border: var(--rb-border-width) solid var(--rb-border-color);
   border-radius: var(--rb-radius-m);
   background: var(--rb-surface);
-  box-shadow: var(--rb-shadow-hard);
+  box-shadow: none;
 }
 
 .embed-title {
